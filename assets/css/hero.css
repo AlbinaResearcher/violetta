@@ -1,0 +1,417 @@
+/* ==========================================================================
+   Hero — «Песня, которую запомнят навсегда»
+   Перенос дизайна из Claude Design (Hero v2) в статический HTML/CSS/JS.
+
+   Слои по z-index:
+     5  — ночное небо с облаками (закруглённая панель)
+    10  — основной контент (H1, подзаголовок, CTA, social proof)
+    25  — тизер второго экрана
+    40  — плавающий navbar
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #F3E4D6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #FDFCFB;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #F3C9CF;
+}
+
+body {
+  font-family: Manrope, system-ui, sans-serif;
+}
+
+.page {
+  position: relative;
+  background: #F3E4D6;
+}
+
+/* Липкий первый экран + полоса прокрутки под ним: скролл по этой полосе
+   поднимает закатные слои и раскрывает тизер второго экрана. */
+.hero {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: #F3E4D6;
+  color: #FDFCFB;
+}
+
+.hero-spacer {
+  height: 130vh;
+}
+
+/* --------------------------------------------------------------------------
+   Тизер второго экрана
+   -------------------------------------------------------------------------- */
+
+.hero__next {
+  position: absolute;
+  z-index: 25;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px clamp(30px, 7svh, 72px);
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hero__next-kicker {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 1.3;
+  white-space: nowrap;
+  color: #6B4E7A;
+}
+
+.hero__next-title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(24px, 3.2vw, 46px);
+  line-height: 1.1;
+  white-space: nowrap;
+  color: #3A2C55;
+}
+
+/* --------------------------------------------------------------------------
+   Небо и облака
+   -------------------------------------------------------------------------- */
+
+.hero__sky {
+  position: absolute;
+  z-index: 5;
+  left: -8%;
+  right: -8%;
+  top: 0;
+  height: 168svh;
+  overflow: hidden;
+  /* Небо само является закруглённой панелью — между аркой и кремовым фоном
+     не остаётся тёмного просвета. */
+  border-radius: 0 0 50% 50% / 0 0 9% 9%;
+  background: linear-gradient(
+    180deg,
+    #372A52 0%,
+    #3F3160 20%,
+    #55416C 34%,
+    #7A5C95 48%,
+    #A97EB6 60%,
+    #B98BB8 100%
+  );
+  will-change: transform;
+}
+
+.hero__stars {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__star {
+  position: absolute;
+  border-radius: 50%;
+  background: #FFF6E9;
+  box-shadow: 0 0 4px rgba(255, 246, 233, 0.55);
+}
+
+/* Плавающие облака: только opacity / scale / position — фильтры к иллюстрациям
+   не применяются. */
+.hero__cloud,
+.hero__bank {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero__cloud--a {
+  top: 10%;
+  left: 2%;
+  width: min(38vw, 520px);
+}
+
+.hero__cloud--b {
+  top: 7%;
+  right: 0%;
+  width: min(32vw, 440px);
+}
+
+.hero__cloud--c {
+  top: 24%;
+  right: 4%;
+  width: min(26vw, 340px);
+}
+
+.hero__bank--3 {
+  left: 50%;
+  top: 47%;
+  width: 84%;
+  opacity: 0.9;
+  transform: translateX(-50%);
+}
+
+.hero__bank--2 {
+  left: 50%;
+  top: 48%;
+  width: 94%;
+  transform: translateX(-50%);
+}
+
+/* --------------------------------------------------------------------------
+   Плавающий navbar
+   -------------------------------------------------------------------------- */
+
+.nav {
+  position: absolute;
+  z-index: 40;
+  top: clamp(12px, 2vh, 22px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(688px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 8px 24px;
+  border-radius: 999px;
+  background: #F4EFE6;
+  box-shadow: 0 10px 30px rgba(34, 22, 52, 0.18);
+}
+
+.nav__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4B4050;
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  color: #2C2144;
+}
+
+.nav__brand {
+  font-family: 'Marck Script', cursive;
+  font-size: 26px;
+  line-height: 1;
+  color: #E8657A;
+  white-space: nowrap;
+}
+
+.nav__brand:hover {
+  color: #E8657A;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: #2C2144;
+  color: #FDFCFB;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 180ms ease;
+}
+
+.nav__cta:hover {
+  background: #3D2F5E;
+  color: #FDFCFB;
+}
+
+/* --------------------------------------------------------------------------
+   Контент первого экрана
+   -------------------------------------------------------------------------- */
+
+.hero__content {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-start, а не center: содержимое выше внутренней области, и при
+     центрировании оно переполнялось вверх под navbar. */
+  justify-content: flex-start;
+  text-align: center;
+  padding: clamp(88px, 13vh, 132px) clamp(16px, 5vw, 40px) clamp(150px, 30vh, 330px);
+  will-change: transform, opacity;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  /* Кап по высоте, чтобы на низких окнах композиция сжималась, а не выходила
+     за экран. */
+  font-size: min(clamp(32px, 5.2vw, 78px), 7.4vh);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #FDFCFB;
+  max-width: calc(100vw - 32px);
+}
+
+.hero__title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Строка со сменяемым словом зафиксирована по высоте, поэтому заголовок
+   не дёргается при смене. */
+.hero__title-slot {
+  display: block;
+  position: relative;
+  height: 1.14em;
+}
+
+.hero__word {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-family: 'Marck Script', cursive;
+  font-weight: 400;
+  color: #F26D7D;
+  line-height: 1.14;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+}
+
+.hero__lede {
+  margin: clamp(12px, 2.2vh, 26px) 0 0;
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.5;
+  color: rgba(253, 252, 251, 0.88);
+  max-width: 46ch;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(18px, 3.2vh, 36px);
+  height: clamp(46px, 6vh, 56px);
+  padding: 0 clamp(26px, 2.6vw, 36px);
+  border-radius: 999px;
+  background: #FDFCFB;
+  color: #2C2144;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 12px 28px rgba(30, 18, 46, 0.22);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.hero__cta:hover {
+  background: #FFFFFF;
+  color: #2C2144;
+  transform: translateY(-1px);
+}
+
+.hero__cta:active {
+  transform: translateY(1px);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid #FDFCFB;
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Social proof
+   -------------------------------------------------------------------------- */
+
+.proof {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: clamp(16px, 3vh, 32px);
+}
+
+.proof__count {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FDFCFB;
+}
+
+.proof__stars {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: #F6C25B;
+}
+
+.proof__quote {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: rgba(253, 252, 251, 0.82);
+  max-width: 54ch;
+}
+
+.proof__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #F0576B;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  max-width: calc(100vw - 32px);
+}
+
+/* --------------------------------------------------------------------------
+   Узкие экраны
+
+   Десктопная композиция не меняется — здесь только то, что иначе обрезалось
+   бы по ширине: пилюля navbar не вмещает все четыре элемента, а коралловая
+   пилюля не вмещает строку в одну линию.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 520px) {
+  .nav {
+    padding-left: 18px;
+  }
+
+  .nav__link--how {
+    display: none;
+  }
+
+  .proof__pill {
+    white-space: normal;
+    text-align: center;
+  }
+}

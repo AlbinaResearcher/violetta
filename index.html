@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Песня, которую запомнят навсегда</title>
+<meta name="description" content="Создайте персональную песню за несколько минут.">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Marck+Script&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/hero.css">
+</head>
+<body>
+
+<div class="page">
+  <section class="hero">
+
+    <!-- Тизер второго экрана: проявляется по мере подъёма закатных слоёв -->
+    <div class="hero__next" id="hero-next">
+      <p class="hero__next-kicker">Есть 10 минут?..</p>
+      <p class="hero__next-title">Давайте творить магию</p>
+    </div>
+
+    <!-- Ночное небо: закруглённая панель на кремовом фоне -->
+    <div class="hero__sky" id="hero-sky">
+      <div class="hero__stars" id="hero-stars" aria-hidden="true"></div>
+
+      <img class="hero__cloud hero__cloud--a" id="hero-cloud-a"
+           src="assets/img/cloud-soft-blue.webp" alt="" aria-hidden="true"
+           width="1024" height="1024" decoding="async">
+
+      <img class="hero__cloud hero__cloud--b" id="hero-cloud-b"
+           src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true"
+           width="1028" height="1028" decoding="async">
+
+      <img class="hero__cloud hero__cloud--c" id="hero-cloud-c"
+           src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true"
+           width="1024" height="1024" decoding="async">
+
+      <img class="hero__bank hero__bank--3" id="hero-bank-3"
+           src="assets/img/sunset-layer-3.webp" alt="" aria-hidden="true"
+           width="1360" height="768" decoding="async">
+
+      <img class="hero__bank hero__bank--2" id="hero-bank-2"
+           src="assets/img/sunset-layer-2.webp" alt="" aria-hidden="true"
+           width="2048" height="1152" decoding="async">
+    </div>
+
+    <header class="nav">
+      <a class="nav__link nav__link--how" href="#">Как это работает</a>
+      <a class="nav__brand" href="#">Violetta</a>
+      <div class="nav__actions">
+        <a class="nav__link" href="#">Войти</a>
+        <a class="nav__cta" href="#">Создать свою</a>
+      </div>
+    </header>
+
+    <div class="hero__content" id="hero-content">
+      <h1 class="hero__title">
+        <span class="hero__title-line">Песня, которую</span>
+        <span class="hero__title-slot">
+          <span class="hero__word" id="hero-word">запомнят</span>
+        </span>
+        <span class="hero__title-line">навсегда</span>
+      </h1>
+
+      <p class="hero__lede">Создайте персональную песню за несколько минут.</p>
+
+      <a class="hero__cta" href="#">Создать свою песню</a>
+
+      <div class="proof">
+        <p class="proof__count">Нам доверяют более 18 000 человек</p>
+        <span class="proof__stars" role="img" aria-label="Рейтинг 5 из 5">★★★★★</span>
+        <p class="proof__quote">«Самая крутая вещь, которую я когда-либо встречал.»</p>
+        <span class="proof__pill">Платите столько, сколько считаете нужным. ❤️</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="hero-spacer"></div>
+</div>
+
+<script src="assets/js/hero.js"></script>
+</body>
+</html>

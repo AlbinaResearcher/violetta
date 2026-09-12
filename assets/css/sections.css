@@ -174,10 +174,13 @@ html:not(.landing-enhanced) .hero__content { padding-top: 28px; }
   justify-items: center; align-items: center; padding: 104px 20px 72px;
 }
 .hero__main { grid-row: 2; display: flex; flex-direction: column; align-items: center; width: min(100%,780px); }
-.hero__title { width: 100%; max-width: 100%; font-size: clamp(32px,5.1vw,72px); line-height: 1.1; }
-.hero__title-slot { height: 2.3em; }
-.hero__word { font-family: 'Playfair Display',Georgia,serif; font-weight: 500; color: #FDFCFB; line-height: 1.1; }
-.hero__script { display: block; font-family: 'Marck Script',cursive; font-weight: 400; color: #F26D7D; line-height: 1.2; }
+.hero__title { display: grid; row-gap: .06em; width: 100%; max-width: 100%; font-size: clamp(32px,5.1vw,72px); line-height: 1.12; }
+.hero__title-line { line-height: 1.12; }
+.hero__title-slot { height: 2.22em; overflow: visible; }
+.hero__word { display: grid; grid-template-rows: 1.12em 1.1em; gap: 0; font-family: 'Playfair Display',Georgia,serif; font-weight: 500; color: #FDFCFB; line-height: 1.1; }
+/* Marck Script's ink sits high in its line box. Offset the ink, preserving
+   both reserved rows and the animation transform on the pair wrapper. */
+.hero__script { display: block; font-family: 'Marck Script',cursive; font-weight: 400; color: #F26D7D; line-height: 1.12; transform: translateY(.1em); }
 .hero__ending { display: block; line-height: 1.1; }
 .hero__content .proof { grid-row: 3; align-self: start; margin-top: 26px; }
 .hero__content .proof__total { font-size: clamp(26px,2.6vw,36px); }
@@ -258,6 +261,16 @@ html:not(.landing-enhanced) .hero__content { padding-top: 24px; }
 .legal-main > p > a { display: inline-flex; align-items: center; min-height: 44px; }
 .legal-main h2 { text-wrap: balance; }
 .legal-page .site-footer { font-family: Manrope,system-ui,sans-serif; }
+.brand-logo { display: block; width: auto; height: auto; max-width: 100%; }
+.site-header .nav__brand, .legal-header > a:first-child { flex: 0 0 154px; width: 154px; min-height: 44px; }
+.site-header .nav__brand .brand-logo, .legal-header .brand-logo { width: auto; height: auto; max-width: 154px; }
+.site-header { width: min(920px,calc(100% - 32px)); padding-left: 18px; }
+.footer-brand { width: 190px; padding: 10px 14px; background: #F4EFE6; border-radius: 12px; }
+.form-payment { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+@media (max-width: 600px) {
+  .site-header .nav__brand, .legal-header > a:first-child { flex-basis: 140px; width: 140px; }
+  .site-header .nav__brand .brand-logo, .legal-header .brand-logo { max-width: 140px; }
+}
 @media (max-width: 959px) {
   .pricing-grid { grid-template-columns: minmax(0,1fr); }
   .faq-grid, .request-grid { grid-template-columns: minmax(0,1fr); }

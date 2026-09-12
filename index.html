@@ -3,58 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Песня, которую запомнят навсегда</title>
-<meta name="description" content="Создайте персональную песню за несколько минут.">
+<title>Вивобит — песня по вашей истории</title>
+<meta name="description" content="Персональная песня по вашей истории. Песня под ключ — 990 ₽. Расскажите, для кого подарок, а детали мы уточним в переписке.">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Marck+Script&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&amp;family=Marck+Script&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/css/hero.css">
+<link rel="stylesheet" href="assets/css/sections.css">
 </head>
 <body>
 
-<main class="page" id="top">
-  <section class="hero" aria-label="Персональная песня">
+<a class="skip-link" href="#how">Перейти к содержимому</a><header class="site-header"><div class="header-row">
+<a class="nav__brand" href="#top" aria-label="Вивобит — на главную">Вивобит</a><nav class="desktop-nav" aria-label="Основная навигация"><a href="#how">Как это работает</a><a href="#examples">Примеры</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a></nav><a class="nav__cta header-cta" href="#request">Создать песню</a><button class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" hidden><span></span><span></span><span></span></button>
+</div>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Мобильная навигация" hidden><a href="#how">Как это работает</a><a href="#examples">Примеры</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a><a class="nav__cta" href="#request">Создать песню</a></nav></header><main class="page">
+  <div id="top" class="hero-scene">
+<section class="hero" aria-label="Персональная песня">
 
     <!-- Ночное небо: закруглённая панель на кремовом фоне -->
     <div class="hero__sky" id="hero-sky">
       <div class="hero__stars" id="hero-stars" aria-hidden="true"></div>
 
-      <img class="hero__cloud hero__cloud--a" id="hero-cloud-a"
-           src="assets/img/cloud-soft-blue.webp" alt="" aria-hidden="true"
-           width="1024" height="1024" decoding="async">
+      <img class="hero__cloud hero__cloud--a" id="hero-cloud-a" src="assets/img/cloud-soft-blue.webp" alt="" aria-hidden="true" width="1024" height="1024" decoding="async">
 
-      <img class="hero__cloud hero__cloud--b" id="hero-cloud-b"
-           src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true"
-           width="1028" height="1028" decoding="async">
+      <img class="hero__cloud hero__cloud--b" id="hero-cloud-b" src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true" width="1028" height="1028" decoding="async">
 
-      <img class="hero__cloud hero__cloud--c" id="hero-cloud-c"
-           src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true"
-           width="1024" height="1024" decoding="async">
+      <img class="hero__cloud hero__cloud--c" id="hero-cloud-c" src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true" width="1024" height="1024" decoding="async">
 
-      <img class="hero__bank hero__bank--3" id="hero-bank-3"
-           src="assets/img/sunset-layer-3.webp" alt="" aria-hidden="true"
-           width="1360" height="768" decoding="async">
+      <img class="hero__bank hero__bank--3" id="hero-bank-3" src="assets/img/sunset-layer-3.webp" alt="" aria-hidden="true" width="1360" height="768" decoding="async">
 
-      <img class="hero__bank hero__bank--2" id="hero-bank-2"
-           src="assets/img/sunset-layer-2.webp" alt="" aria-hidden="true"
-           width="2048" height="1152" decoding="async">
+      <img class="hero__bank hero__bank--2" id="hero-bank-2" src="assets/img/sunset-layer-2.webp" alt="" aria-hidden="true" width="2048" height="1152" decoding="async">
     </div>
 
-    <nav class="nav" aria-label="Основная навигация">
-      <a class="nav__link nav__link--how" href="#">Как это работает</a>
-      <a class="nav__brand" href="#top" aria-label="Violetta — на главную">Violetta</a>
-      <div class="nav__actions">
-        <a class="nav__link" href="#">Войти</a>
-        <a class="nav__cta" href="#">Создать свою</a>
-      </div>
-    </nav>
-
-    <button class="hero__motion" id="hero-motion" type="button"
-            aria-pressed="false" hidden>Остановить анимацию</button>
+    <button class="hero__motion" id="hero-motion" type="button" aria-pressed="false" hidden>Остановить анимацию</button>
 
     <div class="hero__content" id="hero-content">
       <h1 class="hero__title" aria-label="Песня, которую запомнят навсегда">
@@ -65,17 +50,14 @@
         <span class="hero__title-line">навсегда</span>
       </h1>
 
-      <p class="hero__lede">Создайте персональную песню за несколько минут.</p>
+      <p class="hero__lede">Расскажите историю за пару минут — остальное сделаем мы.</p>
 
-      <a class="hero__cta" href="#">Создать свою песню</a>
+      <a class="hero__cta" href="#request">Создать свою песню</a>
 
       <div class="proof">
-        <p class="proof__count">Нам доверяют более 18 000 человек</p>
-        <span class="proof__stars" role="img" aria-label="Рейтинг 5 из 5">★★★★★</span>
-        <p class="proof__quote">«Самая крутая вещь, которую я когда-либо встречал.»</p>
-        <span class="proof__pill">Платите столько, сколько считаете нужным. ❤️</span>
-      </div>
-    </div>
+<span class="proof__total">10,000+</span><span class="proof__caption">песен создано</span>
+</div>
+</div>
 
     <!-- Тизер второго экрана: проявляется по мере подъёма закатных слоёв -->
     <div class="hero__next" id="hero-next">
@@ -86,8 +68,676 @@
   </section>
 
   <div class="hero-spacer"></div>
+</div>
+<section id="how" data-screen-label="Как рождается ваша песня" style="background: linear-gradient(180deg, #F3E4D6 0%, #FAE3DF 24%, #F9DCE2 48%, #F3DCEB 74%, #EDE1F2 100%); font-family: Manrope, system-ui, sans-serif; color: #2C2144; padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 78px);">
+  <div style="max-width: 1240px; margin: 0 auto;">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(14px, 2.4vw, 40px);">
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(29px, 4vw, 60px); line-height: 1.04; letter-spacing: -0.02em; max-width: 18ch;">
+        <span style="display: block;">Как рождается</span>
+        <span style="display: block; font-style: italic; color: #C9455C; border-bottom: 2px solid rgba(201, 69, 92, 0.4); padding-bottom: 0.05em;">ваша песня</span>
+      </h2>
+      <p style="margin: 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.55; color: #5C4E70; max-width: 34ch;">От нескольких воспоминаний — к песне, которую хочется переслушивать.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(16px, 1.8vw, 24px); margin-top: clamp(26px, 3.2vw, 44px);">
+
+      <article style="border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.66); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 18px 44px rgba(120, 74, 104, 0.07); padding: clamp(20px, 2.2vw, 32px); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; gap: 12px;" class="step-heading">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(19px, 1.7vw, 24px); color: #C9455C;">01.</span>
+          <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.16;">Расскажите, для кого эта песня</h3>
+        </div>
+        <div style="flex: 1; margin-top: clamp(14px, 1.6vw, 20px); border-radius: 18px; background: rgba(255, 253, 252, 0.92); padding: clamp(14px, 1.6vw, 20px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-size: 16px; font-weight: 600; color: #3A2C55;">Для кого эта песня?</p>
+              <div style="border-radius: 12px; border: 1px solid rgba(224, 86, 107, 0.16); background: #FFFFFF; padding: 9px 13px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.35; color: #5C4E70;">Для мамы</div>
+            </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-size: 16px; font-weight: 600; color: #3A2C55;">Как её зовут?</p>
+              <div style="border-radius: 12px; border: 1px solid rgba(224, 86, 107, 0.16); background: #FFFFFF; padding: 9px 13px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.35; color: #5C4E70;">Людмила</div>
+            </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-size: 16px; font-weight: 600; color: #3A2C55;">По какому поводу?</p>
+              <div style="border-radius: 12px; border: 1px solid rgba(224, 86, 107, 0.16); background: #FFFFFF; padding: 9px 13px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.35; color: #5C4E70;">Юбилей</div>
+            </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-size: 16px; font-weight: 600; color: #3A2C55;">Какая музыка ей нравится?</p>
+              <div style="border-radius: 12px; border: 1px solid rgba(224, 86, 107, 0.16); background: #FFFFFF; padding: 9px 13px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.35; color: #5C4E70;">Любит тёплые песни</div>
+            </div>
+          </div>
+        <p style="margin: clamp(12px, 1.4vw, 16px) 0 0; font-size: 16px; line-height: 1.55; color: #6B5F7A;">Начните с нескольких деталей. Этого достаточно, чтобы мы познакомились с вашей историей.</p>
+      </article>
+
+      <article style="border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.66); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 18px 44px rgba(120, 74, 104, 0.07); padding: clamp(20px, 2.2vw, 32px); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; gap: 12px;" class="step-heading">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(19px, 1.7vw, 24px); color: #C9455C;">02.</span>
+          <h3 style="margin: 0; flex: 1; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.16;">Менеджер узнаёт вашу историю</h3>
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 14px; color: #675A78; white-space: nowrap;">сразу после заявки</span>
+        </div>
+        <div style="flex: 1; margin-top: clamp(14px, 1.6vw, 20px); border-radius: 18px; background: rgba(255, 253, 252, 0.92); padding: clamp(14px, 1.6vw, 20px); display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 9px; padding-bottom: 2px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: #F3DCE2; display: flex; align-items: center; justify-content: center; font-family: 'Marck Script', cursive; font-size: 16px; color: #C9455C;">А</span>
+            <span style="font-size: 14px; font-weight: 600; color: #3A2C55;">Анна<span style="font-weight: 400; color: #675A78;"> · ваш личный менеджер</span></span>
+          </div>
+          <div style="display: flex; justify-content: flex-start">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 16px 5px; background: #F7EFF3; color: #3A2C55">Как её зовут и как вы обычно называете её дома?</div>
+            </div>
+          <div style="display: flex; justify-content: flex-end">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 5px 16px; background: #2C2144; color: #FDFCFB">Людмила Петровна, а дома просто Люся</div>
+            </div>
+          <div style="display: flex; justify-content: flex-start">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 16px 5px; background: #F7EFF3; color: #3A2C55">А какая её фраза сразу приходит вам в голову?</div>
+            </div>
+          <div style="display: flex; justify-content: flex-end">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 5px 16px; background: #2C2144; color: #FDFCFB">«Главное — чтобы все были сыты»</div>
+            </div>
+          <div style="display: flex; justify-content: flex-start">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 16px 5px; background: #F7EFF3; color: #3A2C55">Есть воспоминание, которое точно должно попасть в песню?</div>
+            </div>
+          <div style="display: flex; justify-content: flex-end">
+              <div style="max-width: min(84%, 340px); padding: 9px 14px; font-size: 16px; line-height: 1.42; border-radius: 16px 16px 5px 16px; background: #2C2144; color: #FDFCFB">Каждое лето мы всей семьёй ездили к ней на дачу.</div>
+            </div>
+          <div style="display: flex; justify-content: flex-start;">
+              <div style="display: flex; align-items: center; gap: 5px; border-radius: 16px 16px 16px 5px; background: #F7EFF3; padding: 11px 15px;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #C9455C; opacity: 0.435"></span>
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #C9455C; opacity: 0.287"></span>
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #C9455C; opacity: 0.280"></span>
+              </div>
+            </div>
+          </div>
+        <p style="margin: clamp(12px, 1.4vw, 16px) 0 0; font-size: 16px; line-height: 1.55; color: #6B5F7A;">Имена, привычки, ваши шутки и общие воспоминания. Менеджер поможет вспомнить детали, из которых складывается личная песня.</p>
+      </article>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); padding: clamp(18px, 2vw, 26px) 0;">
+      <span style="flex: 1; height: 1px; background: rgba(90, 62, 110, 0.22);"></span>
+      <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(15px, 1.3vw, 19px); color: #5C4E70; white-space: nowrap;">когда история собрана</span>
+      <span style="flex: 1; height: 1px; background: rgba(90, 62, 110, 0.22);"></span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(16px, 1.8vw, 24px);">
+
+      <article style="border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.66); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 18px 44px rgba(120, 74, 104, 0.07); padding: clamp(20px, 2.2vw, 32px); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; gap: 12px;" class="step-heading">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(19px, 1.7vw, 24px); color: #C9455C;">03.</span>
+          <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.16;">Мы превращаем историю в песню</h3>
+        </div>
+        <div style="flex: 1; margin-top: clamp(14px, 1.6vw, 20px); border-radius: 18px; background: rgba(255, 253, 252, 0.92); padding: clamp(14px, 1.6vw, 20px); display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #675A78;">Воспоминание</span>
+            <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; color: #5C4E70;">«Каждое лето мы ездили всей семьёй на дачу. Мама вставала раньше всех и пекла сырники…»</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 7px;">
+            <span style="padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: rgba(224, 86, 107, 0.12); color: #A5304A">История →</span>
+            <span style="padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: rgba(224, 86, 107, 0.12); color: #A5304A">Текст →</span>
+            <span style="padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: rgba(224, 86, 107, 0.12); color: #A5304A">Музыка →</span>
+            <span style="padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: rgba(224, 86, 107, 0.12); color: #A5304A">Вокал →</span>
+            <span style="padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: #2C2144; color: #FDFCFB">Готовая песня</span>
+            </div>
+          <div style="border-radius: 14px; background: linear-gradient(180deg, #FFF7F4 0%, #FDF0F3 100%); padding: clamp(14px, 1.6vw, 20px); display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;">
+            <span style="font-family: 'Marck Script', cursive; font-size: clamp(21px, 1.9vw, 27px); line-height: 1; color: #C9455C;">Для Люси</span>
+            <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.62; color: #4A3D5C;">Утро пахнет сырниками,<br>солнце падает в окно,<br>и твой голос рядом с нами,<br>как когда-то, всё равно…</p>
+          </div>
+        </div>
+        <p style="margin: clamp(12px, 1.4vw, 16px) 0 0; font-size: 16px; line-height: 1.55; color: #6B5F7A;">Из ваших воспоминаний складываются слова, мелодия и голос. Мы создаём одну цельную песню именно про вашего человека.</p>
+      </article>
+
+      <article style="border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.66); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 18px 44px rgba(120, 74, 104, 0.07); padding: clamp(20px, 2.2vw, 32px); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; gap: 12px;" class="step-heading">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(19px, 1.7vw, 24px); color: #C9455C;">04.</span>
+          <h3 style="margin: 0; flex: 1; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.16;">Ваша песня готова</h3>
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 14px; color: #675A78; white-space: nowrap;">через несколько часов</span>
+        </div>
+
+        <div style="flex: 1; margin-top: clamp(14px, 1.6vw, 20px); border-radius: 18px; background: linear-gradient(180deg, #FFF6F1 0%, #FDECEF 58%, #F6E6F3 100%); padding: clamp(16px, 1.8vw, 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+          <div style="width: clamp(88px, 9vw, 112px); height: clamp(88px, 9vw, 112px); border-radius: 50%; background: radial-gradient(circle at center, #E0566B 0 16%, #241C33 17% 22%, #2C2144 23% 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(44, 33, 68, 0.26);">
+            <span style="width: 22%; height: 22%; border-radius: 50%; background: #E0566B;"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;">
+            <span style="font-family: 'Marck Script', cursive; font-size: clamp(21px, 1.9vw, 28px); line-height: 1.1; color: #C9455C;">Для Люси</span>
+            <span style="font-size: 16px; color: #6B5F7A;">Песня для Людмилы от её семьи</span>
+          </div>
+          <div style="width: 100%; max-width: 300px; display: flex; flex-direction: column; gap: 6px;">
+            <div style="position: relative; height: 4px; border-radius: 999px; background: rgba(90, 62, 110, 0.14); overflow: hidden;">
+              <span style="position: absolute; left: 0; top: 0; bottom: 0; width: 0%; border-radius: 999px; background: #E0566B"></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-variant-numeric: tabular-nums; color: #675A78;">
+              <span>—:—</span>
+              <span>—:—</span>
+            </div>
+          </div>
+          <button type="button" aria-label="Пример готовой песни — аудио скоро появится" style="flex: 0 0 auto; width: 54px; height: 54px; border: 0; border-radius: 50%; background: #2C2144; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(44, 33, 68, 0.28); transition: background 180ms ease, transform 180ms ease;" class="interaction-1 interaction-2 interaction-3 unavailable-play" disabled>
+            <span style="width: 0; height: 0; margin-left: 4px; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 15px solid #FFFFFF"></span>
+          </button>
+          <p class="media-note">Пример оформления готовой песни</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+            <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(44, 33, 68, 0.18); background: rgba(255, 255, 255, 0.6); color: #2C2144; font-size: 14px; font-weight: 600; transition: background 180ms ease" class="interaction-4" aria-hidden="true">Скачать</span>
+            <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(44, 33, 68, 0.18); background: rgba(255, 255, 255, 0.6); color: #2C2144; font-size: 14px; font-weight: 600; transition: background 180ms ease" class="interaction-4" aria-hidden="true">Поделиться</span>
+            <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(44, 33, 68, 0.18); background: rgba(255, 255, 255, 0.6); color: #2C2144; font-size: 14px; font-weight: 600; transition: background 180ms ease" class="interaction-4" aria-hidden="true">Подарить</span>
+            </div>
+        </div>
+        <p style="margin: clamp(12px, 1.4vw, 16px) 0 0; font-size: 16px; line-height: 1.55; color: #6B5F7A;">Одна законченная песня, которую можно включить в самый важный момент.</p>
+      </article>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(16px, 2.2vw, 28px); margin-top: clamp(26px, 3.2vw, 44px);">
+      <a href="#request" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 clamp(24px, 2.6vw, 34px); border-radius: 999px; background: #E0566B; color: #FFFFFF; font-size: 17px; font-weight: 600; box-shadow: 0 14px 32px rgba(224, 86, 107, 0.28); transition: background 180ms ease, transform 180ms ease;" class="interaction-5 interaction-2 interaction-6">Создать свою песню</a>
+    </div>
+  </div>
+</section>
+
+<section id="examples" data-screen-label="Примеры песен" style="font-family: Manrope, system-ui, sans-serif; color: #2C2144; padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 76px); background: linear-gradient(180deg, #EDE1F2 0%, #EDE9F2 34%, #F1EAE6 70%, #F6EEE6 100%); transition: background 700ms ease;" class="song-examples">
+  <div style="max-width: 1240px; margin: 0 auto;">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(14px, 2.4vw, 40px);">
+      <div style="min-width: 0;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6E5263;">Пять историй · Пять песен</span>
+        <h2 style="margin: 10px 0 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(29px, 4vw, 60px); line-height: 1.04; letter-spacing: -0.02em; max-width: 20ch;">
+          <span style="display: block;">У каждой истории —</span>
+          <span style="display: block; font-style: italic; color: #C9455C; border-bottom: 2px solid rgba(201, 69, 92, 0.38); padding-bottom: 0.05em;">своё звучание</span>
+        </h2>
+      </div>
+      <p style="margin: 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.55; color: #5C4E70; max-width: 30ch;">Послушайте, какими разными могут быть персональные песни.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(22px, 3vw, 48px); align-items: start; margin-top: clamp(24px, 3vw, 40px);">
+
+      <div style="position: relative; width: 100%; max-width: 360px; aspect-ratio: 1 / 1; border-radius: clamp(18px, 1.8vw, 24px); overflow: hidden; box-shadow: 0 22px 52px rgba(120, 74, 104, 0.18); justify-self: center;">
+        <div role="img" aria-label="Обложка песни «Дом, где тебя ждут»" style="width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: opacity 380ms ease, transform 380ms ease; background-image: url('assets/img/song-cover-1.png'); opacity: 1; transform: scale(1);" id="song-cover"></div>
+      </div>
+
+      <div class="song-column">
+<div style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; transition: opacity 380ms ease, transform 380ms ease; opacity: 1; transform: translateY(0);" id="song-panel" role="tabpanel" aria-labelledby="song-tab-0" tabindex="0">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A5304A;" id="song-occasion">Маме на юбилей</span>
+
+        <h3 style="margin: 10px 0 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.1; letter-spacing: -0.015em;" id="song-title">Дом, где тебя ждут</h3>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px;">
+          <span style="font-size: 16px; line-height: 1.4; color: #5C4E70;" id="song-context">Для мамы от дочери · 60-летие</span>
+          <span style="display: inline-flex; align-items: center; padding: 5px 13px; border-radius: 999px; background: rgba(201, 69, 92, 0.12); font-size: 13px; font-weight: 600; color: #A5304A;" id="song-genre">Лирическая эстрада</span>
+        </div>
+
+        <div style="width: 100%; display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(18px, 2.2vw, 26px);" class="song-player">
+          <button type="button" aria-label="Аудио скоро появится" style="flex: 0 0 auto; width: 54px; height: 54px; border: 0; border-radius: 50%; background: #2C2144; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(44, 33, 68, 0.26); transition: background 180ms ease, transform 180ms ease;" class="interaction-1 interaction-2 interaction-3" id="song-play" disabled>
+            <span class="play-glyph"></span>
+          </button>
+
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: flex-end; gap: 3px; height: 28px;" id="song-wave" aria-hidden="true">
+                <span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:10px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:10px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span>
+</div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-variant-numeric: tabular-nums; color: #675A78;">
+              <span id="song-current">0:00</span>
+              <span id="song-duration">—:—</span>
+            </div>
+          </div>
+        </div>
+
+        <audio id="song-audio" preload="none"></audio><input id="song-seek" class="song-seek" type="range" min="0" max="100" value="0" step="0.1" disabled aria-label="Позиция воспроизведения"><p id="song-status" class="media-note" role="status">Аудиопример скоро появится.</p>
+<p style="margin: clamp(16px, 2vw, 24px) 0 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: #3A2C55; border-left: 2px solid rgba(201, 69, 92, 0.4); padding-left: 16px; max-width: 48ch;" id="song-detail"><span style="display: block; font-family: 'Marck Script', cursive; font-size: 20px; line-height: 1.1; color: #C9455C;">В этой песне —</span>Про воскресные завтраки, дачу и её вечное: «Возьми кофту, вечером будет холодно».</p>
+
+        </div>
+    <div role="tablist" aria-label="Примеры песен" style="display: flex; gap: 10px; width: 100%; margin-top: clamp(18px, 2.2vw, 26px); padding-bottom: 6px; overflow-x: auto; scroll-snap-type: x mandatory;" class="song-tabs">
+          <button type="button" role="tab" aria-selected="true" class="song-tab" id="song-tab-0" data-song="0" aria-controls="song-panel" tabindex="0">
+              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-1.png'); background-size: cover; background-position: center; "></span>
+              <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Маме</span>
+            </button>
+          <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-1" data-song="1" aria-controls="song-panel" tabindex="-1">
+              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-2.png'); background-size: cover; background-position: center; "></span>
+              <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Жене</span>
+            </button>
+          <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-2" data-song="2" aria-controls="song-panel" tabindex="-1">
+              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-3.png'); background-size: cover; background-position: center; "></span>
+              <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Учителю</span>
+            </button>
+          <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-3" data-song="3" aria-controls="song-panel" tabindex="-1">
+              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-4.png'); background-size: cover; background-position: center; "></span>
+              <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Другу</span>
+            </button>
+          <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-4" data-song="4" aria-controls="song-panel" tabindex="-1">
+              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-5.png'); background-size: cover; background-position: center; "></span>
+              <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Папе</span>
+            </button>
+          </div>
+      </div>
+</div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(16px, 2.2vw, 28px); margin-top: clamp(26px, 3.2vw, 44px);">
+      <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(21px, 2.2vw, 32px); line-height: 1.15; color: #2C2144;">А как будет звучать ваша?</p>
+      <a href="#request" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 clamp(24px, 2.6vw, 34px); border-radius: 999px; background: #2C2144; color: #FDFCFB; font-size: 16px; font-weight: 600; transition: background 180ms ease, transform 180ms ease;" class="interaction-8 interaction-2 interaction-3">Создать свою песню</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" data-screen-label="Цены" style="font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #F6EEE6 0%, #F8E7E6 34%, #F5DEE6 68%, #EDE0F3 100%); padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 76px);">
+  <div style="max-width: 1240px; margin: 0 auto;">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(14px, 2.4vw, 40px);">
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(29px, 4vw, 60px); line-height: 1.04; letter-spacing: -0.02em; max-width: 20ch;">
+        <span style="display: block;">Одна песня.</span>
+        <span style="display: block; font-style: italic; color: #C9455C; border-bottom: 2px solid rgba(201, 69, 92, 0.38); padding-bottom: 0.05em;">Одна понятная цена.</span>
+      </h2>
+      <p style="margin: 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.6; color: #5C4E70; max-width: 32ch;">990 ₽ за готовую персональную песню. Чтобы начать, достаточно предоплаты 495 ₽.</p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(16px, 1.8vw, 24px); align-items: stretch; margin-top: clamp(24px, 3vw, 40px);">
+
+      <article style="flex: 1.7 1 min(100%, 520px); border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 20px 50px rgba(120, 74, 104, 0.08); padding: clamp(22px, 2.6vw, 38px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: clamp(20px, 2.4vw, 40px); align-items: start;">
+
+        <div style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A5304A;">Песня под ключ</span>
+
+          <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 12px;">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(52px, 5.6vw, 84px); line-height: 0.9; letter-spacing: -0.03em;">990</span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(24px, 2.4vw, 34px); line-height: 1;">₽</span>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-top: 14px;">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.1; color: #A5304A;">495 ₽ сейчас</span>
+            <span style="font-size: 13px; color: #675A78;">предоплата 50%</span>
+          </div>
+
+          <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5C4E70;">Оставшиеся 495 ₽ — после готовности песни.</p>
+
+          <a href="#request" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; margin-top: clamp(16px, 2vw, 24px); height: 54px; padding: 0 30px; border-radius: 999px; background: #2C2144; color: #FDFCFB; font-size: 16px; font-weight: 600; transition: background 180ms ease, transform 180ms ease;" class="interaction-8 interaction-2 interaction-3" data-product="song">Заказать песню</a>
+
+          <p style="margin: 12px 0 0; font-size: 16px; line-height: 1.5; color: #675A78;">Работаем по предоплате 50%. Правки — бесплатно.</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.1;">Всё уже включено</span>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px clamp(14px, 1.6vw, 22px); margin-top: clamp(14px, 1.6vw, 20px);">
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Персональный текст по вашей истории</span>
+              </div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Музыка в выбранном жанре</span>
+              </div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Вокал в выбранном стиле</span>
+              </div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Финальная обработка</span>
+              </div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Готовый трек</span>
+              </div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span aria-hidden="true" style="flex: 0 0 auto; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; line-height: 1; color: #C9455C;">✓</span>
+                <span style="font-size: 16px; line-height: 1.45; color: #3A2C55;">Бесплатные правки</span>
+              </div>
+            </div>
+        </div>
+      </article>
+
+      <div style="flex: 1 1 min(100%, 320px); display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); min-width: 0;">
+        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.15;">Песню можно превратить <span style="font-style: italic; color: #C9455C;">в целый подарок</span></span>
+
+        <a href="#request" style="display: flex; gap: clamp(12px, 1.4vw, 18px); border-radius: clamp(18px, 1.8vw, 24px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07); padding: clamp(14px, 1.6vw, 20px); color: #2C2144; transition: transform 220ms ease, box-shadow 220ms ease;" class="interaction-9 interaction-3" data-product="clip">
+          <span style="flex: 0 0 auto; width: clamp(92px, 9vw, 124px); height: clamp(92px, 9vw, 124px); border-radius: 14px; overflow: hidden; display: block;">
+            <img src="assets/img/gift-video.png" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </span>
+          <span style="min-width: 0; display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.18;">Видеоклип из ваших фотографий</span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #A5304A;">от 3 990 ₽</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #5C4E70;">Соберём любимые фотографии и видео в клип под вашу песню.</span>
+          </span>
+        </a>
+
+        <a href="#request" style="display: flex; gap: clamp(12px, 1.4vw, 18px); border-radius: clamp(18px, 1.8vw, 24px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07); padding: clamp(14px, 1.6vw, 20px); color: #2C2144; transition: transform 220ms ease, box-shadow 220ms ease;" class="interaction-9 interaction-3" data-product="time">
+          <span style="flex: 0 0 auto; width: clamp(92px, 9vw, 124px); height: clamp(92px, 9vw, 124px); border-radius: 14px; overflow: hidden; display: block;">
+            <img src="assets/img/gift-time-machine.png" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </span>
+          <span style="min-width: 0; display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.18;">«Машина времени»</span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #A5304A;">от 6 990 ₽</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #5C4E70;">Персональное видео, в котором ваш человек увидит себя через 10–20 лет.</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(20px, 2.4vw, 32px); border-radius: 999px; background: rgba(255, 252, 250, 0.5); border: 1px solid rgba(255, 255, 255, 0.85); padding: clamp(14px, 1.6vw, 20px) clamp(20px, 2.4vw, 32px);" class="pricing-note">
+      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #5C4E70;"><span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(17px, 1.5vw, 21px); color: #2C2144;">Есть своя идея?</span> Расскажите менеджеру — обсудим и предложим, как её реализовать.</p>
+      <a href="#request" style="flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; color: #A5304A; border-bottom: 1px solid rgba(201, 69, 92, 0.4);" class="interaction-10 interaction-3" data-product="undecided">Обсудить с менеджером →</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="FAQ" style="position: relative; overflow: hidden; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #EDE0F3 0%, #F2E6F0 34%, #F6EAE8 68%, #F7EFE7 100%); padding: clamp(40px, 4.6vw, 68px) clamp(16px, 4vw, 40px) clamp(40px, 4.6vw, 68px);">
+
+  <img src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -8%; bottom: 6%; width: min(30vw, 380px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.42;">
+  <div style="position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(24px, 3.4vw, 56px); align-items: start;">
+
+    <div style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0;">
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 4vw, 58px); line-height: 1.04; letter-spacing: -0.02em;">
+        <span style="display: block;">Остались</span>
+        <span style="display: block; font-style: italic; color: #C9455C; border-bottom: 2px solid rgba(201, 69, 92, 0.38); padding-bottom: 0.06em;">вопросы?</span>
+      </h2>
+      <p style="margin: clamp(16px, 1.8vw, 24px) 0 0; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.6; color: #5C4E70; max-width: 30ch;">Собрали всё, что обычно хочется узнать до заказа.</p>
+    </div>
+
+    <div style="min-width: 0; display: flex; flex-direction: column;">
+      <details class="faq-item" open="">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Насколько песня будет персональной?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(21px, 1.9vw, 27px); line-height: 1.25; color: #C9455C;">На 100%.</p>
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Мы изучаем вашу историю, повод и всё, что важно именно для вашего человека, а затем создаём уникальный текст для этого момента.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Имена, воспоминания, любимые фразы, ваши шутки и маленькие детали могут стать частью песни.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Никаких готовых шаблонов — только ваша история в музыке.</p>
+              </div>
+          </div>
+        </details>
+      <details class="faq-item">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Сколько времени создаётся песня?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Обычно весь процесс занимает несколько часов с учётом согласований.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Менеджер собирает детали, мы создаём песню и отправляем готовый результат вам.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Просто и без долгих очередей.</p>
+              </div>
+          </div>
+        </details>
+      <details class="faq-item">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">В каком стиле можно создать песню?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Практически в любом: поп, рок, акустика, рэп, электроника, лирическая эстрада, кантри и других.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Можно выбрать стиль самостоятельно или рассказать менеджеру о человеке и поводе — мы поможем подобрать звучание, которое подойдёт именно этой истории.</p>
+              </div>
+          </div>
+        </details>
+      <details class="faq-item">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Песню создаёт человек или нейросеть?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">И человек, и технологии.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Сначала авторы превращают вашу историю в текст и определяют настроение песни. Затем AI помогает создать музыку и вокал.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">После этого мы выбираем лучший результат, проверяем его и при необходимости дорабатываем.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">В итоге получается одна законченная песня, созданная именно по вашей истории.</p>
+              </div>
+          </div>
+        </details>
+      <details class="faq-item">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Можно добавить имена и настоящие истории?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Конечно — в этом и смысл персональной песни.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Имена, домашние прозвища, любимые выражения, места, смешные случаи и общие воспоминания делают её по-настоящему вашей.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Не переживайте, если не знаете, что именно рассказать: менеджер поможет вспомнить нужные детали.</p>
+              </div>
+          </div>
+        </details>
+      <details class="faq-item">
+          <summary class="faq-question">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">А если песня мне не понравится?</span>
+            <span aria-hidden="true" class="faq-sign"></span>
+          </summary>
+          <div class="faq-answer">
+            <div style="overflow: hidden; padding-right: clamp(0px, 3vw, 46px)">
+              <p style="margin: 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">До начала работы менеджер согласует с вами основные детали: для кого песня, повод, настроение, музыкальный стиль и важные моменты истории.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Если после получения песни захочется что-то изменить — внесём правки бесплатно.</p>
+              <p style="margin: 14px 0 0; font-size: clamp(16px, 1.2vw, 17px); line-height: 1.58; color: #4A3D5C">Для начала работы нужна предоплата 50%.</p>
+              </div>
+          </div>
+        </details>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(28px, 3.6vw, 46px);">
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5C4E70;">Не нашли ответ? Напишите менеджеру — всё расскажем.</p>
+        <a href="#request" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; font-size: 16px; font-weight: 600; color: #A5304A; border-bottom: 1px solid rgba(201, 69, 92, 0.4);" class="interaction-10 interaction-3">Написать менеджеру →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="request" data-screen-label="Заявка" style="position: relative; overflow: hidden; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #F7EFE7 0%, #F8E9E6 46%, #F6E4E9 100%); padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 76px);">
+
+  <img src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -7%; bottom: 4%; width: min(22vw, 260px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.3;">
+
+  <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(24px, 3vw, 52px); align-items: flex-start;">
+
+    <div style="flex: 1 1 min(100%, 300px); display: flex; flex-direction: column; align-items: flex-start; min-width: 0;">
+      <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A5304A;">Заявка</span>
+      <h2 style="margin: 12px 0 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(29px, 4vw, 60px); line-height: 1.04; letter-spacing: -0.02em;">
+        <span style="display: block;">Расскажите,</span>
+        <span style="display: block; font-style: italic; color: #C9455C;">для кого эта песня</span>
+      </h2>
+      <p style="margin: clamp(14px, 1.8vw, 22px) 0 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.6; color: #5C4E70; max-width: 32ch;">Пара минут — и заявка готова. Остальное уточним в переписке.</p>
+      <p style="margin: clamp(12px, 1.4vw, 18px) 0 0; font-size: 16px; line-height: 1.55; color: #675A78; max-width: 30ch;">Напишем первыми · Без предупреждения не звоним</p>
+    </div>
+
+    <form style="display: flex; flex: 1.6 1 min(100%, 520px); border-radius: clamp(22px, 2.4vw, 32px); background: rgba(255, 252, 250, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 22px 56px rgba(120, 74, 104, 0.08); padding: clamp(20px, 2.6vw, 36px); flex-direction: column; gap: clamp(20px, 2.4vw, 30px)" id="request-form" class="request-form" method="post">
+
+      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+        <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Для кого будет эта песня?</legend>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;" class="choice-group recipient-choices">
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="0" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💗</span>
+              <span>Любимому человеку</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="1" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👩</span>
+              <span>Маме</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="2" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👨</span>
+              <span>Папе</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="3" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👵</span>
+              <span>Бабушке</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="4" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👴</span>
+              <span>Дедушке</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="5" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🫶</span>
+              <span>Другу или подруге</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="6" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🧸</span>
+              <span>Ребёнку</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="7" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👩‍🏫</span>
+              <span>Учителю</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="8" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💼</span>
+              <span>Коллеге</span>
+            </span></label>
+          <label class="choice recipient-choice"><input type="radio" name="recipient" value="9" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">✨</span>
+              <span>Другому человеку</span>
+            </span></label>
+          </div>
+        </fieldset>
+
+      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+        <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">А какой повод?</legend>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;" class="choice-group occasion-choices">
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="0" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎂</span>
+              <span>День рождения</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="1" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🥂</span>
+              <span>Юбилей</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="2" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💞</span>
+              <span>Годовщина</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="3" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💍</span>
+              <span>Свадьба</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="4" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎓</span>
+              <span>Выпускной</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="5" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🔔</span>
+              <span>Последний звонок</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="6" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👶</span>
+              <span>Рождение ребёнка</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="7" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💌</span>
+              <span>Просто так</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="8" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👋</span>
+              <span>Проводы</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="9" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎄</span>
+              <span>Новый год</span>
+            </span></label>
+          <label class="choice occasion-choice"><input type="radio" name="occasion" value="10" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">✨</span>
+              <span>Другой повод</span>
+            </span></label>
+          </div>
+        </fieldset>
+
+      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+        <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Что хотите подарить?</legend>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 10px; margin-top: 12px;" class="choice-group product-choices">
+          <label class="choice product-choice"><input type="radio" name="product" value="song" required="" checked><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 18px; line-height: 1;">🎵</span>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;">
+                <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Песня под ключ</span>
+                <span style="font-size: 13px; ">990 ₽</span>
+              </span>
+            </span></label>
+          <label class="choice product-choice"><input type="radio" name="product" value="clip" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 18px; line-height: 1;">🎞️</span>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;">
+                <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Песня + видеоклип</span>
+                <span style="font-size: 13px; ">от 3 990 ₽</span>
+              </span>
+            </span></label>
+          <label class="choice product-choice"><input type="radio" name="product" value="time" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 18px; line-height: 1;">✨</span>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;">
+                <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">«Машина времени»</span>
+                <span style="font-size: 13px; ">от 6 990 ₽</span>
+              </span>
+            </span></label>
+          <label class="choice product-choice"><input type="radio" name="product" value="undecided" required=""><span class="choice-label">
+              <span aria-hidden="true" style="font-size: 18px; line-height: 1;">🤍</span>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;">
+                <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Пока не знаю</span>
+                <span style="font-size: 13px; ">Поможет менеджер</span>
+              </span>
+            </span></label>
+          </div>
+      </fieldset>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(16px, 2vw, 26px);">
+        <div style="min-width: 0;">
+          <label for="name" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Как вас зовут?</label>
+          <input id="name" type="text" placeholder="Например, Вера" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="name" maxlength="100" autocomplete="name">
+        </div>
+
+        <div style="min-width: 0;">
+          <label for="contact" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Ваш Telegram</label>
+          <input id="contact" type="text" placeholder="@nickname" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="contact" maxlength="200" autocomplete="off" required="" aria-describedby="contact-help">
+          <p id="contact-help" class="field-help">Например, @nickname или t.me/nickname.</p>
+</div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+        <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+          <legend style="padding: 0 0 10px; font-size: 16px; font-weight: 600; color: #3A2C55;">Где вам удобно общаться?</legend>
+          <div style="display: inline-flex; flex-wrap: wrap; gap: 5px; padding: 5px; border-radius: 999px; background: rgba(237, 225, 235, 0.7);" class="choice-group channel-choices">
+            <label class="choice channel-choice"><input type="radio" name="channel" value="telegram" required="" checked><span class="choice-label">Telegram</span></label>
+            <label class="choice channel-choice"><input type="radio" name="channel" value="vk" required=""><span class="choice-label">ВКонтакте</span></label>
+            <label class="choice channel-choice"><input type="radio" name="channel" value="avito" required=""><span class="choice-label">Авито</span></label>
+            </div>
+        </fieldset>
+
+        <button type="submit" style="flex: 1 1 220px; max-width: 320px; height: 56px; border: 0; border-radius: 999px; background: #2C2144; color: #FDFCFB; font-family: Manrope, system-ui, sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 180ms ease, transform 180ms ease;" class="interaction-14 interaction-2 interaction-3" id="request-submit" disabled>Продолжить</button>
+      </div>
+    <p class="form-policy">Передавая заявку, ознакомьтесь с <a href="privacy.html">политикой обработки персональных данных</a> и <a href="offer.html">условиями заказа</a>.</p>
+<p id="request-status" class="form-status" role="status" tabindex="-1"></p>
+<noscript><p>Для подготовки заявки включите JavaScript или <a href="https://t.me/vivo_support">напишите менеджеру в Telegram</a>.</p></noscript>
+</form>
+  <div id="request-handoff" class="request-handoff" hidden tabindex="-1">
+<h3>Ещё один шаг — и мы на связи</h3>
+<p>Скопируйте заявку и отправьте её менеджеру в Telegram. Он уточнит детали и удобный способ дальнейшего общения.</p>
+<label for="request-message">Ваша заявка</label><textarea id="request-message" readonly rows="9"></textarea>
+<div class="handoff-actions">
+<button type="button" id="copy-request" class="button-primary">Скопировать заявку</button><a class="button-primary" href="https://t.me/vivo_support" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a>
+</div>
+<p id="copy-status" role="status"></p>
+<button type="button" id="edit-request" class="button-text">Вернуться к форме</button>
+</div>
+</div>
+</section>
+
 </main>
 
+<footer data-screen-label="Футер" style="font-family: Manrope, system-ui, sans-serif; background: linear-gradient(180deg, #4A3A66 0%, #3A2C55 100%); color: #F7F2F8; padding: clamp(36px, 4vw, 56px) clamp(16px, 4vw, 40px) clamp(18px, 2vw, 24px);">
+  <div style="max-width: 1240px; margin: 0 auto;">
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(20px, 3vw, 44px); align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
+        <span style="font-family: 'Marck Script', cursive; font-size: 30px; line-height: 1; color: #FBEEF1;">Вивобит</span>
+        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.35; color: #D9C9E2;">Истории, которые звучат.</p>
+      </div>
+
+      <nav aria-label="Разделы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+        <a href="#top" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Главная</a>
+        <a href="#how" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Как это работает</a>
+        <a href="#examples" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Примеры песен</a>
+        <a href="#pricing" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Цена</a>
+        <a href="#faq" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">FAQ</a>
+        </nav>
+
+      <nav aria-label="Документы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+        <a href="privacy.html" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Политика конфиденциальности</a>
+        <a href="offer.html" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Публичная оферта</a>
+      </nav>
+
+      <nav aria-label="Контакты" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+        <a href="https://t.me/vivo_support" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Telegram</a>
+        <a href="#request" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Оставить заявку</a>
+      </nav>
+    </div>
+
+    <div style="height: 1px; background: rgba(247, 242, 248, 0.16); margin: clamp(22px, 2.6vw, 34px) 0 clamp(14px, 1.6vw, 18px);"></div>
+
+    <span style="font-size: 13px; color: #C4B2CF;">© 2026 Вивобит</span>
+  </div>
+</footer>
+
 <script src="assets/js/hero.js"></script>
+<script src="assets/js/site-data.js"></script><script src="assets/js/request-core.js"></script><script src="assets/js/landing.js"></script>
 </body>
 </html>

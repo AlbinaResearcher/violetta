@@ -1,0 +1,214 @@
+(function () {
+  'use strict';
+  var data = window.VivobitData;
+  var request = window.VivobitRequest;
+  if (!data || !request) return;
+
+  /* Header: a disclosure, so normal links and normal Tab navigation apply. */
+  var header = document.querySelector('.site-header');
+  var toggle = document.querySelector('.menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  function closeMenu(returnFocus) {
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    if (returnFocus) toggle.focus();
+  }
+  toggle.addEventListener('click', function () {
+    var open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+  });
+  menu.addEventListener('click', function (event) {
+    if (event.target.closest('a')) closeMenu(false);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !menu.hidden) closeMenu(true);
+  });
+  document.addEventListener('click', function (event) {
+    if (!header.contains(event.target)) closeMenu(false);
+  });
+  document.addEventListener('focusin', function (event) {
+    if (!header.contains(event.target)) closeMenu(false);
+  });
+  window.matchMedia('(min-width: 860px)').addEventListener('change', function (event) {
+    if (event.matches) {
+      var inside = menu.contains(document.activeElement) || document.activeElement === toggle;
+      closeMenu(false);
+      if (inside) document.querySelector('.nav__brand').focus();
+    }
+  });
+  toggle.hidden = false;
+  document.documentElement.classList.add('landing-enhanced');
+
+  // Keep keyboard focus with the destination after closing the mobile menu.
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var target = document.getElementById(link.getAttribute('href').slice(1));
+      if (!target) return;
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  });
+
+  /* Examples: real HTMLAudioElement events, with an explicit missing-media state. */
+  var audio = document.getElementById('song-audio');
+  var play = document.getElementById('song-play');
+  var seek = document.getElementById('song-seek');
+  var status = document.getElementById('song-status');
+  var tabs = Array.from(document.querySelectorAll('[data-song]'));
+  var activeSong = 0;
+  var mediaGeneration = 0;
+  function time(value) {
+    if (!Number.isFinite(value)) return '—:—';
+    return Math.floor(value / 60) + ':' + String(Math.floor(value % 60)).padStart(2, '0');
+  }
+  function setPlaying(playing) {
+    play.dataset.playing = String(playing);
+    play.setAttribute('aria-label', playing ? 'Пауза' : 'Слушать');
+  }
+  function updateTime() {
+    var duration = audio.duration;
+    var progress = Number.isFinite(duration) && duration > 0 ? audio.currentTime / duration : 0;
+    document.getElementById('song-current').textContent = time(audio.currentTime || 0);
+    document.getElementById('song-duration').textContent = time(duration);
+    seek.disabled = !Number.isFinite(duration) || duration <= 0;
+    seek.value = progress * 100;
+    document.querySelectorAll('.wave-bar').forEach(function (bar, i) {
+      bar.classList.toggle('is-played', i / 48 < progress);
+    });
+  }
+  function selectSong(index, focus) {
+    activeSong = index;
+    mediaGeneration++;
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+    var song = data.songs[index];
+    var cover = document.getElementById('song-cover');
+    cover.style.backgroundImage = 'url("' + song.cover + '")';
+    cover.setAttribute('aria-label', 'Обложка песни «' + song.title + '»');
+    document.getElementById('examples').style.background = song.tint;
+    ['title', 'occasion', 'context', 'genre'].forEach(function (field) {
+      document.getElementById('song-' + field).textContent = song[field];
+    });
+    var detail = document.getElementById('song-detail');
+    while (detail.childNodes.length > 1) detail.removeChild(detail.lastChild);
+    detail.appendChild(document.createTextNode(song.detail));
+    tabs.forEach(function (tab, i) {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+    });
+    document.getElementById('song-panel').setAttribute('aria-labelledby', tabs[index].id);
+    setPlaying(false);
+    play.disabled = !song.audioSrc;
+    status.textContent = song.audioSrc ? 'Нажмите, чтобы послушать.' : 'Аудиопример скоро появится.';
+    if (song.audioSrc) audio.src = song.audioSrc;
+    else play.setAttribute('aria-label', 'Аудио скоро появится');
+    updateTime();
+    if (focus) tabs[index].focus();
+  }
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { selectSong(index, false); });
+    tab.addEventListener('keydown', function (event) {
+      var next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next !== undefined) { event.preventDefault(); selectSong(next, true); }
+    });
+  });
+  play.addEventListener('click', async function () {
+    if (!data.songs[activeSong].audioSrc) return;
+    if (!audio.paused) { audio.pause(); return; }
+    var generation = mediaGeneration;
+    status.textContent = 'Загружаем песню…';
+    try { await audio.play(); }
+    catch (error) {
+      if (generation !== mediaGeneration) return;
+      setPlaying(false);
+      status.textContent = 'Не удалось включить песню. Попробуйте ещё раз.';
+    }
+  });
+  audio.addEventListener('playing', function () { setPlaying(true); status.textContent = 'Воспроизводится'; });
+  audio.addEventListener('pause', function () { setPlaying(false); });
+  audio.addEventListener('ended', function () { setPlaying(false); status.textContent = 'Песня закончилась'; });
+  audio.addEventListener('waiting', function () { status.textContent = 'Загружаем песню…'; });
+  audio.addEventListener('error', function () {
+    if (data.songs[activeSong].audioSrc) { setPlaying(false); status.textContent = 'Песня сейчас недоступна. Попробуйте ещё раз.'; }
+  });
+  audio.addEventListener('loadedmetadata', updateTime);
+  audio.addEventListener('timeupdate', updateTime);
+  seek.addEventListener('input', function () {
+    if (Number.isFinite(audio.duration)) audio.currentTime = Number(seek.value) / 100 * audio.duration;
+  });
+  selectSong(0, false);
+
+  /* Request: native radio groups; prepare a message for the supplied contact. */
+  var form = document.getElementById('request-form');
+  var submit = document.getElementById('request-submit');
+  var contact = document.getElementById('contact');
+  var contactHelp = document.getElementById('contact-help');
+  var formStatus = document.getElementById('request-status');
+  var handoff = document.getElementById('request-handoff');
+  var message = document.getElementById('request-message');
+  var channels = {
+    telegram: ['Ваш Telegram', '@nickname', 'Например, @nickname или t.me/nickname.'],
+    vk: ['Ссылка на страницу', 'vk.com/...', 'Укажите ссылку на вашу страницу ВКонтакте.'],
+    avito: ['Контакт для связи', 'Введите контакт', 'Укажите контакт, по которому менеджер сможет вас найти.']
+  };
+  function updateContact() {
+    var channel = form.elements.channel.value;
+    var copy = channels[channel];
+    document.querySelector('label[for="contact"]').textContent = copy[0];
+    contact.placeholder = copy[1];
+    contactHelp.textContent = copy[2];
+    contact.setCustomValidity('');
+    formStatus.textContent = '';
+  }
+  form.addEventListener('change', function (event) {
+    if (event.target.name === 'channel') updateContact();
+    formStatus.textContent = '';
+  });
+  contact.addEventListener('input', function () { contact.setCustomValidity(''); formStatus.textContent = ''; });
+  document.querySelectorAll('[data-product]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      form.hidden = false; handoff.hidden = true;
+      form.elements.product.value = link.dataset.product;
+      formStatus.textContent = '';
+    });
+  });
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var values = request.normalize(Object.fromEntries(new FormData(form)));
+    var error = request.validate(values);
+    if (error) {
+      formStatus.textContent = error.message;
+      if (error.field === 'contact') { contact.setCustomValidity(error.message); contact.reportValidity(); }
+      else form.querySelector('[name="' + error.field + '"]').focus();
+      return;
+    }
+    message.value = request.format(values, data.form);
+    form.hidden = true;
+    handoff.hidden = false;
+    document.getElementById('copy-status').textContent = '';
+    handoff.focus({ preventScroll: true });
+    handoff.scrollIntoView({ block: 'start' });
+  });
+  document.getElementById('copy-request').addEventListener('click', async function () {
+    var copyStatus = document.getElementById('copy-status');
+    try {
+      await navigator.clipboard.writeText(message.value);
+      copyStatus.textContent = 'Скопировано. Откройте Telegram и отправьте текст менеджеру.';
+    } catch (error) {
+      message.focus(); message.select();
+      copyStatus.textContent = 'Выделили текст заявки. Скопируйте его вручную.';
+    }
+  });
+  document.getElementById('edit-request').addEventListener('click', function () {
+    handoff.hidden = true; form.hidden = false; submit.focus();
+  });
+  // All controls are wired before enabling submit; no GET fallback leaks form data.
+  updateContact();
+  submit.disabled = false;
+})();

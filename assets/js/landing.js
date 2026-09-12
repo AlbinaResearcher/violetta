@@ -158,7 +158,7 @@
   var channels = {
     telegram: ['Ваш Telegram', '@nickname', 'Например, @nickname или t.me/nickname.'],
     vk: ['Ссылка на страницу', 'vk.com/...', 'Укажите ссылку на вашу страницу ВКонтакте.'],
-    avito: ['Контакт для связи', 'Введите контакт', 'Укажите контакт, по которому менеджер сможет вас найти.']
+    avito: ['Ссылка на профиль Авито', 'avito.ru/user/…', 'Скопируйте ссылку на свой профиль Авито: avito.ru/user/… или avito.ru/brands/…']
   };
   var contactDrafts = {};
   var previousChannel = form.elements.channel.value;
@@ -203,9 +203,14 @@
   });
   contact.addEventListener('input', function () { contact.setCustomValidity(''); clearError('contact'); formStatus.textContent = ''; });
   document.querySelectorAll('[data-product]').forEach(function (link) {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
       form.hidden = false; handoff.hidden = true;
       form.elements.product.value = link.dataset.product;
+      clearError('product');
+      var selected = form.querySelector('[name="product"]:checked');
+      selected.focus({ preventScroll: true });
+      selected.closest('fieldset').scrollIntoView({ block: 'center' });
       formStatus.textContent = '';
     });
   });

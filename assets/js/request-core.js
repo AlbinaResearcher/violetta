@@ -26,12 +26,17 @@
     if (data.channel === 'vk' && !/^(?:https?:\/\/)?(?:www\.)?(?:vk\.com|vk\.ru)\/[a-zA-Z0-9_.-]+\/?$/.test(data.contact)) {
       return { field: 'contact', message: 'Укажите ссылку на страницу: vk.com/имя_страницы.' };
     }
-    if (data.channel === 'avito' && data.contact.length < 3) return { field: 'contact', message: 'Укажите контакт, по которому можно вас найти.' };
+    if (data.channel === 'avito') {
+      try {
+        var url = new URL(/^https?:\/\//i.test(data.contact) ? data.contact : 'https://' + data.contact);
+        if (!['avito.ru', 'www.avito.ru'].includes(url.hostname) || !['https:', 'http:'].includes(url.protocol) || url.username || url.password || url.port || !/^\/(?:user\/[a-zA-Z0-9_-]+(?:\/profile)?|brands\/[a-zA-Z0-9_-]+)\/?$/.test(url.pathname)) throw new Error('Invalid profile');
+      } catch (error) { return { field: 'contact', message: 'Укажите ссылку на профиль Авито: avito.ru/user/… или avito.ru/brands/…' }; }
+    }
     return null;
   }
   function format(data, options) {
     return [
-      'Здравствуйте! Хочу заказать персональную песню.',
+      data.product === 'undecided' ? 'Здравствуйте! Хочу обсудить подарок.' : 'Здравствуйте! Хочу оформить заказ.',
       'Для кого: ' + options.recipients[Number(data.recipient)][1],
       'Повод: ' + options.occasions[Number(data.occasion)][1],
       'Подарок: ' + options.products[products.indexOf(data.product)][1],

@@ -1,3 +1,17 @@
+/* Base values moved from inline styles so interaction states can apply. */
+.authored-control-1 { background: #2C2144; }
+.authored-control-2 { background: rgba(255, 255, 255, 0.6);color: #2C2144; }
+.authored-control-3 { background: rgba(255, 255, 255, 0.6);color: #2C2144; }
+.authored-control-4 { background: rgba(255, 255, 255, 0.6);color: #2C2144; }
+.authored-control-5 { background: #C9455C;color: #FFFFFF; }
+.authored-control-6 { background: #2C2144;color: #FDFCFB; }
+.authored-control-7 { background: #2C2144; }
+.authored-control-8 { background: #2C2144;color: #FDFCFB; }
+.authored-control-9 { box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07);color: #2C2144; }
+.authored-control-10 { box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07);color: #2C2144; }
+.authored-control-11 { color: #A5304A; }
+.authored-control-12 { color: #A5304A; }
+.authored-control-13 { background: #2C2144; }
 /* Interaction declarations preserved from the supplied Claude Design export. */
 @media (hover: hover) { .interaction-1:hover { background: #3D2F5E; transform: translateY(-1px); } }
 .interaction-2:active { transform: translateY(1px); }

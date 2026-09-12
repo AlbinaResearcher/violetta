@@ -1,19 +1,22 @@
 /* ==========================================================================
    Hero — движение.
 
-   Всё движение считается в JS-кадрах, а не CSS-анимациями: в среде дизайна
-   системная настройка «уменьшить движение» глушила CSS-анимации и облака
-   стояли на месте. Поэтому здесь нет `prefers-reduced-motion` — вместо него
-   один явный тумблер MOTION ниже.
-
-     MOTION = true   дрейф облаков, мерцание звёзд, смена слова в заголовке
-     MOTION = false  сцена замирает, скролл-эффект продолжает работать
+   Исходная сцена и её тайминги сохранены. Уменьшение движения и низкое
+   окно включают статичную композицию; ручная пауза останавливает фон и слова.
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  var MOTION = true;
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var shortViewport = window.matchMedia("(max-height: 650px)");
+  var paused = false;
+  var staticScene = false;
+  var frameId = null;
+  var wordTimer = null;
+  var phaseTimers = [];
+  var lastTick = null;
+  var lastPaint = 0;
 
   var WORDS = ["запомнят", "полюбят", "будут петь", "не забудут"];
   var STAR_COUNT = 46;
@@ -39,6 +42,9 @@
   }
 
   var el = {
+    hero: document.querySelector(".hero"),
+    motion: document.getElementById("hero-motion"),
+    brand: document.querySelector(".nav__brand"),
     sky: document.getElementById("hero-sky"),
     starHost: document.getElementById("hero-stars"),
     cloudA: document.getElementById("hero-cloud-a"),
@@ -51,7 +57,8 @@
     word: document.getElementById("hero-word")
   };
 
-  if (!el.sky || !el.word) return;
+  if (Object.keys(el).some(function (key) { return !el[key]; })) return;
+  document.documentElement.classList.add("hero-enhanced");
 
   var state = { wordIndex: 0, phase: 0, p: 0, t: 0 };
 
@@ -94,10 +101,9 @@
   function render() {
     var t = state.t;
     var p = state.p;
-    var word = PHASES[state.phase];
 
     // Тизер второго экрана проявляется во второй половине скролла.
-    var nt = clamp01((p - 0.45) / 0.4);
+    var nt = staticScene ? 1 : clamp01((p - 0.45) / 0.4);
     // Ночная часть сцены гаснет по мере подъёма закатных слоёв.
     var dim = 1 - Math.min(1, p * 1.4);
 
@@ -134,11 +140,24 @@
     el.sky.style.transform = "translateY(" + (-p * 96).toFixed(2) + "svh)";
 
     el.content.style.transform = "translateY(" + (-p * 90).toFixed(1) + "px)";
+    var contentHidden = p >= 1 / 1.9;
     el.content.style.opacity = Math.max(0, 1 - p * 1.9).toFixed(3);
+    if (contentHidden && el.content.contains(document.activeElement)) {
+      el.brand.focus({ preventScroll: true });
+    }
+    el.content.inert = contentHidden;
+    el.content.setAttribute("aria-hidden", String(contentHidden));
 
+    el.next.setAttribute("aria-hidden", String(nt === 0));
+    el.next.style.visibility = nt === 0 ? "hidden" : "visible";
     el.next.style.opacity = nt.toFixed(3);
     el.next.style.transform = "translateY(" + ((1 - nt) * 26).toFixed(1) + "px)";
 
+  }
+
+  // Only touch the word when its phase changes, not on every cloud frame.
+  function renderWord() {
+    var word = PHASES[state.phase];
     el.word.textContent = WORDS[state.wordIndex];
     el.word.style.transition =
       "opacity " + word.ms + "ms " + word.ease +
@@ -149,54 +168,97 @@
     el.word.style.transform = "translateY(" + word.y + "px) scale(" + word.sc + ")";
   }
 
-  /* ---- скролл ---------------------------------------------------------- */
+  /* ---- lifecycle ------------------------------------------------------- */
+
+  function canAnimate() {
+    return !paused && !staticScene && !document.hidden && state.p < 1 / 1.9;
+  }
+
+  function stopAnimation() {
+    if (frameId !== null) cancelAnimationFrame(frameId);
+    if (wordTimer !== null) clearInterval(wordTimer);
+    phaseTimers.forEach(clearTimeout);
+    frameId = null;
+    wordTimer = null;
+    phaseTimers = [];
+    lastTick = null;
+    state.phase = 0;
+    renderWord();
+    // A pause must also cancel a word transition already in progress.
+    el.word.style.transition = "none";
+  }
+
+  function loop(now) {
+    frameId = null;
+    if (!canAnimate()) return;
+    if (lastTick !== null) state.t += (now - lastTick) / 1000;
+    lastTick = now;
+    if (now - lastPaint >= 40) {
+      lastPaint = now;
+      render();
+    }
+    frameId = requestAnimationFrame(loop);
+  }
+
+  function syncAnimation() {
+    if (!canAnimate()) {
+      stopAnimation();
+      return;
+    }
+    if (frameId !== null) return;
+    frameId = requestAnimationFrame(loop);
+    wordTimer = setInterval(function () {
+      state.phase = 1;
+      renderWord();
+      phaseTimers = [
+        setTimeout(function () {
+          state.wordIndex = (state.wordIndex + 1) % WORDS.length;
+          state.phase = 2;
+          renderWord();
+        }, OUT),
+        setTimeout(function () {
+          state.phase = 0;
+          renderWord();
+        }, OUT + 40)
+      ];
+    }, CYCLE);
+  }
 
   function onScroll() {
     var vh = document.documentElement.clientHeight || 1;
-    var next = clamp01(window.scrollY / (vh * 0.85));
-    if (Math.abs(next - state.p) > 0.002) {
-      state.p = next;
-      render();
-    }
+    state.p = staticScene ? 0 : clamp01(window.scrollY / (vh * 0.85));
+    render();
+    syncAnimation();
   }
+
+  function updatePreferences() {
+    staticScene = reducedMotion.matches || shortViewport.matches;
+    el.hero.classList.toggle("hero--static", staticScene);
+    if (staticScene && document.activeElement === el.motion) {
+      el.brand.focus({ preventScroll: true });
+    }
+    el.motion.hidden = staticScene;
+    if (staticScene) {
+      state.t = 0;
+      state.wordIndex = 0;
+    }
+    onScroll();
+  }
+
+  el.motion.addEventListener("click", function () {
+    paused = !paused;
+    el.motion.setAttribute("aria-pressed", String(paused));
+    el.motion.textContent = paused ? "Продолжить анимацию" : "Остановить анимацию";
+    syncAnimation();
+  });
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
-  onScroll();
-  render();
-
-  if (!MOTION) return;
-
-  /* ---- часы ------------------------------------------------------------ */
-
-  var start = performance.now();
-  var last = 0;
-
-  function loop(now) {
-    requestAnimationFrame(loop);
-    if (now - last < 40) return; // 25 кадров/с достаточно для медленного дрейфа
-    last = now;
-    state.t = (now - start) / 1000;
-    render();
-  }
-
-  requestAnimationFrame(loop);
-
-  /* ---- смена слова ----------------------------------------------------- */
-
-  setInterval(function () {
-    state.phase = 1;
-    render();
-
-    setTimeout(function () {
-      state.wordIndex = (state.wordIndex + 1) % WORDS.length;
-      state.phase = 2; // мгновенно переставляем слово вниз, без перехода
-      render();
-    }, OUT);
-
-    setTimeout(function () {
-      state.phase = 0; // и отпускаем его вверх на место
-      render();
-    }, OUT + 40);
-  }, CYCLE);
+  reducedMotion.addEventListener("change", updatePreferences);
+  shortViewport.addEventListener("change", updatePreferences);
+  document.addEventListener("visibilitychange", syncAnimation);
+  window.addEventListener("pagehide", stopAnimation);
+  window.addEventListener("pageshow", onScroll);
+  renderWord();
+  updatePreferences();
 })();

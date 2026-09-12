@@ -16,14 +16,8 @@
 </head>
 <body>
 
-<div class="page">
-  <section class="hero">
-
-    <!-- Тизер второго экрана: проявляется по мере подъёма закатных слоёв -->
-    <div class="hero__next" id="hero-next">
-      <p class="hero__next-kicker">Есть 10 минут?..</p>
-      <p class="hero__next-title">Давайте творить магию</p>
-    </div>
+<main class="page" id="top">
+  <section class="hero" aria-label="Персональная песня">
 
     <!-- Ночное небо: закруглённая панель на кремовом фоне -->
     <div class="hero__sky" id="hero-sky">
@@ -50,20 +44,23 @@
            width="2048" height="1152" decoding="async">
     </div>
 
-    <header class="nav">
+    <nav class="nav" aria-label="Основная навигация">
       <a class="nav__link nav__link--how" href="#">Как это работает</a>
-      <a class="nav__brand" href="#">Violetta</a>
+      <a class="nav__brand" href="#top" aria-label="Violetta — на главную">Violetta</a>
       <div class="nav__actions">
         <a class="nav__link" href="#">Войти</a>
         <a class="nav__cta" href="#">Создать свою</a>
       </div>
-    </header>
+    </nav>
+
+    <button class="hero__motion" id="hero-motion" type="button"
+            aria-pressed="false" hidden>Остановить анимацию</button>
 
     <div class="hero__content" id="hero-content">
-      <h1 class="hero__title">
+      <h1 class="hero__title" aria-label="Песня, которую запомнят навсегда">
         <span class="hero__title-line">Песня, которую</span>
         <span class="hero__title-slot">
-          <span class="hero__word" id="hero-word">запомнят</span>
+          <span class="hero__word" id="hero-word" aria-hidden="true">запомнят</span>
         </span>
         <span class="hero__title-line">навсегда</span>
       </h1>
@@ -79,10 +76,17 @@
         <span class="proof__pill">Платите столько, сколько считаете нужным. ❤️</span>
       </div>
     </div>
+
+    <!-- Тизер второго экрана: проявляется по мере подъёма закатных слоёв -->
+    <div class="hero__next" id="hero-next">
+      <p class="hero__next-kicker">Есть 10 минут?..</p>
+      <p class="hero__next-title">Давайте творить магию</p>
+    </div>
+
   </section>
 
   <div class="hero-spacer"></div>
-</div>
+</main>
 
 <script src="assets/js/hero.js"></script>
 </body>

@@ -17,6 +17,9 @@
   var phaseTimers = [];
   var lastTick = null;
   var lastPaint = 0;
+  var renderedProgress = null;
+  var renderedStatic = null;
+  var animationStopped = false;
 
   var WORDS = ["запомнят", "полюбят", "будут петь", "не забудут"];
   var STAR_COUNT = 46;
@@ -101,6 +104,8 @@
   function render() {
     var t = state.t;
     var p = state.p;
+    renderedProgress = p;
+    renderedStatic = staticScene;
 
     // Тизер второго экрана проявляется во второй половине скролла.
     var nt = staticScene ? 1 : clamp01((p - 0.45) / 0.4);
@@ -179,6 +184,8 @@
   }
 
   function stopAnimation() {
+    if (animationStopped) return;
+    animationStopped = true;
     if (frameId !== null) cancelAnimationFrame(frameId);
     if (wordTimer !== null) clearInterval(wordTimer);
     phaseTimers.forEach(clearTimeout);
@@ -210,6 +217,7 @@
       return;
     }
     if (frameId !== null) return;
+    animationStopped = false;
     frameId = requestAnimationFrame(loop);
     wordTimer = setInterval(function () {
       state.phase = 1;
@@ -232,7 +240,7 @@
     var vh = el.hero.clientHeight || document.documentElement.clientHeight || 1;
     var distance = window.innerWidth <= 600 ? 0.55 : 0.85;
     state.p = staticScene ? 0 : clamp01(window.scrollY / (vh * distance));
-    render();
+    if (renderedProgress !== state.p || renderedStatic !== staticScene) render();
     syncAnimation();
   }
 
@@ -246,6 +254,7 @@
     if (staticScene) {
       state.t = 0;
       state.wordIndex = 0;
+      renderWord();
     }
     onScroll();
   }

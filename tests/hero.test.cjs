@@ -134,3 +134,16 @@ test('page cache lifecycle stops and resumes only one set of clocks', () => {
   assert.equal(s.frame.size, 1);
   assert.equal(s.intervals.size, 1);
 });
+
+test('scrolling below the scene does no repeated DOM writes and returning resumes it', () => {
+  const s = scene();
+  s.scroll(50000);
+  let writes = 0;
+  for (const node of Object.values(s.nodes)) node.style = new Proxy(node.style, { set(target,key,value) { writes++; target[key]=value; return true; } });
+  for (let i=0;i<100;i++) s.scroll(50000+i);
+  assert.equal(writes, 0);
+  assert.equal(s.frame.size+s.intervals.size+s.timeouts.size, 0);
+  s.scroll(0);
+  assert.ok(writes>0);
+  assert.equal(s.frame.size, 1);
+});

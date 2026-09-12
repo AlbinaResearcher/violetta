@@ -1,7 +1,7 @@
 /* ==========================================================================
    Hero — движение.
 
-   Исходная сцена и её тайминги сохранены. Уменьшение движения и низкое
+   Сцена сохранена; смысловые пары меняются одним блоком. Уменьшение движения и низкое
    окно включают статичную композицию; ручная пауза останавливает фон и слова.
    ========================================================================== */
 
@@ -21,17 +21,17 @@
   var renderedStatic = null;
   var animationStopped = false;
 
-  var WORDS = ["запомнят", "полюбят", "будут петь", "не забудут"];
+  var WORDS = [["расскажет вашу", "историю"], ["превратит чувства", "в музыку"], ["скажет главное", "за вас"], ["останется с вами", "навсегда"]];
   var STAR_COUNT = 46;
-  var CYCLE = 3400; // как часто меняется слово, мс
-  var OUT = 560;    // уход вверх с размытием
-  var IN = 620;     // возврат снизу
+  var CYCLE = 3400; // цикл: около 3 секунд покоя и 440 мс перехода
+  var OUT = 200;    // мягкий уход вверх
+  var IN = 220;     // мягкий возврат снизу
 
   // 0 — слово на месте, 1 — уходит вверх, 2 — мгновенно переставлено вниз
   var PHASES = [
     { o: 1, y: 0, sc: 1, blur: 0, ms: IN, ease: "cubic-bezier(.22,.9,.24,1)" },
-    { o: 0, y: -14, sc: 0.965, blur: 5, ms: OUT, ease: "cubic-bezier(.5,0,.75,0)" },
-    { o: 0, y: 16, sc: 0.985, blur: 5, ms: 0, ease: "linear" }
+    { o: 0, y: -6, sc: 1, blur: 0, ms: OUT, ease: "cubic-bezier(.5,0,.75,0)" },
+    { o: 0, y: 6, sc: 1, blur: 0, ms: 0, ease: "linear" }
   ];
 
   // Хеш-рандом: раскладка звёзд одинакова при каждой загрузке.
@@ -57,7 +57,9 @@
     bank3: document.getElementById("hero-bank-3"),
     content: document.getElementById("hero-content"),
     next: document.getElementById("hero-next"),
-    word: document.getElementById("hero-word")
+    word: document.getElementById("hero-word"),
+    script: document.getElementById("hero-script"),
+    ending: document.getElementById("hero-ending")
   };
 
   if (Object.keys(el).some(function (key) { return !el[key]; })) return;
@@ -167,7 +169,9 @@
   // Only touch the word when its phase changes, not on every cloud frame.
   function renderWord() {
     var word = PHASES[state.phase];
-    el.word.textContent = WORDS[state.wordIndex];
+    // Both lines change in the same task while their shared wrapper is hidden.
+    el.script.textContent = WORDS[state.wordIndex][0];
+    el.ending.textContent = WORDS[state.wordIndex][1];
     el.word.style.transition =
       "opacity " + word.ms + "ms " + word.ease +
       ", transform " + word.ms + "ms " + word.ease +
@@ -231,7 +235,7 @@
         setTimeout(function () {
           state.phase = 0;
           renderWord();
-        }, OUT + 40)
+        }, OUT + 20)
       ];
     }, CYCLE);
   }

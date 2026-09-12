@@ -26,7 +26,7 @@ function scene({ reduced = false, short = false } = {}) {
       focus() { document.activeElement = this; }
     });
   }
-  const nodes = Object.fromEntries(['hero', 'hero-motion', 'brand', 'hero-sky', 'hero-stars', 'hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c', 'hero-bank-2', 'hero-bank-3', 'hero-content', 'hero-next', 'hero-word'].map(k => [k, element()]));
+  const nodes = Object.fromEntries(['hero', 'hero-motion', 'brand', 'hero-sky', 'hero-stars', 'hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c', 'hero-bank-2', 'hero-bank-3', 'hero-content', 'hero-next', 'hero-word', 'hero-script', 'hero-ending'].map(k => [k, element()]));
   const media = {
     '(prefers-reduced-motion: reduce)': Object.assign(target(), { matches: reduced }),
     '(max-height: 650px)': Object.assign(target(), { matches: short })
@@ -117,7 +117,8 @@ test('live motion preference changes cancel pending transitions and preserve man
   const preference = s.media['(prefers-reduced-motion: reduce)'];
   preference.matches = true; preference.emit('change');
   assert.equal(s.timeouts.size + s.frame.size + s.intervals.size, 0);
-  assert.equal(s.nodes['hero-word'].textContent, 'запомнят');
+  assert.equal(s.nodes['hero-script'].textContent, 'расскажет вашу');
+  assert.equal(s.nodes['hero-ending'].textContent, 'историю');
   preference.matches = false; preference.emit('change');
   assert.equal(s.frame.size, 1);
   s.nodes['hero-motion'].emit('click');
@@ -146,4 +147,18 @@ test('scrolling below the scene does no repeated DOM writes and returning resume
   s.scroll(0);
   assert.ok(writes>0);
   assert.equal(s.frame.size, 1);
+});
+
+
+test('hero semantic pairs cycle atomically in order without rewriting the accessible heading', () => {
+  const s=scene();
+  const pairs=[['расскажет вашу','историю'],['превратит чувства','в музыку'],['скажет главное','за вас'],['останется с вами','навсегда']];
+  for(let i=0;i<8;i++) {
+    const pair=pairs[i%4];
+    assert.deepEqual([s.nodes['hero-script'].textContent,s.nodes['hero-ending'].textContent],pair);
+    [...s.intervals.values()][0]();
+    const callbacks=[...s.timeouts.values()];s.timeouts.clear();callbacks.forEach(cb=>cb());
+  }
+  s.window.emit('pagehide');
+  assert.equal(s.frame.size+s.intervals.size+s.timeouts.size,0);
 });

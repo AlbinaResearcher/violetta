@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&amp;family=Marck+Script&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/hero.css">
-<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/hero.css?v=hero-pairs-3">
+<link rel="stylesheet" href="assets/css/sections.css?v=hero-pairs-3">
 </head>
 <body>
 
@@ -42,17 +42,16 @@
     <button class="hero__motion" id="hero-motion" type="button" aria-pressed="false" hidden>Остановить анимацию</button>
 
     <div class="hero__content" id="hero-content">
-      <h1 class="hero__title" aria-label="Песня, которую запомнят навсегда">
-        <span class="hero__title-line">Песня, которую</span>
+      <div class="hero__main"><h1 class="hero__title" aria-label="Песня, которая расскажет вашу историю">
+        <span class="hero__title-line" aria-hidden="true">Песня, которая</span>
         <span class="hero__title-slot">
-          <span class="hero__word" id="hero-word" aria-hidden="true">запомнят</span>
+          <span class="hero__word" id="hero-word" aria-hidden="true"><span class="hero__script" id="hero-script">расскажет вашу</span><span class="hero__ending" id="hero-ending">историю</span></span>
         </span>
-        <span class="hero__title-line">навсегда</span>
       </h1>
 
       <p class="hero__lede">Расскажите историю за пару минут — остальное сделаем мы.</p>
 
-      <a class="hero__cta" href="#request">Создать свою песню</a>
+      <a class="hero__cta" href="#request">Создать свою песню</a></div>
 
       <div class="proof">
 <span class="proof__total">10,000+</span><span class="proof__caption">песен создано</span>
@@ -704,38 +703,19 @@
 
 </main>
 
-<footer data-screen-label="Футер" style="font-family: Manrope, system-ui, sans-serif; background: linear-gradient(180deg, #4A3A66 0%, #3A2C55 100%); color: #F7F2F8; padding: clamp(36px, 4vw, 56px) clamp(16px, 4vw, 40px) clamp(18px, 2vw, 24px);">
-  <div style="max-width: 1240px; margin: 0 auto;">
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(20px, 3vw, 44px); align-items: start;">
-
-      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
-        <span style="font-family: 'Marck Script', cursive; font-size: 30px; line-height: 1; color: #FBEEF1;">Вивобит</span>
-        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.35; color: #D9C9E2;">Истории, которые звучат.</p>
+<footer class="site-footer" data-screen-label="Футер">
+  <div class="footer-inner">
+    <div class="footer-finale">
+      <div><a class="footer-brand" href="#top">Вивобит</a>
+        <p class="footer-story">Ваша история уже звучит.<br><em>Осталось превратить её в песню.</em></p>
       </div>
-
-      <nav aria-label="Разделы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="#top" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Главная</a>
-        <a href="#how" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Как это работает</a>
-        <a href="#examples" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Примеры песен</a>
-        <a href="#pricing" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Цена</a>
-        <a href="#faq" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">FAQ</a>
-        </nav>
-
-      <nav aria-label="Документы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="privacy.html" data-legal target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Политика конфиденциальности</a>
-        <a href="offer.html" data-legal target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Публичная оферта</a>
-      </nav>
-
-      <nav aria-label="Контакты" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="https://t.me/vivo_support" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Telegram</a>
-        <a href="#request" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Оставить заявку</a>
-      </nav>
+      <a class="footer-cta" href="#request">Создать песню <span aria-hidden="true">↗</span></a>
     </div>
-
-    <div style="height: 1px; background: rgba(247, 242, 248, 0.16); margin: clamp(22px, 2.6vw, 34px) 0 clamp(14px, 1.6vw, 18px);"></div>
-
-    <span style="font-size: 13px; color: #C4B2CF;">© 2026 Вивобит</span>
+    <div class="footer-links">
+      <nav aria-label="Разделы"><a href="#top">Главная</a><a href="#how">Как это работает</a><a href="#examples">Примеры песен</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a></nav>
+      <nav aria-label="Контакты"><a href="https://t.me/vivo_support">Telegram ↗</a><a href="#request">Оставить заявку</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Вивобит</span><nav aria-label="Документы"><a href="privacy.html" data-legal target="_blank" rel="noopener">Политика конфиденциальности</a><a href="offer.html" data-legal target="_blank" rel="noopener">Публичная оферта</a></nav></div>
   </div>
 </footer>
 
@@ -744,7 +724,7 @@
   <div id="legal-content" class="legal-content" role="region" aria-labelledby="legal-title" tabindex="0"></div>
 </dialog>
 <script src="assets/js/legal-dialog.js"></script>
-<script src="assets/js/hero.js"></script>
+<script src="assets/js/hero.js?v=hero-pairs-3"></script>
 <script src="assets/js/site-data.js"></script><script src="assets/js/request-core.js"></script><script src="assets/js/landing.js"></script>
 </body>
 </html>

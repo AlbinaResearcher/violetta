@@ -23,7 +23,7 @@ function setup(t) {
   const errors = [];
   w.addEventListener('error', e => errors.push(e.error));
   for (const script of w.document.querySelectorAll('script[src]')) {
-    w.eval(fs.readFileSync(path.join(root, script.getAttribute('src')), 'utf8'));
+    w.eval(fs.readFileSync(path.join(root, script.getAttribute('src').split('?')[0]), 'utf8'));
   }
   assert.deepEqual(errors, []);
   return { w, d: w.document, errors };
@@ -49,7 +49,7 @@ test('exported pages have unique IDs, resolvable local links and no design runti
       const value = el.getAttribute('href') || el.getAttribute('src');
       if (/^[a-z]+:/i.test(value)) continue;
       const [file, hash] = value.split('#');
-      if (file) assert.ok(fs.existsSync(path.join(root, decodeURIComponent(file))), `${name}: ${value}`);
+      if (file) assert.ok(fs.existsSync(path.join(root, decodeURIComponent(file.split('?')[0]))), `${name}: ${value}`);
       else if (hash) assert.ok(d.getElementById(hash), `${name}: ${value}`);
       else assert.fail(`Placeholder URL in ${name}`);
     }

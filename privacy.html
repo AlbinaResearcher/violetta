@@ -14,7 +14,7 @@
   a { color: #A5304A; text-decoration: none; border-bottom: 1px solid rgba(201, 69, 92, 0.35); overflow-wrap: anywhere; }
   a:hover { color: #C9455C; border-bottom-color: rgba(201, 69, 92, 0.7); }
 </style>
-<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/sections.css?v=hero-pairs-3">
 <link rel="icon" href="assets/img/favicon.svg">
 </head>
 <body>
@@ -156,38 +156,19 @@
     </article>
   </main>
 
-  <footer data-screen-label="Футер" style="font-family: Manrope, system-ui, sans-serif; background: linear-gradient(180deg, #4A3A66 0%, #3A2C55 100%); color: #F7F2F8; padding: clamp(36px, 4vw, 56px) clamp(16px, 4vw, 40px) clamp(18px, 2vw, 24px);">
-  <div style="max-width: 1240px; margin: 0 auto;">
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(20px, 3vw, 44px); align-items: start;">
-
-      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
-        <span style="font-family: 'Marck Script', cursive; font-size: 30px; line-height: 1; color: #FBEEF1;">Вивобит</span>
-        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.35; color: #D9C9E2;">Истории, которые звучат.</p>
+  <footer class="site-footer" data-screen-label="Футер">
+  <div class="footer-inner">
+    <div class="footer-finale">
+      <div><a class="footer-brand" href="index.html#top">Вивобит</a>
+        <p class="footer-story">Ваша история уже звучит.<br><em>Осталось превратить её в песню.</em></p>
       </div>
-
-      <nav aria-label="Разделы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="index.html#top" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Главная</a>
-        <a href="index.html#how" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Как это работает</a>
-        <a href="index.html#examples" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Примеры песен</a>
-        <a href="index.html#pricing" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Цена</a>
-        <a href="index.html#faq" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">FAQ</a>
-        </nav>
-
-      <nav aria-label="Документы" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="privacy.html" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Политика конфиденциальности</a>
-        <a href="offer.html" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Публичная оферта</a>
-      </nav>
-
-      <nav aria-label="Контакты" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-        <a href="https://t.me/vivo_support" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Telegram</a>
-        <a href="index.html#request" style="display: inline-flex; align-items: center; min-height: 26px; font-size: 16px; width: fit-content;">Оставить заявку</a>
-      </nav>
+      <a class="footer-cta" href="index.html#request">Создать песню <span aria-hidden="true">↗</span></a>
     </div>
-
-    <div style="height: 1px; background: rgba(247, 242, 248, 0.16); margin: clamp(22px, 2.6vw, 34px) 0 clamp(14px, 1.6vw, 18px);"></div>
-
-    <span style="font-size: 13px; color: #C4B2CF;">© 2026 Вивобит</span>
+    <div class="footer-links">
+      <nav aria-label="Разделы"><a href="index.html#top">Главная</a><a href="index.html#how">Как это работает</a><a href="index.html#examples">Примеры песен</a><a href="index.html#pricing">Цена</a><a href="index.html#faq">FAQ</a></nav>
+      <nav aria-label="Контакты"><a href="https://t.me/vivo_support">Telegram ↗</a><a href="index.html#request">Оставить заявку</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Вивобит</span><nav aria-label="Документы"><a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a><a href="offer.html" target="_blank" rel="noopener">Публичная оферта</a></nav></div>
   </div>
 </footer>
 

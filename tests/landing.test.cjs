@@ -151,7 +151,8 @@ test('invalid contact prevents the handoff; channel change updates visible guida
   assert.match(d.getElementById('request-status').textContent, /Telegram/);
   const vk = d.querySelector('input[name="channel"][value="vk"]');
   vk.checked = true; vk.dispatchEvent(new w.Event('change', { bubbles: true }));
-  assert.equal(form.elements.contact.validationMessage, '');
+  assert.equal(form.elements.contact.validity.customError, false);
+  assert.equal(form.elements.contact.hasAttribute('aria-invalid'), false);
   assert.equal(form.elements.contact.placeholder, 'vk.com/...');
 });
 
@@ -162,4 +163,51 @@ test('request rules reject unknown choices and preserve literal user text safely
   assert.equal(request.validate({...good, recipient:'99'}).field, 'recipient');
   assert.equal(request.validate({...good, product:'free'}).field, 'product');
   assert.equal(request.validate({...good, contact:'javascript:alert(1)'}).field, 'contact');
+});
+
+test('missing choice has a visible associated error and keeps previously entered text', t => {
+  const { w, d } = setup(t);
+  const form = d.getElementById('request-form');
+  form.elements.name.value = 'Анна-Мария';
+  form.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
+  const first = form.querySelector('[name="recipient"]');
+  assert.equal(d.activeElement, first);
+  assert.equal(first.getAttribute('aria-invalid'), 'true');
+  assert.match(first.getAttribute('aria-describedby'), /recipient-error/);
+  assert.equal(d.getElementById('recipient-error').hidden, false);
+  assert.equal(form.elements.name.value, 'Анна-Мария');
+  first.checked = true;
+  first.dispatchEvent(new w.Event('change', { bubbles: true }));
+  assert.equal(first.hasAttribute('aria-invalid'), false);
+  assert.equal(d.getElementById('recipient-error').hidden, true);
+});
+
+test('changing contact channel restores each draft without leaking it into a different channel', t => {
+  const { w, d } = setup(t);
+  const form = fillRequest(w, d);
+  function choose(value) {
+    const input = form.querySelector(`[name="channel"][value="${value}"]`);
+    input.checked = true;
+    input.dispatchEvent(new w.Event('change', { bubbles: true }));
+  }
+  choose('vk');
+  assert.equal(form.elements.contact.value, '');
+  form.elements.contact.value = 'vk.com/example_user';
+  choose('telegram');
+  assert.equal(form.elements.contact.value, '@example_user');
+  choose('vk');
+  assert.equal(form.elements.contact.value, 'vk.com/example_user');
+});
+
+test('clipboard rejection leaves the whole message selected for manual copying', async t => {
+  const { w, d } = setup(t);
+  fillRequest(w, d).dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
+  Object.defineProperty(w.navigator, 'clipboard', { value: { writeText: async () => { throw new Error('denied'); } } });
+  d.getElementById('copy-request').click();
+  await new Promise(setImmediate);
+  const message = d.getElementById('request-message');
+  assert.equal(d.activeElement, message);
+  assert.equal(message.selectionStart, 0);
+  assert.equal(message.selectionEnd, message.value.length);
+  assert.match(d.getElementById('copy-status').textContent, /вручную/);
 });

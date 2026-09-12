@@ -85,8 +85,8 @@
     audio.load();
     var song = data.songs[index];
     var cover = document.getElementById('song-cover');
-    cover.style.backgroundImage = 'url("' + song.cover + '")';
-    cover.setAttribute('aria-label', 'Обложка песни «' + song.title + '»');
+    cover.src = song.cover;
+    cover.alt = 'Обложка песни «' + song.title + '»';
     document.getElementById('examples').style.background = song.tint;
     ['title', 'occasion', 'context', 'genre'].forEach(function (field) {
       document.getElementById('song-' + field).textContent = song[field];
@@ -131,7 +131,10 @@
     }
   });
   audio.addEventListener('playing', function () { setPlaying(true); status.textContent = 'Воспроизводится'; });
-  audio.addEventListener('pause', function () { setPlaying(false); });
+  audio.addEventListener('pause', function () {
+    setPlaying(false);
+    if (data.songs[activeSong].audioSrc && !audio.ended) status.textContent = 'На паузе';
+  });
   audio.addEventListener('ended', function () { setPlaying(false); status.textContent = 'Песня закончилась'; });
   audio.addEventListener('waiting', function () { status.textContent = 'Загружаем песню…'; });
   audio.addEventListener('error', function () {
@@ -157,6 +160,27 @@
     vk: ['Ссылка на страницу', 'vk.com/...', 'Укажите ссылку на вашу страницу ВКонтакте.'],
     avito: ['Контакт для связи', 'Введите контакт', 'Укажите контакт, по которому менеджер сможет вас найти.']
   };
+  var contactDrafts = {};
+  var previousChannel = form.elements.channel.value;
+  var errorNodes = {};
+  ['recipient', 'occasion', 'product', 'channel', 'contact'].forEach(function (name) {
+    var controls = Array.from(form.querySelectorAll('[name="' + name + '"]'));
+    var host = controls[0].closest('fieldset') || controls[0].parentElement;
+    var hint = document.createElement('p');
+    hint.id = name + '-error'; hint.className = 'field-error'; hint.hidden = true;
+    host.appendChild(hint); errorNodes[name] = hint;
+    controls.forEach(function (control) {
+      control.setAttribute('aria-describedby', [control.getAttribute('aria-describedby'), hint.id].filter(Boolean).join(' '));
+    });
+  });
+  function clearError(name) {
+    if (!errorNodes[name]) return;
+    errorNodes[name].hidden = true;
+    errorNodes[name].textContent = '';
+    form.querySelectorAll('[name="' + name + '"]').forEach(function (control) {
+      control.removeAttribute('aria-invalid');
+    });
+  }
   function updateContact() {
     var channel = form.elements.channel.value;
     var copy = channels[channel];
@@ -164,13 +188,20 @@
     contact.placeholder = copy[1];
     contactHelp.textContent = copy[2];
     contact.setCustomValidity('');
+    clearError('contact');
     formStatus.textContent = '';
   }
   form.addEventListener('change', function (event) {
-    if (event.target.name === 'channel') updateContact();
+    clearError(event.target.name);
+    if (event.target.name === 'channel') {
+      contactDrafts[previousChannel] = contact.value;
+      previousChannel = form.elements.channel.value;
+      contact.value = contactDrafts[previousChannel] || '';
+      updateContact();
+    }
     formStatus.textContent = '';
   });
-  contact.addEventListener('input', function () { contact.setCustomValidity(''); formStatus.textContent = ''; });
+  contact.addEventListener('input', function () { contact.setCustomValidity(''); clearError('contact'); formStatus.textContent = ''; });
   document.querySelectorAll('[data-product]').forEach(function (link) {
     link.addEventListener('click', function () {
       form.hidden = false; handoff.hidden = true;
@@ -184,8 +215,13 @@
     var error = request.validate(values);
     if (error) {
       formStatus.textContent = error.message;
-      if (error.field === 'contact') { contact.setCustomValidity(error.message); contact.reportValidity(); }
-      else form.querySelector('[name="' + error.field + '"]').focus();
+      var hint = errorNodes[error.field];
+      hint.textContent = error.message; hint.hidden = false;
+      var controls = form.querySelectorAll('[name="' + error.field + '"]');
+      controls.forEach(function (control) { control.setAttribute('aria-invalid', 'true'); });
+      var target = controls[0];
+      target.focus({ preventScroll: true });
+      (target.closest('fieldset') || target.parentElement).scrollIntoView({ block: 'center' });
       return;
     }
     message.value = request.format(values, data.form);
@@ -210,5 +246,6 @@
   });
   // All controls are wired before enabling submit; no GET fallback leaks form data.
   updateContact();
+  form.noValidate = true;
   submit.disabled = false;
 })();

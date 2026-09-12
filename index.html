@@ -221,7 +221,7 @@
     </div>
 
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(16px, 2.2vw, 28px); margin-top: clamp(26px, 3.2vw, 44px);">
-      <a href="#request" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 clamp(24px, 2.6vw, 34px); border-radius: 999px; background: #E0566B; color: #FFFFFF; font-size: 17px; font-weight: 600; box-shadow: 0 14px 32px rgba(224, 86, 107, 0.28); transition: background 180ms ease, transform 180ms ease;" class="interaction-5 interaction-2 interaction-6">Создать свою песню</a>
+      <a href="#request" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 clamp(24px, 2.6vw, 34px); border-radius: 999px; background: #C9455C; color: #FFFFFF; font-size: 17px; font-weight: 600; box-shadow: 0 14px 32px rgba(224, 86, 107, 0.28); transition: background 180ms ease, transform 180ms ease;" class="interaction-5 interaction-2 interaction-6">Создать свою песню</a>
     </div>
   </div>
 </section>
@@ -237,13 +237,13 @@
           <span style="display: block; font-style: italic; color: #C9455C; border-bottom: 2px solid rgba(201, 69, 92, 0.38); padding-bottom: 0.05em;">своё звучание</span>
         </h2>
       </div>
-      <p style="margin: 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.55; color: #5C4E70; max-width: 30ch;">Послушайте, какими разными могут быть персональные песни.</p>
+      <p style="margin: 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.55; color: #5C4E70; max-width: 30ch;">Пять личных историй. Аудиозаписи добавим сюда, когда они будут готовы.</p>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(22px, 3vw, 48px); align-items: start; margin-top: clamp(24px, 3vw, 40px);">
 
       <div style="position: relative; width: 100%; max-width: 360px; aspect-ratio: 1 / 1; border-radius: clamp(18px, 1.8vw, 24px); overflow: hidden; box-shadow: 0 22px 52px rgba(120, 74, 104, 0.18); justify-self: center;">
-        <div role="img" aria-label="Обложка песни «Дом, где тебя ждут»" style="width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: opacity 380ms ease, transform 380ms ease; background-image: url('assets/img/song-cover-1.png'); opacity: 1; transform: scale(1);" id="song-cover"></div>
+        <img id="song-cover" src="assets/img/song-cover-1.webp" alt="Обложка песни «Дом, где тебя ждут»" width="800" height="800" loading="lazy" decoding="async">
       </div>
 
       <div class="song-column">
@@ -279,23 +279,23 @@
         </div>
     <div role="tablist" aria-label="Примеры песен" style="display: flex; gap: 10px; width: 100%; margin-top: clamp(18px, 2.2vw, 26px); padding-bottom: 6px; overflow-x: auto; scroll-snap-type: x mandatory;" class="song-tabs">
           <button type="button" role="tab" aria-selected="true" class="song-tab" id="song-tab-0" data-song="0" aria-controls="song-panel" tabindex="0">
-              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-1.png'); background-size: cover; background-position: center; "></span>
+              <img class="song-thumb" src="assets/img/song-cover-1-thumb.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
               <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Маме</span>
             </button>
           <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-1" data-song="1" aria-controls="song-panel" tabindex="-1">
-              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-2.png'); background-size: cover; background-position: center; "></span>
+              <img class="song-thumb" src="assets/img/song-cover-2-thumb.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
               <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Жене</span>
             </button>
           <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-2" data-song="2" aria-controls="song-panel" tabindex="-1">
-              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-3.png'); background-size: cover; background-position: center; "></span>
+              <img class="song-thumb" src="assets/img/song-cover-3-thumb.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
               <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Учителю</span>
             </button>
           <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-3" data-song="3" aria-controls="song-panel" tabindex="-1">
-              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-4.png'); background-size: cover; background-position: center; "></span>
+              <img class="song-thumb" src="assets/img/song-cover-4-thumb.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
               <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Другу</span>
             </button>
           <button type="button" role="tab" aria-selected="false" class="song-tab" id="song-tab-4" data-song="4" aria-controls="song-panel" tabindex="-1">
-              <span aria-hidden="true" style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; display: block; background-image: url('assets/img/song-cover-5.png'); background-size: cover; background-position: center; "></span>
+              <img class="song-thumb" src="assets/img/song-cover-5-thumb.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
               <span style="font-size: 13px; font-weight: 600; white-space: nowrap; ">Папе</span>
             </button>
           </div>
@@ -376,11 +376,11 @@
       </article>
 
       <div style="flex: 1 1 min(100%, 320px); display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); min-width: 0;">
-        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.15;">Песню можно превратить <span style="font-style: italic; color: #C9455C;">в целый подарок</span></span>
+        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.15;">Песню можно превратить <span style="font-style: italic; color: #A5304A;">в целый подарок</span></span>
 
         <a href="#request" style="display: flex; gap: clamp(12px, 1.4vw, 18px); border-radius: clamp(18px, 1.8vw, 24px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07); padding: clamp(14px, 1.6vw, 20px); color: #2C2144; transition: transform 220ms ease, box-shadow 220ms ease;" class="interaction-9 interaction-3" data-product="clip">
           <span style="flex: 0 0 auto; width: clamp(92px, 9vw, 124px); height: clamp(92px, 9vw, 124px); border-radius: 14px; overflow: hidden; display: block;">
-            <img src="assets/img/gift-video.png" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <img src="assets/img/gift-video.webp" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </span>
           <span style="min-width: 0; display: flex; flex-direction: column; gap: 5px;">
             <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.18;">Видеоклип из ваших фотографий</span>
@@ -391,7 +391,7 @@
 
         <a href="#request" style="display: flex; gap: clamp(12px, 1.4vw, 18px); border-radius: clamp(18px, 1.8vw, 24px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 38px rgba(120, 74, 104, 0.07); padding: clamp(14px, 1.6vw, 20px); color: #2C2144; transition: transform 220ms ease, box-shadow 220ms ease;" class="interaction-9 interaction-3" data-product="time">
           <span style="flex: 0 0 auto; width: clamp(92px, 9vw, 124px); height: clamp(92px, 9vw, 124px); border-radius: 14px; overflow: hidden; display: block;">
-            <img src="assets/img/gift-time-machine.png" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <img src="assets/img/gift-time-machine.webp" alt="" loading="lazy" width="1456" height="1092" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </span>
           <span style="min-width: 0; display: flex; flex-direction: column; gap: 5px;">
             <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.18;">«Машина времени»</span>
@@ -409,7 +409,7 @@
   </div>
 </section>
 
-<section id="faq" data-screen-label="FAQ" style="position: relative; overflow: hidden; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #EDE0F3 0%, #F2E6F0 34%, #F6EAE8 68%, #F7EFE7 100%); padding: clamp(40px, 4.6vw, 68px) clamp(16px, 4vw, 40px) clamp(40px, 4.6vw, 68px);">
+<section id="faq" data-screen-label="FAQ" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #EDE0F3 0%, #F2E6F0 34%, #F6EAE8 68%, #F7EFE7 100%); padding: clamp(40px, 4.6vw, 68px) clamp(16px, 4vw, 40px) clamp(40px, 4.6vw, 68px);">
 
   <img src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -8%; bottom: 6%; width: min(30vw, 380px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.42;">
   <div style="position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(24px, 3.4vw, 56px); align-items: start;">
@@ -510,7 +510,7 @@
   </div>
 </section>
 
-<section id="request" data-screen-label="Заявка" style="position: relative; overflow: hidden; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #F7EFE7 0%, #F8E9E6 46%, #F6E4E9 100%); padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 76px);">
+<section id="request" data-screen-label="Заявка" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: #2C2144; background: linear-gradient(180deg, #F7EFE7 0%, #F8E9E6 46%, #F6E4E9 100%); padding: clamp(44px, 5.4vw, 76px) clamp(16px, 4vw, 40px) clamp(44px, 5.4vw, 76px);">
 
   <img src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -7%; bottom: 4%; width: min(22vw, 260px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.3;">
 
@@ -523,7 +523,7 @@
         <span style="display: block; font-style: italic; color: #C9455C;">для кого эта песня</span>
       </h2>
       <p style="margin: clamp(14px, 1.8vw, 22px) 0 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.6; color: #5C4E70; max-width: 32ch;">Пара минут — и заявка готова. Остальное уточним в переписке.</p>
-      <p style="margin: clamp(12px, 1.4vw, 18px) 0 0; font-size: 16px; line-height: 1.55; color: #675A78; max-width: 30ch;">Напишем первыми · Без предупреждения не звоним</p>
+      <p style="margin: clamp(12px, 1.4vw, 18px) 0 0; font-size: 16px; line-height: 1.55; color: #675A78; max-width: 30ch;">Скопируйте готовую заявку и отправьте менеджеру в Telegram. Без предупреждения не звоним.</p>
     </div>
 
     <form style="display: flex; flex: 1.6 1 min(100%, 520px); border-radius: clamp(22px, 2.4vw, 32px); background: rgba(255, 252, 250, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 22px 56px rgba(120, 74, 104, 0.08); padding: clamp(20px, 2.6vw, 36px); flex-direction: column; gap: clamp(20px, 2.4vw, 30px)" id="request-form" class="request-form" method="post">
@@ -666,7 +666,7 @@
 
         <div style="min-width: 0;">
           <label for="contact" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Ваш Telegram</label>
-          <input id="contact" type="text" placeholder="@nickname" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="contact" maxlength="200" autocomplete="off" required="" aria-describedby="contact-help">
+          <input id="contact" type="text" placeholder="@nickname" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="contact" maxlength="200" autocomplete="off" autocapitalize="none" spellcheck="false" required="" aria-describedby="contact-help">
           <p id="contact-help" class="field-help">Например, @nickname или t.me/nickname.</p>
 </div>
       </div>
@@ -681,7 +681,7 @@
             </div>
         </fieldset>
 
-        <button type="submit" style="flex: 1 1 220px; max-width: 320px; height: 56px; border: 0; border-radius: 999px; background: #2C2144; color: #FDFCFB; font-family: Manrope, system-ui, sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 180ms ease, transform 180ms ease;" class="interaction-14 interaction-2 interaction-3" id="request-submit" disabled>Продолжить</button>
+        <button type="submit" style="flex: 1 1 220px; max-width: 320px; height: 56px; border: 0; border-radius: 999px; background: #2C2144; color: #FDFCFB; font-family: Manrope, system-ui, sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 180ms ease, transform 180ms ease;" class="interaction-14 interaction-2 interaction-3" id="request-submit" disabled>Подготовить заявку</button>
       </div>
     <p class="form-policy">Передавая заявку, ознакомьтесь с <a href="privacy.html">политикой обработки персональных данных</a> и <a href="offer.html">условиями заказа</a>.</p>
 <p id="request-status" class="form-status" role="status" tabindex="-1"></p>

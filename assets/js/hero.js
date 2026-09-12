@@ -141,6 +141,10 @@
 
     el.content.style.transform = "translateY(" + (-p * 90).toFixed(1) + "px)";
     var contentHidden = p >= 1 / 1.9;
+    el.motion.hidden = staticScene || contentHidden;
+    if (contentHidden && document.activeElement === el.motion) {
+      el.brand.focus({ preventScroll: true });
+    }
     el.content.style.opacity = Math.max(0, 1 - p * 1.9).toFixed(3);
     if (contentHidden && el.content.contains(document.activeElement)) {
       el.brand.focus({ preventScroll: true });
@@ -225,8 +229,9 @@
   }
 
   function onScroll() {
-    var vh = document.documentElement.clientHeight || 1;
-    state.p = staticScene ? 0 : clamp01(window.scrollY / (vh * 0.85));
+    var vh = el.hero.clientHeight || document.documentElement.clientHeight || 1;
+    var distance = window.innerWidth <= 600 ? 0.55 : 0.85;
+    state.p = staticScene ? 0 : clamp01(window.scrollY / (vh * distance));
     render();
     syncAnimation();
   }

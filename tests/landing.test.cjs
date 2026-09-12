@@ -17,9 +17,6 @@ function setup(t) {
   w.HTMLMediaElement.prototype.pause = function () {};
   w.HTMLMediaElement.prototype.load = function () {};
   w.HTMLMediaElement.prototype.play = async function () { this.dispatchEvent(new w.Event('playing')); };
-  w.HTMLDialogElement.prototype.showModal = function () { this.open = true; };
-  w.HTMLDialogElement.prototype.close = function () { this.open = false; this.dispatchEvent(new w.Event('close')); };
-  w.fetch = async href => ({ ok: true, text: async () => fs.readFileSync(path.join(root, href), 'utf8') });
   const errors = [];
   w.addEventListener('error', e => errors.push(e.error));
   for (const script of w.document.querySelectorAll('script[src]')) {
@@ -168,38 +165,21 @@ test('request rules reject unknown choices and preserve literal user text safely
   assert.equal(request.validate({...good, contact:'javascript:alert(1)'}).field, 'contact');
 });
 
-test('documents preserve the complete draft, return focus and offer a safe failure fallback', async t => {
-  const { w, d } = setup(t);
-  const form = fillRequest(w, d);
-  for (const file of ['privacy.html', 'offer.html']) {
-    const link = d.querySelector(`.form-policy a[href="${file}"]`);
-    link.click();
-    await new Promise(setImmediate);
-    assert.equal(d.getElementById('legal-dialog').open, true);
-    assert.ok(d.querySelector('#legal-content article'));
-    d.querySelector('#legal-content a[href="index.html"]').click();
-    assert.equal(d.getElementById('legal-dialog').open, false);
-    assert.equal(d.activeElement, link);
-    assert.equal(form.elements.name.value, 'Альбина');
-    assert.equal(form.elements.contact.value, '@example_user');
-    assert.equal(form.elements.product.value, 'clip');
+test('legal links use ordinary same-tab routes under a deployment base path', () => {
+  for (const file of ['index.html','privacy.html','offer.html']) {
+    const dom = new JSDOM(fs.readFileSync(path.join(root,file),'utf8'), {url:'https://example.test/vivobit/'+file});
+    const d = dom.window.document;
+    assert.equal(d.querySelector('dialog, [data-legal], script[src*="legal-dialog"]'),null);
+    for (const route of ['privacy.html','offer.html']) {
+      const links=d.querySelectorAll('a[href="'+route+'"]');
+      assert.ok(links.length);
+      for(const link of links) {
+        assert.equal(link.href,'https://example.test/vivobit/'+route);
+        assert.equal(link.target,'');
+      }
+    }
+    dom.window.close();
   }
-  form.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
-  const prepared = d.getElementById('request-message').value;
-  d.querySelector('footer a[data-legal]').click();
-  await new Promise(setImmediate);
-  d.getElementById('legal-close').click();
-  assert.equal(form.hidden, true);
-  assert.equal(d.getElementById('request-handoff').hidden, false);
-  assert.equal(d.getElementById('request-message').value, prepared);
-  d.getElementById('edit-request').click();
-  w.fetch = async () => { throw new Error('offline'); };
-  d.querySelector('.form-policy a').click();
-  await new Promise(setImmediate);
-  const fallback = d.querySelector('#legal-content a');
-  assert.equal(fallback.target, '_blank');
-  assert.match(d.getElementById('legal-content').textContent, /Ваша заявка остаётся/);
-  assert.equal(form.elements.contact.value, '@example_user');
 });
 
 test('song panel follows its tabs and consultation links bypass order requirements', t => {

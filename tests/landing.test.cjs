@@ -184,6 +184,15 @@ test('documents preserve the complete draft, return focus and offer a safe failu
     assert.equal(form.elements.contact.value, '@example_user');
     assert.equal(form.elements.product.value, 'clip');
   }
+  form.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
+  const prepared = d.getElementById('request-message').value;
+  d.querySelector('footer a[data-legal]').click();
+  await new Promise(setImmediate);
+  d.getElementById('legal-close').click();
+  assert.equal(form.hidden, true);
+  assert.equal(d.getElementById('request-handoff').hidden, false);
+  assert.equal(d.getElementById('request-message').value, prepared);
+  d.getElementById('edit-request').click();
   w.fetch = async () => { throw new Error('offline'); };
   d.querySelector('.form-policy a').click();
   await new Promise(setImmediate);

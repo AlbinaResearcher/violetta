@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="assets/css/hero.css?v=final-1">
 <link rel="stylesheet" href="assets/css/sections.css?v=final-1">
-<link rel="stylesheet" href="assets/css/restoration.css?v=final-1"><link rel="stylesheet" href="assets/css/refinement.css?v=final-1"><link rel="stylesheet" href="assets/css/round-two.css?v=final-1"><link rel="stylesheet" href="assets/css/final-pass.css?v=final-2">
+<link rel="stylesheet" href="assets/css/restoration.css?v=final-1"><link rel="stylesheet" href="assets/css/refinement.css?v=final-1"><link rel="stylesheet" href="assets/css/round-two.css?v=final-1"><link rel="stylesheet" href="assets/css/final-pass.css?v=final-2"><link rel="stylesheet" href="assets/css/vinyl-polish.css?v=vinyl-1">
 </head>
 <body id="top">
 
@@ -172,15 +172,15 @@
         </div>
 
         <div style="flex: 1 1 0%; margin-top: clamp(14px, 1.6vw, 20px); border-radius: 18px; background: linear-gradient(180deg, #FFF6F1 0%, #FDECEF 58%, #F6E6F3 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;" class="step-content delivery-demo" role="img" aria-label="Оформление готовой песни: Для Люси. Скачать, поделиться или подарить.">
-          <div style="width: clamp(88px, 9vw, 112px); height: clamp(88px, 9vw, 112px); border-radius: 50%; background: radial-gradient(circle at center, #E0566B 0 16%, #241C33 17% 22%, #2C2144 23% 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(44, 33, 68, 0.26);">
+          <div style="width: clamp(88px, 9vw, 112px); height: clamp(88px, 9vw, 112px); border-radius: 50%; background: radial-gradient(circle at center, #E0566B 0 16%, #241C33 17% 22%, #2C2144 23% 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(44, 33, 68, 0.26);" class="delivery-record">
             <span style="width: 22%; height: 22%; border-radius: 50%; background: #E0566B;"></span>
-          </div>
+          <span class="delivery-play" aria-hidden="true">▶</span></div>
           <div style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;">
             <span style="font-family: 'Marck Script', cursive; font-size: clamp(21px, 1.9vw, 28px); line-height: 1.1; color: #C9455C;">Для Люси</span>
             <span style="font-size: 16px; color: #6B5F7A;">Песня для Людмилы от её семьи</span>
           </div>
 
-          <span class="delivery-play" aria-hidden="true">▶</span>
+
           <p class="media-note">Так выглядит ваш подарок</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
             <span style="display: inline-flex;align-items: center;height: 36px;padding: 0 16px;border-radius: 999px;border: 1px solid rgba(44, 33, 68, 0.18);font-size: 14px;font-weight: 600;transition: background 180ms ease;" class="interaction-4 authored-control-2" aria-hidden="true">Скачать</span>
@@ -232,7 +232,7 @@
             </button>
           </div><div style="display: grid; align-items: start;" class="examples-grid">
 
-      <div class="example-art">
+      <div class="example-art" id="song-art" data-vinyl="idle"><div class="vinyl-sleeve" aria-hidden="true"><img id="song-vinyl" src="assets/img/vinyl-1.png" width="1160" height="1160" alt="" loading="lazy" decoding="async"></div>
 
       <button id="song-cover-play" type="button" class="cover-control" disabled="" aria-label="Обложка песни «Дом, где тебя ждут»" aria-pressed="false"><img id="song-cover" src="assets/img/song-cover-1.webp" alt="Обложка песни «Дом, где тебя ждут»" width="800" height="800" loading="lazy" decoding="async"><span class="cover-play" aria-hidden="true"><span class="play-glyph"></span></span></button></div>
 
@@ -321,7 +321,7 @@
   </div>
 </section>
 
-<section id="request" data-screen-label="Заявка" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #F7EFE7 0%, #F8E9E6 46%, #F6E4E9 100%);" class="content-section">
+<section id="request" data-screen-label="Заявка" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #EDE0F3 0%, #F2E6F0 44%, #F6E4E9 100%);" class="content-section">
 
   <img src="assets/img/cloud-sketch.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -7%; bottom: 4%; width: min(22vw, 260px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.3;">
 
@@ -417,7 +417,7 @@
 </div>
 </section>
 
-<section id="faq" data-screen-label="FAQ" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #EDE0F3 0%, #F2E6F0 34%, #F6EAE8 68%, #F7EFE7 100%);" class="content-section">
+<section id="faq" data-screen-label="FAQ" style="position: relative; font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #F6E4E9 0%, #F6EAE8 55%, #F7EFE7 100%);" class="content-section">
 
   <img src="assets/img/cloud-watercolor.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; z-index: 0; left: -8%; bottom: 6%; width: min(30vw, 380px); object-fit: contain; pointer-events: none; user-select: none; opacity: 0.42;">
   <div style="position: relative; z-index: 1; margin: 0px auto; display: grid; align-items: start;" class="section-container faq-grid">
@@ -497,7 +497,8 @@
 </footer>
 
 <script src="assets/js/hero.js?v=final-1"></script>
-<script src="assets/js/site-data.js?v=final-1"></script><script src="assets/js/request-core.js?v=final-1"></script><script src="assets/js/landing.js?v=final-1"></script>
+<script src="assets/js/site-data.js?v=vinyl-1"></script><script src="assets/js/request-core.js?v=final-1"></script><script src="assets/js/landing.js?v=vinyl-1"></script>
+
 
 
 

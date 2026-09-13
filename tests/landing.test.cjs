@@ -161,6 +161,23 @@ test('cover toggles playback and switching tracks keeps one synchronized player'
   assert.equal(audio.paused, true);
 });
 
+test('vinyl assets match songs and extension follows the active cover', t => {
+  const { w,d } = setup(t);
+  const art=d.getElementById('song-art'), vinyl=d.getElementById('song-vinyl'), cover=d.getElementById('song-cover-play');
+  for(const song of w.VivobitData.songs) assert.ok(fs.existsSync(path.join(root,song.vinyl)));
+  vinyl.dispatchEvent(new w.Event('load'));
+  assert.equal(art.dataset.vinyl,'idle');
+  cover.click(); assert.equal(art.dataset.vinyl,'extended');
+  cover.click(); assert.equal(art.dataset.playing,'false');
+  assert.equal(art.dataset.vinyl,'extended');
+  d.getElementById('song-tab-4').click();
+  assert.equal(vinyl.getAttribute('src'),w.VivobitData.songs[4].vinyl);
+  assert.equal(art.dataset.vinyl,'idle');
+  vinyl.dispatchEvent(new w.Event('load'));
+  assert.equal(art.dataset.vinyl,'extended');
+  assert.equal(d.querySelectorAll('.vinyl-sleeve').length,1);
+});
+
 test('valid request becomes an editable message, with no false delivery confirmation', async t => {
   const { w, d } = setup(t);
   const form = fillRequest(w, d);

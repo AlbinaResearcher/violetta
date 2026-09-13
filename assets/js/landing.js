@@ -63,6 +63,32 @@
   var visited = data.songs.map(function () { return false; });
   var prototypeTimer = null;
   var prototypePlaying = false;
+  var art = document.getElementById('song-art');
+  var vinyl = document.getElementById('song-vinyl');
+  var vinylTimer = null;
+  var vinylReady = true;
+  var vinylExtended = false;
+  function selectVinyl(song) {
+    clearTimeout(vinylTimer);
+    var wasExtended = art.dataset.vinyl === 'extended';
+    vinylExtended = false;
+    vinylReady = false;
+    art.dataset.vinyl = 'idle';
+    function reveal() {
+      var generation = mediaGeneration;
+      function ready() {
+        if (generation !== mediaGeneration) return;
+        vinylReady = true;
+        art.dataset.vinyl = vinylExtended ? 'extended' : 'idle';
+      }
+      vinyl.onload = ready;
+      vinyl.src = song.vinyl;
+      if (vinyl.complete && vinyl.naturalWidth > 0) ready();
+    }
+    // Retract the old record before revealing the next one. One layer, one timer.
+    if (wasExtended && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) vinylTimer = setTimeout(reveal, 300);
+    else reveal();
+  }
   function pausePrototype() {
     clearInterval(prototypeTimer); prototypeTimer = null; prototypePlaying = false;
   }
@@ -71,6 +97,9 @@
     return Math.floor(value / 60) + ':' + String(Math.floor(value % 60)).padStart(2, '0');
   }
   function setPlaying(playing) {
+    art.dataset.playing = String(playing);
+    if (playing) vinylExtended = true;
+    if (vinylReady) art.dataset.vinyl = vinylExtended ? 'extended' : 'idle';
     play.dataset.playing = String(playing);
     play.setAttribute('aria-label', playing ? 'Пауза' : 'Слушать');
     var song = data.songs[activeSong];
@@ -102,6 +131,7 @@
     audio.pause();
     audio.removeAttribute('src');
     var song = data.songs[index];
+    selectVinyl(song);
     var cover = document.getElementById('song-cover');
     cover.src = song.cover;
     cover.alt = 'Обложка песни «' + song.title + '»';
@@ -166,7 +196,7 @@
   }
   play.addEventListener('click', togglePlayback);
   coverPlay.addEventListener('click', togglePlayback);
-  window.addEventListener('pagehide', function () { pausePrototype(); audio.pause(); setPlaying(false); });
+  window.addEventListener('pagehide', function () { clearTimeout(vinylTimer); vinyl.src = data.songs[activeSong].vinyl; vinylReady = true; pausePrototype(); audio.pause(); setPlaying(false); });
   document.addEventListener('visibilitychange', function () { if (document.hidden && prototypePlaying) { pausePrototype(); setPlaying(false); } });
   audio.addEventListener('playing', function () { if (data.songs[activeSong].audioSrc) { setPlaying(true); status.textContent = 'Воспроизводится'; } });
   audio.addEventListener('pause', function () {

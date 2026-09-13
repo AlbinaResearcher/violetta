@@ -57,7 +57,7 @@ test('exported pages have unique IDs, resolvable local links and no design runti
 test('all authored sections and all FAQ answers exist without JavaScript', () => {
   const dom = new JSDOM(fs.readFileSync(path.join(root, 'index.html'), 'utf8'));
   const d = dom.window.document;
-  assert.deepEqual([...d.querySelectorAll('main > section')].map(n => n.id), ['how','examples','pricing','faq','request']);
+  assert.deepEqual([...d.querySelectorAll('main > section')].map(n => n.id), ['how','examples','pricing','request','faq']);
   assert.equal(d.querySelectorAll('.faq-item').length, 6);
   for (const answer of d.querySelectorAll('.faq-answer')) assert.ok(answer.textContent.trim().length > 0);
   assert.equal(d.getElementById('request-submit').disabled, true);

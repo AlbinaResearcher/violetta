@@ -10,6 +10,7 @@
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var shortViewport = window.matchMedia("(max-height: 650px)");
+  var mobileViewport = window.matchMedia("(max-width: 859px)");
   var paused = false;
   var staticScene = false;
   var frameId = null;
@@ -123,25 +124,15 @@
     el.cloudB.style.opacity = (0.46 * dim).toFixed(3);
     el.cloudC.style.opacity = (0.42 * dim).toFixed(3);
 
-    // Горизонтальный дрейф: разные периоды и амплитуды у каждого облака.
-    el.cloudA.style.transform =
-      "translate3d(" + (Math.sin(t / 15) * 8).toFixed(1) + "px, " +
-      (Math.sin(t / 19) * 2).toFixed(1) + "px, 0)";
-    el.cloudB.style.transform =
-      "translate3d(" + (Math.sin(t / 18 + 2) * -9).toFixed(1) + "px, " +
-      (Math.sin(t / 21 + 1) * 2).toFixed(1) + "px, 0)";
-    el.cloudC.style.transform =
-      "translate3d(" + (Math.sin(t / 22 + 4) * -6).toFixed(1) + "px, " +
-      (Math.sin(t / 24 + 3) * 2).toFixed(1) + "px, 0)";
-
-    // Закатные слои поднимаются с наложением и разным масштабом.
-    el.bank2.style.transform =
-      "translateX(-50%) translate3d(" + (Math.sin(t / 25) * 3).toFixed(1) + "px, " +
-      (p * 16).toFixed(1) + "%, 0) scale(" + (1 + p * 0.1).toFixed(3) + ")";
-    el.bank3.style.transform =
-      "translateX(-50%) translate3d(" + (Math.sin(t / 29 + 2) * -4).toFixed(1) + "px, " +
-      (p * 11).toFixed(1) + "%, 0) scale(" + (1 + p * 0.06).toFixed(3) + ")";
-
+    // A single atmospheric layer moves horizontally: 6px total over 180s.
+    // The periodic curve has continuous position and velocity at the loop seam.
+    // No vertical drift, scaling, opacity pulse, or scroll-driven movement.
+    el.cloudA.style.transform = "none";
+    el.cloudB.style.transform = "none";
+    el.cloudC.style.transform = "none";
+    var drift = staticScene || mobileViewport.matches ? 0 : Math.sin(t * Math.PI * 2 / 180) * 3;
+    el.bank2.style.transform = "translateX(-50%) translate3d(" + drift.toFixed(3) + "px, 0, 0)";
+    el.bank3.style.transform = "translateX(-50%)";
     el.sky.style.transform = "translateY(" + (-p * 96).toFixed(2) + "svh)";
 
     el.content.style.transform = "translateY(" + (-p * 90).toFixed(1) + "px)";
@@ -268,6 +259,7 @@
   window.addEventListener("resize", onScroll);
   reducedMotion.addEventListener("change", updatePreferences);
   shortViewport.addEventListener("change", updatePreferences);
+  mobileViewport.addEventListener("change", render);
   document.addEventListener("visibilitychange", syncAnimation);
   window.addEventListener("pagehide", stopAnimation);
   window.addEventListener("pageshow", onScroll);

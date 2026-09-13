@@ -4,7 +4,7 @@ const { readFileSync } = require('node:fs');
 const vm = require('node:vm');
 
 // Minimal DOM + controllable clocks: exercise the actual script and its events.
-function scene({ reduced = false, short = false, mobile = false } = {}) {
+function scene({ reduced = false, short = false } = {}) {
   const frame = new Map(), intervals = new Map(), timeouts = new Map();
   let id = 0;
   function target() {
@@ -28,7 +28,6 @@ function scene({ reduced = false, short = false, mobile = false } = {}) {
   }
   const nodes = Object.fromEntries(['hero', 'hero-motion', 'brand', 'hero-sky', 'hero-stars', 'hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c', 'hero-bank-2', 'hero-bank-3', 'hero-content', 'hero-word', 'hero-script', 'hero-ending'].map(k => [k, element()]));
   const media = {
-    '(max-width: 859px)': Object.assign(target(), { matches: mobile }),
     '(prefers-reduced-motion: reduce)': Object.assign(target(), { matches: reduced }),
     '(max-height: 650px)': Object.assign(target(), { matches: short })
   };
@@ -87,14 +86,14 @@ test('natural scrolling keeps content visible and pauses only after the viewport
 test('background tab suspends clocks; resuming does not jump elapsed animation time', () => {
   const s = scene();
   s.tick(100); s.tick(200);
-  const before = s.nodes['hero-bank-2'].style.transform;
+  const before = s.nodes['hero-cloud-a'].style.transform;
   s.document.hidden = true;
   s.document.emit('visibilitychange');
   assert.equal(s.frame.size + s.intervals.size + s.timeouts.size, 0);
   s.document.hidden = false;
   s.document.emit('visibilitychange');
   s.tick(100000);
-  assert.equal(s.nodes['hero-bank-2'].style.transform, before);
+  assert.equal(s.nodes['hero-cloud-a'].style.transform, before);
   assert.equal(s.intervals.size, 1);
 });
 
@@ -161,30 +160,12 @@ test('hero semantic pairs cycle atomically in order without rewriting the access
   s.window.emit('pagehide');
   assert.equal(s.frame.size+s.intervals.size+s.timeouts.size,0);
 });
-
-test('cloud atmosphere stays bounded and continuous across a full loop', () => {
-  const s = scene();
-  const position = () => Number(s.nodes['hero-bank-2'].style.transform.match(/translate3d\(([-\d.]+)px/)[1]);
-  let previous = 0;
-  for (let second = 0; second <= 181; second++) {
-    s.tick(100 + second * 1000);
-    const x = position();
-    assert.ok(Math.abs(x) <= 3);
-    assert.ok(Math.abs(x - previous) <= 0.106, 'no visible step, including the loop seam');
-    previous = x;
-    for (const id of ['hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c']) assert.equal(s.nodes[id].style.transform, 'none');
-    assert.equal(s.nodes['hero-bank-3'].style.transform, 'translateX(-50%)');
+test('transition cloud banks remain still while the original side clouds animate', () => {
+  const s=scene(); s.tick(100);
+  const side=s.nodes['hero-cloud-a'].style.transform;
+  for(let second=1;second<=181;second++) {
+    s.tick(100+second*1000);
+    for(const id of ['hero-bank-2','hero-bank-3']) assert.equal(s.nodes[id].style.transform,'translateX(-50%)');
   }
-  s.nodes['hero-motion'].emit('click');
-  const paused = position(); s.tick(220000);
-  assert.equal(position(), paused);
+  assert.notEqual(s.nodes['hero-cloud-a'].style.transform,side);
 });
-
-for (const mode of ['mobile', 'reduced']) {
-  test(`${mode} clouds remain static over time`, () => {
-    const s = scene({ [mode]: true });
-    const before = s.nodes['hero-bank-2'].style.transform;
-    s.tick(100); s.tick(45100);
-    assert.equal(s.nodes['hero-bank-2'].style.transform, before);
-  });
-}

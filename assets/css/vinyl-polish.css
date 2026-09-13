@@ -1,7 +1,8 @@
-/* Match the existing first section without replacing the cloud artwork. */
-@media(min-width:860px) {
- .hero::after { content:''; position:absolute; z-index:6; left:0; right:0; bottom:-1px; height:clamp(90px,15vh,160px); pointer-events:none; background:linear-gradient(180deg,#F3E4D600 0%,#F3E4D655 35%,#F3E4D6 100%); }
-}
+/* The lower cloud bank dissolves into the next section on every viewport. */
+.hero::after { content:''; position:absolute; z-index:6; left:0; right:0; bottom:-1px; height:clamp(150px,24vh,240px); pointer-events:none; background:linear-gradient(180deg,#F3E4D600 0%,#F3E4D644 30%,#F3E4D6bb 70%,#F3E4D6 100%); }
+.hero__bank--2 { opacity:.72; }
+.hero__bank--3 { opacity:.55; }
+@media(max-width:859px) { .hero::after { height:150px; } }
 .hero__motion { z-index:11; }
 /* Play belongs to the record, rather than to the whole demonstration card. */
 .delivery-record { position:relative; flex-shrink:0; }

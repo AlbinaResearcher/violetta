@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="assets/css/hero.css?v=single-screen-2">
 <link rel="stylesheet" href="assets/css/sections.css?v=brand-7">
-<link rel="stylesheet" href="assets/css/restoration.css?v=restore-3"><link rel="stylesheet" href="assets/css/refinement.css?v=editorial-1">
+<link rel="stylesheet" href="assets/css/restoration.css?v=restore-3"><link rel="stylesheet" href="assets/css/refinement.css?v=editorial-1"><link rel="stylesheet" href="assets/css/round-two.css?v=polish-1">
 </head>
 <body>
 
@@ -204,7 +204,7 @@
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;" class="section-heading">
       <div style="min-width: 0;">
         <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6E5263;">Примеры песен</span>
-        <h2 style="font-family: &quot;Playfair Display&quot;, Georgia, serif; font-weight: 500; letter-spacing: -0.02em; max-width: 20ch;" class="section-title labelled-title">Пять историй. <em>Пять песен.</em></h2>
+        <h2 style="font-family: &quot;Playfair Display&quot;, Georgia, serif; font-weight: 500; letter-spacing: -0.02em; max-width: 20ch;" class="section-title labelled-title">Личные истории <em>в музыке</em></h2>
       </div>
 
     </div>
@@ -232,9 +232,9 @@
             </button>
           </div><div style="display: grid; align-items: start;" class="examples-grid">
 
-      <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: clamp(18px, 1.8vw, 24px); overflow: hidden; box-shadow: 0 22px 52px rgba(120, 74, 104, 0.18);" class="example-art">
-        <img id="song-cover" src="assets/img/song-cover-1.webp" alt="Обложка песни «Дом, где тебя ждут»" width="800" height="800" loading="lazy" decoding="async">
-      </div>
+      <div class="example-art">
+
+      <button id="song-cover-play" type="button" class="cover-control" disabled="" aria-label="Обложка песни «Дом, где тебя ждут»" aria-pressed="false"><img id="song-cover" src="assets/img/song-cover-1.webp" alt="Обложка песни «Дом, где тебя ждут»" width="800" height="800" loading="lazy" decoding="async"><span class="cover-play" aria-hidden="true"><span class="play-glyph"></span></span></button></div>
 
       <div class="song-column">
 
@@ -248,15 +248,13 @@
           <span style="display: inline-flex; align-items: center; padding: 5px 13px; border-radius: 999px; background: rgba(201, 69, 92, 0.12); font-size: 13px; font-weight: 600; color: #A5304A;" id="song-genre">Лирическая эстрада</span>
         </div>
 
-        <div id="song-media" hidden=""><div style="width: 100%; display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(18px, 2.2vw, 26px);" class="song-player">
+        <div id="song-media" hidden=""><div style="width: 100%; display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(18px, 2.2vw, 26px);" class="song-player compact-player">
           <button type="button" aria-label="Аудио скоро появится" style="flex: 0 0 auto;width: 54px;height: 54px;border: 0;border-radius: 50%;cursor: pointer;display: flex;align-items: center;justify-content: center;box-shadow: 0 12px 28px rgba(44, 33, 68, 0.26);transition: background 180ms ease, transform 180ms ease;" class="interaction-1 interaction-2 interaction-3 authored-control-7" id="song-play" disabled="">
             <span class="play-glyph"></span>
           </button>
 
           <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-            <div style="display: flex; align-items: flex-end; gap: 3px; height: 28px;" id="song-wave" aria-hidden="true">
-                <span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:10px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:10px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:13px" class="wave-bar"></span><span style="height:19px" class="wave-bar"></span><span style="height:18px" class="wave-bar"></span><span style="height:12px" class="wave-bar"></span><span style="height:14px" class="wave-bar"></span><span style="height:20px" class="wave-bar"></span><span style="height:17px" class="wave-bar"></span><span style="height:11px" class="wave-bar"></span><span style="height:15px" class="wave-bar"></span><span style="height:21px" class="wave-bar"></span><span style="height:16px" class="wave-bar"></span>
-</div>
+
             <div style="display: flex; justify-content: space-between; font-size: 12px; font-variant-numeric: tabular-nums; color: #675A78;">
               <span id="song-current">0:00</span>
               <span id="song-duration">—:—</span>
@@ -283,14 +281,11 @@
 <section id="pricing" data-screen-label="Цены" style="font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #F6EEE6 0%, #F8E7E6 34%, #F5DEE6 68%, #EDE0F3 100%);" class="content-section">
   <div style="margin: 0px auto;" class="section-container">
 
-    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;" class="section-heading">
-      <h2 style="margin: 0px; font-family: &quot;Playfair Display&quot;, Georgia, serif; font-weight: 500; letter-spacing: -0.02em; max-width: 20ch;" class="section-title">Песня под ключ <em>— 990 ₽</em></h2>
 
-    </div>
 
-    <div style="align-items: stretch;" class="pricing-grid">
+    <div style="align-items: stretch; margin-top: 0px;" class="pricing-grid">
 
-      <article style="flex: 1.7 1 min(100%, 520px); border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 20px 50px rgba(120, 74, 104, 0.08); display: grid; align-items: start;" class="price-card"><div class="price-promise"><p class="price-composition">Текст · музыка · вокал · готовый трек</p><p class="price-terms">100% предоплата · правки в рамках задания бесплатно</p><a href="#request" class="button-primary" data-product="song">Заказать песню</a></div><div class="price-includes"><h3>В стоимость входит</h3><ul><li>Персональный текст</li><li>Музыка и вокал</li><li>Финальная обработка</li><li>Готовый трек</li></ul></div></article>
+      <article style="flex: 1.7 1 min(100%, 520px); border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 20px 50px rgba(120, 74, 104, 0.08); display: grid; align-items: start;" class="price-card"><div class="price-heading"><span class="price-kicker">Всё включено</span><h2 class="price-amount">990 <span>₽</span></h2><p class="price-description">Персональная песня под ключ</p></div><p class="price-terms">100% предоплата · правки в рамках задания бесплатно</p><ul class="included-list"><li>Персональный текст</li><li>Музыка и вокал</li><li>Финальная обработка</li><li>Готовый трек</li></ul><a href="#request" class="button-primary" data-product="song">Заказать песню <span aria-hidden="true">↗</span></a></article>
 
       <div style="flex: 1 1 min(100%, 320px); display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); min-width: 0;" class="gift-options">
         <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.15;">Дополнительные подарки</span>
@@ -396,107 +391,15 @@
     <div style="flex: 1 1 min(100%, 300px); display: flex; flex-direction: column; align-items: flex-start; min-width: 0;">
       <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A5304A;">Заявка</span>
       <h2 style="font-family: &quot;Playfair Display&quot;, Georgia, serif; font-weight: 500; letter-spacing: -0.02em;" class="section-title labelled-title">Расскажите, <em>для кого эта песня</em></h2>
-      <p style="margin: clamp(14px, 1.8vw, 22px) 0 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.6; color: #5C4E70; max-width: 32ch;">Заполните за пару минут — детали уточним в переписке.</p>
+      <p style="margin: clamp(14px, 1.8vw, 22px) 0 0; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.6; color: #5C4E70; max-width: 32ch;">Детали вашей истории уточним в переписке.</p>
 
     </div>
 
-    <form style="display: flex; flex: 1.6 1 min(100%, 520px); border-radius: clamp(22px, 2.4vw, 32px); background: rgba(255, 252, 250, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 22px 56px rgba(120, 74, 104, 0.08); flex-direction: column;" id="request-form" class="request-form" method="post">
+    <form style="display: flex; flex: 1.6 1 min(100%, 520px); border-radius: clamp(22px, 2.4vw, 32px); background: rgba(255, 252, 250, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 22px 56px rgba(120, 74, 104, 0.08); flex-direction: column;" id="request-form" class="request-form" method="post"><div class="request-selects"><fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;"><label for="recipient">Для кого песня?</label><select id="recipient" name="recipient" required=""><option value="">Выберите</option><option value="0">Любимому человеку</option><option value="1">Маме</option><option value="2">Папе</option><option value="3">Бабушке</option><option value="4">Дедушке</option><option value="5">Другу или подруге</option><option value="6">Ребёнку</option><option value="7">Учителю</option><option value="8">Коллеге</option><option value="9">Другому человеку</option></select></fieldset><fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;"><label for="occasion">Какой повод?</label><select id="occasion" name="occasion" required=""><option value="">Выберите</option><option value="0">День рождения</option><option value="1">Юбилей</option><option value="2">Годовщина</option><option value="3">Свадьба</option><option value="4">Выпускной</option><option value="5">Последний звонок</option><option value="6">Рождение ребёнка</option><option value="7">Просто так</option><option value="8">Проводы</option><option value="9">Новый год</option><option value="10">Другой повод</option></select></fieldset></div>
 
-      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
-        <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Для кого будет эта песня?</legend>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;" class="choice-group recipient-choices">
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="0" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💗</span>
-              <span>Любимому человеку</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="1" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👩</span>
-              <span>Маме</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="2" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👨</span>
-              <span>Папе</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="3" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👵</span>
-              <span>Бабушке</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="4" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👴</span>
-              <span>Дедушке</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="5" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🫶</span>
-              <span>Другу или подруге</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="6" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🧸</span>
-              <span>Ребёнку</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="7" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👩‍🏫</span>
-              <span>Учителю</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="8" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💼</span>
-              <span>Коллеге</span>
-            </span></label>
-          <label class="choice recipient-choice"><input type="radio" name="recipient" value="9" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">✨</span>
-              <span>Другому человеку</span>
-            </span></label>
-          </div>
-        </fieldset>
 
-      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
-        <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">А какой повод?</legend>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;" class="choice-group occasion-choices">
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="0" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎂</span>
-              <span>День рождения</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="1" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🥂</span>
-              <span>Юбилей</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="2" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💞</span>
-              <span>Годовщина</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="3" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💍</span>
-              <span>Свадьба</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="4" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎓</span>
-              <span>Выпускной</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="5" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🔔</span>
-              <span>Последний звонок</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="6" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👶</span>
-              <span>Рождение ребёнка</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="7" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">💌</span>
-              <span>Просто так</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="8" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">👋</span>
-              <span>Проводы</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="9" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">🎄</span>
-              <span>Новый год</span>
-            </span></label>
-          <label class="choice occasion-choice"><input type="radio" name="occasion" value="10" required=""><span class="choice-label">
-              <span aria-hidden="true" style="font-size: 17px; line-height: 1;">✨</span>
-              <span>Другой повод</span>
-            </span></label>
-          </div>
-        </fieldset>
+
+
 
       <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
         <legend style="padding: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Что хотите подарить?</legend>
@@ -532,14 +435,14 @@
           </div>
       </fieldset>
 
-      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;" class="request-channel">
           <legend style="padding: 0 0 10px; font-size: 16px; font-weight: 600; color: #3A2C55;">Как удобно связаться?</legend>
           <div style="display: inline-flex; flex-wrap: wrap; gap: 5px; padding: 5px; border-radius: 999px; background: rgba(237, 225, 235, 0.7);" class="choice-group channel-choices">
             <label class="choice channel-choice"><input type="radio" name="channel" value="telegram" required="" checked=""><span class="choice-label">Telegram</span></label>
             <label class="choice channel-choice"><input type="radio" name="channel" value="vk" required=""><span class="choice-label">ВКонтакте</span></label>
             <label class="choice channel-choice"><input type="radio" name="channel" value="avito" required=""><span class="choice-label">Авито</span></label>
             </div>
-        </fieldset><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(16px, 2vw, 26px);">
+        </fieldset><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(16px, 2vw, 26px);" class="request-contact-row">
         <div style="min-width: 0;">
           <label for="name" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Как вас зовут?</label>
           <input id="name" type="text" placeholder="Например, Вера" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="name" maxlength="100" autocomplete="name">
@@ -552,7 +455,7 @@
 </div>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;" class="request-action">
 
 
         <button type="submit" style="flex: 1 1 220px;max-width: 320px;height: 56px;border: 0;border-radius: 999px;color: #FDFCFB;font-family: Manrope, system-ui, sans-serif;font-size: 16px;font-weight: 600;cursor: pointer;transition: background 180ms ease, transform 180ms ease;" class="interaction-14 interaction-2 interaction-3 authored-control-13" id="request-submit" disabled="">Подготовить заявку</button>
@@ -563,9 +466,9 @@
 <noscript><p>Для подготовки заявки включите JavaScript или <a href="https://t.me/vivo_support">напишите менеджеру в Telegram</a>.</p></noscript>
 </form>
   <div id="request-handoff" class="request-handoff" hidden="" tabindex="-1">
-<h3>Ещё один шаг — и мы на связи</h3>
-<p>Скопируйте заявку и отправьте её менеджеру в Telegram. Он уточнит детали и удобный способ дальнейшего общения.</p>
-<label for="request-message">Ваша заявка</label><textarea id="request-message" readonly="" rows="9"></textarea>
+<h3>Ваша заявка готова</h3>
+<p>Скопируйте текст и отправьте менеджеру в Telegram.</p>
+<label for="request-message">Ваша заявка</label><textarea id="request-message" readonly="" rows="6"></textarea>
 <div class="handoff-actions">
 <button type="button" id="copy-request" class="button-primary">Скопировать заявку</button><a class="button-primary" href="https://t.me/vivo_support" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a>
 </div>
@@ -593,8 +496,9 @@
   </div>
 </footer>
 
-<script src="assets/js/hero.js?v=editorial-1"></script>
-<script src="assets/js/site-data.js?v=editorial-1"></script><script src="assets/js/request-core.js?v=editorial-1"></script><script src="assets/js/landing.js?v=editorial-1"></script>
+<script src="assets/js/hero.js?v=polish-1"></script>
+<script src="assets/js/site-data.js?v=polish-1"></script><script src="assets/js/request-core.js?v=polish-1"></script><script src="assets/js/landing.js?v=polish-1"></script>
+
 
 
 

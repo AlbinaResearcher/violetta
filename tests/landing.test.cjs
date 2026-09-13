@@ -124,6 +124,32 @@ test('media progress and play state come from audio events when a source is conf
   assert.equal(d.getElementById('song-audio').hasAttribute('src'), false);
 });
 
+test('cover toggles playback and switching tracks keeps one synchronized player', async t => {
+  const { w, d } = setup(t);
+  const audio = d.getElementById('song-audio'), cover = d.getElementById('song-cover-play');
+  Object.defineProperty(audio, 'paused', { value: true, writable: true });
+  audio.pause = function () { this.paused = true; this.dispatchEvent(new w.Event('pause')); };
+  audio.play = async function () { this.paused = false; this.dispatchEvent(new w.Event('playing')); };
+  w.VivobitData.songs[0].audioSrc = 'one.mp3';
+  w.VivobitData.songs[1].audioSrc = 'two.mp3';
+  // Keyboard selection configures the first track without autoplay.
+  d.getElementById('song-tab-1').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Home' }));
+  assert.equal(audio.paused, true);
+  cover.click(); await Promise.resolve();
+  assert.equal(audio.paused, false);
+  assert.equal(cover.getAttribute('aria-pressed'), 'true');
+  cover.click(); assert.equal(audio.paused, true);
+  cover.click(); await Promise.resolve();
+  d.getElementById('song-tab-1').click(); await Promise.resolve();
+  assert.equal(audio.getAttribute('src'), 'two.mp3');
+  assert.equal(audio.paused, false);
+  assert.equal(d.querySelectorAll('audio').length, 1);
+  assert.equal(d.querySelectorAll('[data-playback="playing"]').length, 1);
+  assert.equal(d.getElementById('song-tab-0').dataset.playback, 'idle');
+  w.dispatchEvent(new w.Event('pagehide'));
+  assert.equal(audio.paused, true);
+});
+
 test('valid request becomes an editable message, with no false delivery confirmation', async t => {
   const { w, d } = setup(t);
   const form = fillRequest(w, d);
@@ -235,7 +261,7 @@ test('missing choice has a visible associated error and keeps previously entered
   assert.match(first.getAttribute('aria-describedby'), /recipient-error/);
   assert.equal(d.getElementById('recipient-error').hidden, false);
   assert.equal(form.elements.name.value, 'Анна-Мария');
-  first.checked = true;
+  first.value = '1';
   first.dispatchEvent(new w.Event('change', { bubbles: true }));
   assert.equal(first.hasAttribute('aria-invalid'), false);
   assert.equal(d.getElementById('recipient-error').hidden, true);

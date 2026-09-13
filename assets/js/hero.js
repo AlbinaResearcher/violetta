@@ -125,21 +125,21 @@
 
     // Горизонтальный дрейф: разные периоды и амплитуды у каждого облака.
     el.cloudA.style.transform =
-      "translate3d(" + (Math.sin(t / 7.5) * 26).toFixed(1) + "px, " +
-      (Math.sin(t / 5.1) * 6).toFixed(1) + "px, 0)";
+      "translate3d(" + (Math.sin(t / 15) * 8).toFixed(1) + "px, " +
+      (Math.sin(t / 19) * 2).toFixed(1) + "px, 0)";
     el.cloudB.style.transform =
-      "translate3d(" + (Math.sin(t / 9.2 + 2) * -30).toFixed(1) + "px, " +
-      (Math.sin(t / 6.3 + 1) * 5).toFixed(1) + "px, 0)";
+      "translate3d(" + (Math.sin(t / 18 + 2) * -9).toFixed(1) + "px, " +
+      (Math.sin(t / 21 + 1) * 2).toFixed(1) + "px, 0)";
     el.cloudC.style.transform =
-      "translate3d(" + (Math.sin(t / 11 + 4) * -20).toFixed(1) + "px, " +
-      (Math.sin(t / 7.7 + 3) * 7).toFixed(1) + "px, 0)";
+      "translate3d(" + (Math.sin(t / 22 + 4) * -6).toFixed(1) + "px, " +
+      (Math.sin(t / 24 + 3) * 2).toFixed(1) + "px, 0)";
 
     // Закатные слои поднимаются с наложением и разным масштабом.
     el.bank2.style.transform =
-      "translateX(-50%) translate3d(" + (Math.sin(t / 14) * 10).toFixed(1) + "px, " +
+      "translateX(-50%) translate3d(" + (Math.sin(t / 25) * 3).toFixed(1) + "px, " +
       (p * 16).toFixed(1) + "%, 0) scale(" + (1 + p * 0.1).toFixed(3) + ")";
     el.bank3.style.transform =
-      "translateX(-50%) translate3d(" + (Math.sin(t / 17 + 2) * -14).toFixed(1) + "px, " +
+      "translateX(-50%) translate3d(" + (Math.sin(t / 29 + 2) * -4).toFixed(1) + "px, " +
       (p * 11).toFixed(1) + "%, 0) scale(" + (1 + p * 0.06).toFixed(3) + ")";
 
     el.sky.style.transform = "translateY(" + (-p * 96).toFixed(2) + "svh)";

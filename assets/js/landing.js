@@ -53,6 +53,7 @@
   /* Examples: real HTMLAudioElement events, with an explicit missing-media state. */
   var audio = document.getElementById('song-audio');
   var play = document.getElementById('song-play');
+  var coverPlay = document.getElementById('song-cover-play');
   var seek = document.getElementById('song-seek');
   var status = document.getElementById('song-status');
   var tabs = Array.from(document.querySelectorAll('[data-song]'));
@@ -65,6 +66,13 @@
   function setPlaying(playing) {
     play.dataset.playing = String(playing);
     play.setAttribute('aria-label', playing ? 'Пауза' : 'Слушать');
+    var song = data.songs[activeSong];
+    coverPlay.dataset.playing = String(playing);
+    coverPlay.setAttribute('aria-pressed', String(playing));
+    coverPlay.setAttribute('aria-label', song.audioSrc ? (playing ? 'Пауза: ' : 'Слушать: ') + song.title : 'Обложка песни «' + song.title + '»');
+    tabs.forEach(function (tab, index) {
+      tab.dataset.playback = index === activeSong && song.audioSrc ? (playing ? 'playing' : 'paused') : 'idle';
+    });
   }
   function updateTime() {
     var duration = audio.duration;
@@ -101,6 +109,7 @@
     document.getElementById('song-panel').setAttribute('aria-labelledby', tabs[index].id);
     setPlaying(false);
     play.disabled = !song.audioSrc;
+    coverPlay.disabled = !song.audioSrc;
     document.getElementById('song-media').hidden = !song.audioSrc;
     status.textContent = song.audioSrc ? 'Нажмите, чтобы послушать.' : '';
     if (song.audioSrc) audio.src = song.audioSrc;
@@ -109,7 +118,10 @@
     if (focus) tabs[index].focus();
   }
   tabs.forEach(function (tab, index) {
-    tab.addEventListener('click', function () { selectSong(index, false); });
+    tab.addEventListener('click', function () {
+      if (index !== activeSong) selectSong(index, false);
+      togglePlayback();
+    });
     tab.addEventListener('keydown', function (event) {
       var next;
       if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
@@ -119,7 +131,7 @@
       if (next !== undefined) { event.preventDefault(); selectSong(next, true); }
     });
   });
-  play.addEventListener('click', async function () {
+  async function togglePlayback() {
     if (!data.songs[activeSong].audioSrc) return;
     if (!audio.paused) { audio.pause(); return; }
     var generation = mediaGeneration;
@@ -130,7 +142,10 @@
       setPlaying(false);
       status.textContent = 'Не удалось включить песню. Попробуйте ещё раз.';
     }
-  });
+  }
+  play.addEventListener('click', togglePlayback);
+  coverPlay.addEventListener('click', togglePlayback);
+  window.addEventListener('pagehide', function () { audio.pause(); });
   audio.addEventListener('playing', function () { setPlaying(true); status.textContent = 'Воспроизводится'; });
   audio.addEventListener('pause', function () {
     setPlaying(false);

@@ -56,7 +56,6 @@
     bank2: document.getElementById("hero-bank-2"),
     bank3: document.getElementById("hero-bank-3"),
     content: document.getElementById("hero-content"),
-    next: document.getElementById("hero-next"),
     word: document.getElementById("hero-word"),
     script: document.getElementById("hero-script"),
     ending: document.getElementById("hero-ending")
@@ -110,7 +109,6 @@
     renderedStatic = staticScene;
 
     // Тизер второго экрана проявляется во второй половине скролла.
-    var nt = 0;
     // Ночная часть сцены гаснет по мере подъёма закатных слоёв.
     var dim = 1 - Math.min(1, p * 1.4);
 
@@ -159,10 +157,6 @@
     el.content.inert = contentHidden;
     el.content.setAttribute("aria-hidden", String(contentHidden));
 
-    el.next.setAttribute("aria-hidden", String(nt === 0));
-    el.next.style.visibility = nt === 0 ? "hidden" : "visible";
-    el.next.style.opacity = nt.toFixed(3);
-    el.next.style.transform = "translateY(" + ((1 - nt) * 26).toFixed(1) + "px)";
 
   }
 

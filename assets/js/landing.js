@@ -101,7 +101,8 @@
     document.getElementById('song-panel').setAttribute('aria-labelledby', tabs[index].id);
     setPlaying(false);
     play.disabled = !song.audioSrc;
-    status.textContent = song.audioSrc ? 'Нажмите, чтобы послушать.' : 'Аудиопример скоро появится.';
+    document.getElementById('song-media').hidden = !song.audioSrc;
+    status.textContent = song.audioSrc ? 'Нажмите, чтобы послушать.' : '';
     if (song.audioSrc) audio.src = song.audioSrc;
     else play.setAttribute('aria-label', 'Аудио скоро появится');
     updateTime();
@@ -157,8 +158,8 @@
   var message = document.getElementById('request-message');
   var channels = {
     telegram: ['Ваш Telegram', '@nickname', 'Например, @nickname или t.me/nickname.'],
-    vk: ['Ссылка на страницу', 'vk.com/...', 'Укажите ссылку на вашу страницу ВКонтакте.'],
-    avito: ['Ссылка на профиль Авито', 'avito.ru/user/…', 'Скопируйте ссылку на свой профиль Авито: avito.ru/user/… или avito.ru/brands/…']
+    vk: ['Ссылка на ВКонтакте', 'vk.com/...', 'Ссылка на вашу страницу ВКонтакте.'],
+    avito: ['Профиль Авито', 'avito.ru/user/…', 'Ссылка вида avito.ru/user/… или avito.ru/brands/…']
   };
   var contactDrafts = {};
   var previousChannel = form.elements.channel.value;

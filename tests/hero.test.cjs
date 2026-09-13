@@ -26,7 +26,7 @@ function scene({ reduced = false, short = false } = {}) {
       focus() { document.activeElement = this; }
     });
   }
-  const nodes = Object.fromEntries(['hero', 'hero-motion', 'brand', 'hero-sky', 'hero-stars', 'hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c', 'hero-bank-2', 'hero-bank-3', 'hero-content', 'hero-next', 'hero-word', 'hero-script', 'hero-ending'].map(k => [k, element()]));
+  const nodes = Object.fromEntries(['hero', 'hero-motion', 'brand', 'hero-sky', 'hero-stars', 'hero-cloud-a', 'hero-cloud-b', 'hero-cloud-c', 'hero-bank-2', 'hero-bank-3', 'hero-content', 'hero-word', 'hero-script', 'hero-ending'].map(k => [k, element()]));
   const media = {
     '(prefers-reduced-motion: reduce)': Object.assign(target(), { matches: reduced }),
     '(max-height: 650px)': Object.assign(target(), { matches: short })
@@ -105,7 +105,6 @@ for (const mode of ['reduced', 'short']) {
     s.scroll(2000);
     assert.equal(s.nodes['hero-content'].style.opacity, '1.000');
     assert.equal(s.nodes['hero-content'].inert, false);
-    assert.equal(s.nodes['hero-next'].style.opacity, '0.000');
     assert.equal(s.frame.size + s.intervals.size + s.timeouts.size, 0);
   });
 }

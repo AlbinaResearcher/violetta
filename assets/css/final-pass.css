@@ -1,6 +1,6 @@
 .pricing-intro { max-width:1060px; margin:0 auto 32px; }
 .pricing-intro > span { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--focus); font-weight:700; }
-.pricing-intro h2 { margin:10px 0 12px; max-width:24ch !important; }
+.pricing-intro h2 { margin:10px 0 12px; max-width:24ch !important; font-family:'Playfair Display',Georgia,serif; font-weight:500; letter-spacing:-.02em; }
 .pricing-intro p { font-size:16px; color:var(--muted); margin:0; }
 .cover-control #song-cover { transition:transform 240ms; }
 .cover-control:hover #song-cover { transform:scale(1.02); }

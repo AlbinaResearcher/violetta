@@ -69,21 +69,20 @@ test('pause during word exit cancels all clocks and restores a readable word', (
   assert.equal(s.intervals.size, 1);
 });
 
-test('hidden CTA is inert and focused content transfers to visible navigation', () => {
+test('natural scrolling keeps content visible and pauses only after the viewport', () => {
   const s = scene();
   s.document.activeElement = s.nodes['hero-content'];
   s.scroll(700);
-  assert.equal(s.nodes['hero-content'].inert, true);
-  assert.equal(s.nodes['hero-content'].attributes['aria-hidden'], 'true');
-  assert.equal(s.document.activeElement, s.nodes.brand);
-  assert.equal(s.nodes['hero-next'].attributes['aria-hidden'], 'false');
-  assert.equal(s.frame.size + s.intervals.size, 0);
-  s.scroll(0);
   assert.equal(s.nodes['hero-content'].inert, false);
-  assert.equal(s.nodes['hero-next'].style.visibility, 'hidden');
+  assert.equal(s.nodes['hero-content'].style.opacity, '1.000');
+  assert.equal(s.document.activeElement, s.nodes['hero-content']);
+  assert.equal(s.frame.size, 1);
+  s.scroll(1000);
+  assert.equal(s.frame.size + s.intervals.size, 0);
+  assert.equal(s.nodes['hero-content'].inert, false);
+  s.scroll(0);
   assert.equal(s.frame.size, 1);
 });
-
 test('background tab suspends clocks; resuming does not jump elapsed animation time', () => {
   const s = scene();
   s.tick(100); s.tick(200);
@@ -106,7 +105,7 @@ for (const mode of ['reduced', 'short']) {
     s.scroll(2000);
     assert.equal(s.nodes['hero-content'].style.opacity, '1.000');
     assert.equal(s.nodes['hero-content'].inert, false);
-    assert.equal(s.nodes['hero-next'].style.opacity, '1.000');
+    assert.equal(s.nodes['hero-next'].style.opacity, '0.000');
     assert.equal(s.frame.size + s.intervals.size + s.timeouts.size, 0);
   });
 }

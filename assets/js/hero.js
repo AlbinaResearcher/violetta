@@ -105,12 +105,12 @@
 
   function render() {
     var t = state.t;
-    var p = state.p;
-    renderedProgress = p;
+    var p = 0; // The scene no longer transforms in response to scrolling.
+    renderedProgress = state.p;
     renderedStatic = staticScene;
 
     // Тизер второго экрана проявляется во второй половине скролла.
-    var nt = staticScene ? 1 : clamp01((p - 0.45) / 0.4);
+    var nt = 0;
     // Ночная часть сцены гаснет по мере подъёма закатных слоёв.
     var dim = 1 - Math.min(1, p * 1.4);
 
@@ -242,8 +242,8 @@
 
   function onScroll() {
     var vh = el.hero.clientHeight || document.documentElement.clientHeight || 1;
-    var distance = window.innerWidth <= 600 ? 0.55 : 0.85;
-    state.p = staticScene ? 0 : clamp01(window.scrollY / (vh * distance));
+    // Only pause clocks after the whole hero has left the viewport.
+    state.p = window.scrollY >= vh ? 1 : 0;
     if (renderedProgress !== state.p || renderedStatic !== staticScene) render();
     syncAnimation();
   }

@@ -41,17 +41,15 @@ body {
 /* Липкий первый экран + полоса прокрутки под ним: скролл по этой полосе
    поднимает закатные слои и раскрывает тизер второго экрана. */
 .hero {
-  position: sticky;
+  position: relative;
   top: 0;
-  height: 100svh;
+  min-height: 100svh;
   overflow: hidden;
   background: #F3E4D6;
   color: #FDFCFB;
 }
 
-.hero-spacer {
-  height: 85svh;
-}
+
 
 /* --------------------------------------------------------------------------
    Тизер второго экрана
@@ -399,10 +397,7 @@ html:not(.hero-enhanced) .hero__next,
   opacity: 1;
 }
 
-html:not(.hero-enhanced) .hero-spacer,
-.hero--static + .hero-spacer {
-  display: none;
-}
+
 
 @media (max-height: 650px) {
   .hero__title {

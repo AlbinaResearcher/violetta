@@ -144,7 +144,7 @@ body > div > header a { min-height: 44px; display: inline-flex; align-items: cen
   .mobile-menu:not([hidden]), .faq-item[open] .faq-answer { animation: disclosure-in 160ms ease-out; }
 }
 @media (max-width: 600px) {
-  .hero-spacer { height: 55svh; }
+
   .hero__title { font-size: clamp(32px, 8.8vw, 36px); max-width: 100%; }
   .hero__content { padding-top: max(104px, 13svh); }
   .hero__lede { max-width: 30ch; }

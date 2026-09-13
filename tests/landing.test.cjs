@@ -89,16 +89,27 @@ test('tariff CTA selects the corresponding package without discarding the form',
   }
 });
 
-test('song tabs support arrow keys and never simulate playback for missing audio', t => {
+test('song tabs support arrow keys and prototype playback never loads missing audio', t => {
   const { w, d } = setup(t);
   d.getElementById('song-tab-0').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'End', bubbles: true }));
   assert.equal(d.activeElement.id, 'song-tab-4');
   assert.equal(d.getElementById('song-title').textContent, 'Папина пластинка');
   assert.equal(d.querySelectorAll('[role="tab"][tabindex="0"]').length, 1);
-  assert.equal(d.getElementById('song-play').disabled, true);
+  assert.equal(d.getElementById('song-play').disabled, false);
   assert.equal(d.getElementById('song-current').textContent, '0:00');
   assert.equal(d.getElementById('song-audio').hasAttribute('src'), false);
-  assert.equal(d.getElementById('song-media').hidden, true);
+  assert.equal(d.getElementById('song-media').hidden, false);
+  const audio = d.getElementById('song-audio');
+  audio.load = audio.play = () => { throw new Error('Prototype must not load media'); };
+  const cover = d.getElementById('song-cover-play');
+  cover.click();
+  assert.equal(cover.getAttribute('aria-pressed'), 'true');
+  cover.click();
+  assert.equal(cover.getAttribute('aria-pressed'), 'false');
+  const seek = d.getElementById('song-seek');
+  seek.value = 50; seek.dispatchEvent(new w.Event('input'));
+  assert.equal(d.getElementById('song-current').textContent, '1:35');
+  assert.equal(audio.hasAttribute('src'), false);
 });
 
 test('media progress and play state come from audio events when a source is configured', async t => {
@@ -120,7 +131,7 @@ test('media progress and play state come from audio events when a source is conf
   audio.dispatchEvent(new w.Event('error'));
   assert.match(d.getElementById('song-status').textContent, /недоступна/);
   d.getElementById('song-tab-0').click();
-  assert.equal(d.getElementById('song-media').hidden, true);
+  assert.equal(d.getElementById('song-media').hidden, false);
   assert.equal(d.getElementById('song-audio').hasAttribute('src'), false);
 });
 
@@ -145,7 +156,7 @@ test('cover toggles playback and switching tracks keeps one synchronized player'
   assert.equal(audio.paused, false);
   assert.equal(d.querySelectorAll('audio').length, 1);
   assert.equal(d.querySelectorAll('[data-playback="playing"]').length, 1);
-  assert.equal(d.getElementById('song-tab-0').dataset.playback, 'idle');
+  assert.equal(d.getElementById('song-tab-0').dataset.playback, 'paused');
   w.dispatchEvent(new w.Event('pagehide'));
   assert.equal(audio.paused, true);
 });

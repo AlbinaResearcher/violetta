@@ -10,17 +10,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&amp;family=Marck+Script&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/hero.css?v=single-screen-2">
-<link rel="stylesheet" href="assets/css/sections.css?v=brand-7">
-<link rel="stylesheet" href="assets/css/restoration.css?v=restore-3"><link rel="stylesheet" href="assets/css/refinement.css?v=editorial-1"><link rel="stylesheet" href="assets/css/round-two.css?v=polish-1">
+<link rel="stylesheet" href="assets/css/hero.css?v=final-1">
+<link rel="stylesheet" href="assets/css/sections.css?v=final-1">
+<link rel="stylesheet" href="assets/css/restoration.css?v=final-1"><link rel="stylesheet" href="assets/css/refinement.css?v=final-1"><link rel="stylesheet" href="assets/css/round-two.css?v=final-1"><link rel="stylesheet" href="assets/css/final-pass.css?v=final-1">
 </head>
-<body>
+<body id="top">
 
 <a class="skip-link" href="#how">Перейти к содержимому</a><header class="site-header"><div class="header-row">
-<a class="nav__brand" href="#top" aria-label="Вивобит — на главную"><img class="brand-logo" src="assets/img/vivobit-logo.webp" width="1000" height="285" alt="Вивобит"></a><nav class="desktop-nav" aria-label="Основная навигация"><a href="#how">Как это работает</a><a href="#examples">Примеры</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a></nav><a class="nav__cta header-cta" href="#request">Создать песню</a><button class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" hidden=""><span></span><span></span><span></span></button>
+<a class="nav__brand" href="#top" aria-label="Вивобит — на главную"><img class="brand-logo" src="assets/img/vivobit-logo.webp" width="1000" height="285" alt="Вивобит"></a><nav class="desktop-nav" aria-label="Основная навигация"><a href="#how">Как это работает</a><a href="#examples">Примеры</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a></nav><a class="nav__cta header-cta" href="#request">Создать песню</a><button class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" hidden=""><span></span><span></span></button>
 </div>
 <nav id="mobile-menu" class="mobile-menu" aria-label="Мобильная навигация" hidden=""><a href="#how">Как это работает</a><a href="#examples">Примеры</a><a href="#pricing">Цена</a><a href="#faq">FAQ</a><a class="nav__cta" href="#request">Создать песню</a></nav></header><main class="page">
-  <div id="top" class="hero-scene">
+  <div class="hero-scene">
 <section class="hero" aria-label="Персональная песня">
 
     <!-- Ночное небо: закруглённая панель на кремовом фоне -->
@@ -249,7 +249,7 @@
         </div>
 
         <div id="song-media" hidden=""><div style="width: 100%; display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(18px, 2.2vw, 26px);" class="song-player compact-player">
-          <button type="button" aria-label="Аудио скоро появится" style="flex: 0 0 auto;width: 54px;height: 54px;border: 0;border-radius: 50%;cursor: pointer;display: flex;align-items: center;justify-content: center;box-shadow: 0 12px 28px rgba(44, 33, 68, 0.26);transition: background 180ms ease, transform 180ms ease;" class="interaction-1 interaction-2 interaction-3 authored-control-7" id="song-play" disabled="">
+          <button type="button" aria-label="Слушать" style="flex: 0 0 auto;width: 54px;height: 54px;border: 0;border-radius: 50%;cursor: pointer;display: flex;align-items: center;justify-content: center;box-shadow: 0 12px 28px rgba(44, 33, 68, 0.26);transition: background 180ms ease, transform 180ms ease;" class="interaction-1 interaction-2 interaction-3 authored-control-7" id="song-play" disabled="">
             <span class="play-glyph"></span>
           </button>
 
@@ -257,7 +257,7 @@
 
             <div style="display: flex; justify-content: space-between; font-size: 12px; font-variant-numeric: tabular-nums; color: #675A78;">
               <span id="song-current">0:00</span>
-              <span id="song-duration">—:—</span>
+              <span id="song-duration">2:47</span>
             </div>
           </div>
         </div><audio id="song-audio" preload="none"></audio><input id="song-seek" class="song-seek" type="range" min="0" max="100" value="0" step="0.1" disabled="" aria-label="Позиция воспроизведения"><p id="song-status" class="media-note" role="status"></p></div>
@@ -279,13 +279,13 @@
 </section>
 
 <section id="pricing" data-screen-label="Цены" style="font-family: Manrope, system-ui, sans-serif; color: rgb(44, 33, 68); background: linear-gradient(180deg, #F6EEE6 0%, #F8E7E6 34%, #F5DEE6 68%, #EDE0F3 100%);" class="content-section">
-  <div style="margin: 0px auto;" class="section-container">
+  <div style="margin: 0px auto;" class="section-container"><div class="pricing-intro"><span>Стоимость</span><h2 class="section-title">Одна песня. <em>Одна понятная цена.</em></h2><p>Всё необходимое уже включено.</p></div>
 
 
 
     <div style="align-items: stretch; margin-top: 0px;" class="pricing-grid">
 
-      <article style="flex: 1.7 1 min(100%, 520px); border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 20px 50px rgba(120, 74, 104, 0.08); display: grid; align-items: start;" class="price-card"><div class="price-heading"><span class="price-kicker">Всё включено</span><h2 class="price-amount">990 <span>₽</span></h2><p class="price-description">Персональная песня под ключ</p></div><p class="price-terms">100% предоплата · правки в рамках задания бесплатно</p><ul class="included-list"><li>Персональный текст</li><li>Музыка и вокал</li><li>Финальная обработка</li><li>Готовый трек</li></ul><a href="#request" class="button-primary" data-product="song">Заказать песню <span aria-hidden="true">↗</span></a></article>
+      <article style="flex: 1.7 1 min(100%, 520px); border-radius: clamp(20px, 2vw, 28px); background: rgba(255, 252, 250, 0.68); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 20px 50px rgba(120, 74, 104, 0.08); display: grid; align-items: start;" class="price-card"><div class="price-heading"><span class="price-kicker">Всё включено</span><p class="price-amount">990 <span>₽</span></p><p class="price-description">Персональная песня под ключ</p></div><p class="price-terms">100% предоплата · правки в рамках задания бесплатно</p><ul class="included-list"><li>Персональный текст</li><li>Музыка и вокал</li><li>Финальная обработка</li><li>Готовый трек</li></ul><a href="#request" class="button-primary" data-product="song">Заказать песню <span aria-hidden="true">↗</span></a></article>
 
       <div style="flex: 1 1 min(100%, 320px); display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); min-width: 0;" class="gift-options">
         <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.15;">Дополнительные подарки</span>
@@ -334,42 +334,42 @@
     <div style="min-width: 0; display: flex; flex-direction: column;">
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Насколько песня будет персональной?</span>
+            <span class="faq-question-text">Насколько песня будет персональной?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>На 100%. Имена, воспоминания, любимые фразы и ваши личные истории становятся частью текста. Никаких готовых шаблонов.</p></div>
         </details>
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Сколько времени создаётся песня?</span>
+            <span class="faq-question-text">Сколько времени создаётся песня?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>Обычно несколько часов с учётом согласований.</p></div>
         </details>
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">В каком стиле можно создать песню?</span>
+            <span class="faq-question-text">В каком стиле можно создать песню?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>Практически в любом: поп, рок, рэп, акустика, электроника, лирическая эстрада и другие. Если не знаете, что выбрать, мы подскажем.</p></div>
         </details>
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Песню создаёт человек или нейросеть?</span>
+            <span class="faq-question-text">Песню создаёт человек или нейросеть?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>Авторы работают с вашей историей и текстом, а AI помогает создавать музыку и вокал. Финальный результат мы проверяем и дорабатываем.</p></div>
         </details>
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">Можно добавить имена и настоящие истории?</span>
+            <span class="faq-question-text">Можно добавить имена и настоящие истории?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>Конечно. Именно такие детали и делают песню персональной.</p></div>
         </details>
       <details class="faq-item">
           <summary class="faq-question">
-            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.24; letter-spacing: -0.01em; color: inherit">А если песня мне не понравится?</span>
+            <span class="faq-question-text">А если песня мне не понравится?</span>
             <span aria-hidden="true" class="faq-sign"></span>
           </summary>
           <div class="faq-answer"><p>Правки в рамках согласованной истории и задания бесплатны. Если вы захотите полностью изменить концепцию, обсудим это отдельно.</p></div>
@@ -496,8 +496,10 @@
   </div>
 </footer>
 
-<script src="assets/js/hero.js?v=polish-1"></script>
-<script src="assets/js/site-data.js?v=polish-1"></script><script src="assets/js/request-core.js?v=polish-1"></script><script src="assets/js/landing.js?v=polish-1"></script>
+<script src="assets/js/hero.js?v=final-1"></script>
+<script src="assets/js/site-data.js?v=final-1"></script><script src="assets/js/request-core.js?v=final-1"></script><script src="assets/js/landing.js?v=final-1"></script>
+
+
 
 
 

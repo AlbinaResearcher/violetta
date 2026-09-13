@@ -59,8 +59,15 @@
   var tabs = Array.from(document.querySelectorAll('[data-song]'));
   var activeSong = 0;
   var mediaGeneration = 0;
+  var prototypeTimes = data.songs.map(function () { return 0; });
+  var visited = data.songs.map(function () { return false; });
+  var prototypeTimer = null;
+  var prototypePlaying = false;
+  function pausePrototype() {
+    clearInterval(prototypeTimer); prototypeTimer = null; prototypePlaying = false;
+  }
   function time(value) {
-    if (!Number.isFinite(value)) return '—:—';
+    if (!Number.isFinite(value)) return '0:00';
     return Math.floor(value / 60) + ':' + String(Math.floor(value % 60)).padStart(2, '0');
   }
   function setPlaying(playing) {
@@ -69,15 +76,17 @@
     var song = data.songs[activeSong];
     coverPlay.dataset.playing = String(playing);
     coverPlay.setAttribute('aria-pressed', String(playing));
-    coverPlay.setAttribute('aria-label', song.audioSrc ? (playing ? 'Пауза: ' : 'Слушать: ') + song.title : 'Обложка песни «' + song.title + '»');
+    coverPlay.setAttribute('aria-label', (playing ? 'Пауза: ' : 'Слушать: ') + song.title);
     tabs.forEach(function (tab, index) {
-      tab.dataset.playback = index === activeSong && song.audioSrc ? (playing ? 'playing' : 'paused') : 'idle';
+      tab.dataset.playback = index === activeSong && playing ? 'playing' : (visited[index] ? 'paused' : 'idle');
     });
   }
   function updateTime() {
-    var duration = audio.duration;
-    var progress = Number.isFinite(duration) && duration > 0 ? audio.currentTime / duration : 0;
-    document.getElementById('song-current').textContent = time(audio.currentTime || 0);
+    var song = data.songs[activeSong];
+    var duration = song.audioSrc ? audio.duration : song.prototypeDuration;
+    var current = song.audioSrc ? audio.currentTime : prototypeTimes[activeSong];
+    var progress = Number.isFinite(duration) && duration > 0 ? current / duration : 0;
+    document.getElementById('song-current').textContent = time(current || 0);
     document.getElementById('song-duration').textContent = time(duration);
     seek.disabled = !Number.isFinite(duration) || duration <= 0;
     seek.value = progress * 100;
@@ -86,11 +95,12 @@
     });
   }
   function selectSong(index, focus) {
+    pausePrototype();
     activeSong = index;
+    visited[index] = true;
     mediaGeneration++;
     audio.pause();
     audio.removeAttribute('src');
-    audio.load();
     var song = data.songs[index];
     var cover = document.getElementById('song-cover');
     cover.src = song.cover;
@@ -108,12 +118,11 @@
     });
     document.getElementById('song-panel').setAttribute('aria-labelledby', tabs[index].id);
     setPlaying(false);
-    play.disabled = !song.audioSrc;
-    coverPlay.disabled = !song.audioSrc;
-    document.getElementById('song-media').hidden = !song.audioSrc;
-    status.textContent = song.audioSrc ? 'Нажмите, чтобы послушать.' : '';
-    if (song.audioSrc) audio.src = song.audioSrc;
-    else play.setAttribute('aria-label', 'Аудио скоро появится');
+    play.disabled = false;
+    coverPlay.disabled = false;
+    document.getElementById('song-media').hidden = false;
+    status.textContent = '';
+    if (song.audioSrc) { audio.src = song.audioSrc; audio.load(); }
     updateTime();
     if (focus) tabs[index].focus();
   }
@@ -132,7 +141,19 @@
     });
   });
   async function togglePlayback() {
-    if (!data.songs[activeSong].audioSrc) return;
+    if (!data.songs[activeSong].audioSrc) {
+      if (prototypePlaying) { pausePrototype(); setPlaying(false); return; }
+      if (prototypeTimes[activeSong] >= data.songs[activeSong].prototypeDuration) prototypeTimes[activeSong] = 0;
+      prototypePlaying = true; setPlaying(true);
+      var lastTick = Date.now();
+      prototypeTimer = setInterval(function () {
+        var now = Date.now();
+        prototypeTimes[activeSong] = Math.min(data.songs[activeSong].prototypeDuration, prototypeTimes[activeSong] + (now - lastTick) / 1000);
+        lastTick = now; updateTime();
+        if (prototypeTimes[activeSong] >= data.songs[activeSong].prototypeDuration) { pausePrototype(); setPlaying(false); }
+      }, 250);
+      return;
+    }
     if (!audio.paused) { audio.pause(); return; }
     var generation = mediaGeneration;
     status.textContent = 'Загружаем песню…';
@@ -145,9 +166,11 @@
   }
   play.addEventListener('click', togglePlayback);
   coverPlay.addEventListener('click', togglePlayback);
-  window.addEventListener('pagehide', function () { audio.pause(); });
-  audio.addEventListener('playing', function () { setPlaying(true); status.textContent = 'Воспроизводится'; });
+  window.addEventListener('pagehide', function () { pausePrototype(); audio.pause(); setPlaying(false); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden && prototypePlaying) { pausePrototype(); setPlaying(false); } });
+  audio.addEventListener('playing', function () { if (data.songs[activeSong].audioSrc) { setPlaying(true); status.textContent = 'Воспроизводится'; } });
   audio.addEventListener('pause', function () {
+    if (!data.songs[activeSong].audioSrc) return;
     setPlaying(false);
     if (data.songs[activeSong].audioSrc && !audio.ended) status.textContent = 'На паузе';
   });
@@ -159,7 +182,8 @@
   audio.addEventListener('loadedmetadata', updateTime);
   audio.addEventListener('timeupdate', updateTime);
   seek.addEventListener('input', function () {
-    if (Number.isFinite(audio.duration)) audio.currentTime = Number(seek.value) / 100 * audio.duration;
+    if (!data.songs[activeSong].audioSrc) { prototypeTimes[activeSong] = Number(seek.value) / 100 * data.songs[activeSong].prototypeDuration; updateTime(); }
+    else if (Number.isFinite(audio.duration)) audio.currentTime = Number(seek.value) / 100 * audio.duration;
   });
   selectSong(0, false);
 

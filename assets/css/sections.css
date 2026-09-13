@@ -71,14 +71,18 @@ section[id] { scroll-margin-top: 0; }
 #song-panel { min-width: 0; }
 .play-glyph { width: 0; height: 0; margin-left: 4px; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 15px solid #FDFCFB; }
 #song-play[data-playing='true'] .play-glyph { width: 14px; height: 16px; margin-left: 0; border: 0; border-left: 4px solid #FDFCFB; border-right: 4px solid #FDFCFB; }
-.faq-item { border-radius: 22px; border-bottom: 1px solid rgba(150,110,130,.24); }
-.faq-item[open] { padding: 4px clamp(16px,1.8vw,24px) clamp(14px,1.6vw,20px); background: rgba(255,252,250,.72); border-bottom-color: transparent; }
-.faq-question { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; min-height: 48px; padding: clamp(13px,1.5vw,18px) 0; cursor: pointer; color: var(--ink); list-style: none; }
+.faq-item { border-radius:0; border-bottom:1px solid rgba(150,110,130,.2); }
+.faq-item[open] { padding:0 0 18px; background:transparent; }
+.faq-question { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:48px; padding:22px 0; cursor:pointer; color:var(--ink); list-style:none; }
+.faq-question-text { font:500 clamp(22px,1.8vw,26px)/1.2 "Playfair Display",Georgia,serif; letter-spacing:-.01em; }
+@media(max-width:700px) { .faq-question { padding:18px 0; } .faq-question-text { font-size:20px; } }
 .faq-question::-webkit-details-marker { display: none; }
 .faq-item[open] .faq-question { color: var(--focus); }
-.faq-sign { flex: 0 0 26px; text-align: center; font: 26px/1.1 'Playfair Display', Georgia, serif; color: #7A6A85; }
-.faq-sign::before { content: '+'; }
-.faq-item[open] .faq-sign::before { content: '−'; color: var(--accent); }
+.faq-sign { position:relative; flex:0 0 20px; width:20px; height:20px; color:#7A6A85; }
+.faq-sign::before, .faq-sign::after { content:""; position:absolute; left:3px; top:9px; width:14px; height:1px; background:currentColor; transition:transform 220ms; }
+.faq-sign::after { transform:rotate(90deg); }
+.faq-item[open] .faq-sign::after { transform:rotate(0); }
+.faq-item[open] .faq-sign { color:var(--accent); }
 .faq-answer { line-height: 1.58; }
 .choice { position: relative; cursor: pointer; min-width: 0; }
 .choice > input { position: absolute; opacity: 0; width: 1px; height: 1px; }

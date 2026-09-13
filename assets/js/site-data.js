@@ -11,7 +11,8 @@ window.VivobitData = {
       "what": "Юбилей",
       "tint": "linear-gradient(180deg, #EDE1F2 0%, #EDE9F2 34%, #F1EAE6 70%, #F6EEE6 100%)",
       "cover": "assets/img/song-cover-1.webp",
-      "audioSrc": null
+      "audioSrc": null,
+      "prototypeDuration": 167
     },
     {
       "occasion": "Жене на годовщину",
@@ -23,7 +24,8 @@ window.VivobitData = {
       "what": "Годовщина",
       "tint": "linear-gradient(180deg, #EDE1F2 0%, #F3DEE4 36%, #F9E2DC 72%, #F6EEE6 100%)",
       "cover": "assets/img/song-cover-2.webp",
-      "audioSrc": null
+      "audioSrc": null,
+      "prototypeDuration": 183
     },
     {
       "occasion": "Учителю на последний звонок",
@@ -35,7 +37,8 @@ window.VivobitData = {
       "what": "Последний звонок",
       "tint": "linear-gradient(180deg, #EDE1F2 0%, #E6EBF6 38%, #EFEDF3 72%, #F6EEE6 100%)",
       "cover": "assets/img/song-cover-3.webp",
-      "audioSrc": null
+      "audioSrc": null,
+      "prototypeDuration": 176
     },
     {
       "occasion": "Другу на день рождения",
@@ -47,7 +50,8 @@ window.VivobitData = {
       "what": "30 лет",
       "tint": "linear-gradient(180deg, #EDE1F2 0%, #F5DFE0 36%, #FAE4DC 72%, #F6EEE6 100%)",
       "cover": "assets/img/song-cover-4.webp",
-      "audioSrc": null
+      "audioSrc": null,
+      "prototypeDuration": 159
     },
     {
       "occasion": "Папе на юбилей",
@@ -59,7 +63,8 @@ window.VivobitData = {
       "what": "Юбилей",
       "tint": "linear-gradient(180deg, #EDE1F2 0%, #E7ECF5 38%, #EFE6EC 72%, #F6EEE6 100%)",
       "cover": "assets/img/song-cover-5.webp",
-      "audioSrc": null
+      "audioSrc": null,
+      "prototypeDuration": 191
     }
   ],
   "form": {

@@ -47,7 +47,6 @@
 .request-form { gap:20px; }
 .request-form legend, .request-form label[for] { font-size:20px !important; }
 .choice-label { padding-block:9px; }
-.faq-question { padding-block:18px; }
 .request-grid > div:first-child > p { max-width:30ch; }
 .footer-story { font-size:clamp(30px,2.8vw,40px); }
 @media(max-width:959px) {

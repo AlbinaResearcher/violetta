@@ -1,5 +1,6 @@
 /* Content from the supplied Claude Design export. Audio sources are pending. */
 window.VivobitData = {
+  "avitoUrl": "https://www.avito.ru/brands/64a9d96c3f883138f6028f1015b1f953/all/predlozheniya_uslug?sellerId=526a3f7fef1baf089cefa89729fa7827",
   "songs": [
     {
       "occasion": "Маме на юбилей",

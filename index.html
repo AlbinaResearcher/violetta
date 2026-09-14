@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="assets/css/hero.css?v=final-1">
 <link rel="stylesheet" href="assets/css/sections.css?v=final-1">
-<link rel="stylesheet" href="assets/css/restoration.css?v=final-1"><link rel="stylesheet" href="assets/css/refinement.css?v=final-1"><link rel="stylesheet" href="assets/css/round-two.css?v=final-1"><link rel="stylesheet" href="assets/css/final-pass.css?v=final-2"><link rel="stylesheet" href="assets/css/vinyl-polish.css?v=boundary-2">
+<link rel="stylesheet" href="assets/css/restoration.css?v=final-1"><link rel="stylesheet" href="assets/css/refinement.css?v=final-1"><link rel="stylesheet" href="assets/css/round-two.css?v=final-1"><link rel="stylesheet" href="assets/css/final-pass.css?v=final-2"><link rel="stylesheet" href="assets/css/vinyl-polish.css?v=contact-2">
 </head>
 <body id="top">
 
@@ -382,16 +382,22 @@
             <label class="choice channel-choice"><input type="radio" name="channel" value="avito" required=""><span class="choice-label">Авито</span></label>
             </div>
         </fieldset><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(16px, 2vw, 26px);" class="request-contact-row">
-        <div style="min-width: 0;">
-          <label for="name" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Как вас зовут?</label>
-          <input id="name" type="text" placeholder="Например, Вера" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="name" maxlength="100" autocomplete="name">
-        </div>
+        
 
         <div style="min-width: 0;">
           <label for="contact" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Ваш Telegram</label>
           <input id="contact" type="text" placeholder="@nickname" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="contact" maxlength="200" autocomplete="off" autocapitalize="none" spellcheck="false" required="" aria-describedby="contact-help">
-          <p id="contact-help" class="field-help">Например, @nickname или t.me/nickname.</p>
+          <p id="contact-help" class="field-help">Укажите ваш @username</p>
+</div><div id="avito-contact" hidden>
+<strong>Напишите нам на Авито</strong>
+<p class="field-help">На Авито первым нужно написать продавцу. Перейдите в наш профиль после заполнения заявки.</p>
+<a id="avito-link" class="button-text" target="_blank" rel="noopener noreferrer" aria-disabled="true">Написать нам на Авито ↗</a>
+<p id="avito-unavailable" class="field-help">Ссылка на Авито пока недоступна. Заявку можно подготовить и скопировать.</p>
 </div>
+<div style="min-width: 0;">
+          <label for="name" style="display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2;">Как вас зовут?</label>
+          <input id="name" type="text" placeholder="Например, Вера" style="width: 100%; margin-top: 12px; height: 50px; padding: 0 18px; border-radius: 16px; border: 1px solid rgba(150, 110, 130, 0.26); background: #FFFDFC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; color: #2C2144; outline: none; transition: border-color 200ms ease;" class="interaction-13" name="name" maxlength="100" autocomplete="name">
+        </div>
       </div>
 
       <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;" class="request-action">
@@ -406,10 +412,10 @@
 </form>
   <div id="request-handoff" class="request-handoff" hidden="" tabindex="-1">
 <h3>Ваша заявка готова</h3>
-<p>Скопируйте текст и отправьте менеджеру в Telegram.</p>
+<p id="handoff-help">Скопируйте текст и отправьте менеджеру в Telegram.</p>
 <label for="request-message">Ваша заявка</label><textarea id="request-message" readonly="" rows="6"></textarea>
 <div class="handoff-actions">
-<button type="button" id="copy-request" class="button-primary">Скопировать заявку</button><a class="button-primary" href="https://t.me/vivo_support" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a>
+<button type="button" id="copy-request" class="button-primary">Скопировать заявку</button><a id="handoff-link" class="button-primary" href="https://t.me/vivo_support" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a>
 </div>
 <p id="copy-status" role="status"></p>
 <button type="button" id="edit-request" class="button-text">Вернуться к форме</button>
@@ -497,7 +503,7 @@
 </footer>
 
 <script src="assets/js/hero.js?v=boundary-2"></script>
-<script src="assets/js/site-data.js?v=vinyl-1"></script><script src="assets/js/request-core.js?v=final-1"></script><script src="assets/js/landing.js?v=vinyl-1"></script>
+<script src="assets/js/site-data.js?v=contact-2"></script><script src="assets/js/request-core.js?v=contact-2"></script><script src="assets/js/landing.js?v=contact-2"></script>
 
 
 

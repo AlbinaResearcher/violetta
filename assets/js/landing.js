@@ -226,10 +226,18 @@
   var handoff = document.getElementById('request-handoff');
   var message = document.getElementById('request-message');
   var channels = {
-    telegram: ['Ваш Telegram', '@nickname', 'Например, @nickname или t.me/nickname.'],
-    vk: ['Ссылка на ВКонтакте', 'vk.com/...', 'Ссылка на вашу страницу ВКонтакте.'],
-    avito: ['Профиль Авито', 'avito.ru/user/…', 'Ссылка вида avito.ru/user/… или avito.ru/brands/…']
+    telegram: ['Ваш Telegram', '@nickname', 'Укажите ваш @username'],
+    vk: ['Ссылка на вашу страницу ВКонтакте', 'https://vk.com/username', 'Оставьте ссылку на страницу, чтобы менеджер мог вам написать.']
   };
+  var avitoUrl = data.avitoUrl || '';
+  var avitoContact = document.getElementById('avito-contact');
+  var handoffChannel = 'telegram';
+  function setDestination(link, url) {
+    if (url) { link.href = url; link.removeAttribute('aria-disabled'); link.removeAttribute('tabindex'); }
+    else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); link.setAttribute('tabindex', '-1'); }
+  }
+  setDestination(document.getElementById('avito-link'), avitoUrl);
+  document.getElementById('avito-unavailable').hidden = !!avitoUrl;
   var contactDrafts = {};
   var previousChannel = form.elements.channel.value;
   var errorNodes = {};
@@ -254,9 +262,16 @@
   function updateContact() {
     var channel = form.elements.channel.value;
     var copy = channels[channel];
-    document.querySelector('label[for="contact"]').textContent = copy[0];
-    contact.placeholder = copy[1];
-    contactHelp.textContent = copy[2];
+    var isAvito = channel === 'avito';
+    contact.parentElement.hidden = isAvito;
+    contact.disabled = isAvito;
+    contact.required = !isAvito;
+    avitoContact.hidden = !isAvito;
+    if (copy) {
+      document.querySelector('label[for="contact"]').textContent = copy[0];
+      contact.placeholder = copy[1];
+      contactHelp.textContent = copy[2];
+    }
     contact.setCustomValidity('');
     clearError('contact');
     formStatus.textContent = '';
@@ -300,6 +315,14 @@
       return;
     }
     message.value = request.format(values, data.form);
+    handoffChannel = values.channel;
+    var isAvito = handoffChannel === 'avito';
+    document.getElementById('handoff-help').textContent = isAvito
+      ? 'Скопируйте заявку и отправьте её нам на Авито.' + (avitoUrl ? '' : ' Ссылка на Авито пока недоступна.')
+      : 'Скопируйте текст и отправьте менеджеру в Telegram. В заявке указан выбранный вами способ связи.';
+    var handoffLink = document.getElementById('handoff-link');
+    handoffLink.textContent = isAvito ? 'Перейти в Авито ↗' : 'Открыть Telegram ↗';
+    setDestination(handoffLink, isAvito ? avitoUrl : 'https://t.me/vivo_support');
     form.hidden = true;
     handoff.hidden = false;
     document.getElementById('copy-status').textContent = '';
@@ -310,7 +333,7 @@
     var copyStatus = document.getElementById('copy-status');
     try {
       await navigator.clipboard.writeText(message.value);
-      copyStatus.textContent = 'Скопировано. Откройте Telegram и отправьте текст менеджеру.';
+      copyStatus.textContent = handoffChannel === 'avito' ? 'Заявка скопирована. Отправьте её нам в чате Авито.' : 'Скопировано. Откройте Telegram и отправьте текст менеджеру.';
     } catch (error) {
       message.focus(); message.select();
       copyStatus.textContent = 'Выделили текст заявки. Скопируйте его вручную.';

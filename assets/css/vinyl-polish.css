@@ -26,3 +26,11 @@
  .vinyl-sleeve { transition:none; }
  #song-vinyl { animation:none; }
 }
+
+/* Compact conditional contact area; no separate card for Avito. */
+#avito-contact { min-width:0; align-self:start; }
+#avito-contact strong { font:500 20px/1.25 'Playfair Display',Georgia,serif; }
+#avito-contact .field-help { margin:8px 0; }
+#avito-link { display:inline-flex; align-items:center; min-height:44px; color:#563f65; text-decoration:underline; }
+#avito-link[aria-disabled='true'], #handoff-link[aria-disabled='true'] { opacity:.5; cursor:default; }
+@media(max-width:600px) { #avito-link { width:100%; } }

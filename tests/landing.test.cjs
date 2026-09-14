@@ -211,7 +211,7 @@ test('invalid contact prevents the handoff; channel change updates visible guida
   vk.checked = true; vk.dispatchEvent(new w.Event('change', { bubbles: true }));
   assert.equal(form.elements.contact.validity.customError, false);
   assert.equal(form.elements.contact.hasAttribute('aria-invalid'), false);
-  assert.equal(form.elements.contact.placeholder, 'vk.com/...');
+  assert.equal(form.elements.contact.placeholder, 'https://vk.com/username');
 });
 
 test('request rules reject unknown choices and preserve literal user text safely', () => {
@@ -262,15 +262,11 @@ test('clip card and form agree on the package and its pricing statement', t => {
   }
 });
 
-test('Avito requires a profile URL and handoff intent matches every product', t => {
+test('Avito does not require contact and handoff intent matches every product', t => {
   const { w } = setup(t);
   const good = request.normalize({recipient:'1',occasion:'1',product:'time',channel:'avito',contact:'https://www.avito.ru/user/abc123/profile'});
-  for (const contact of ['...', '   ', 'avito.ru.evil.test/user/example', 'https://other.test/user/a', 'https://me@avito.ru/user/a']) {
-    assert.equal(request.validate({...good,contact}).field, 'contact');
-  }
-  for (const contact of ['https://www.avito.ru/user/abc123/profile','avito.ru/user/abc123','https://avito.ru/brands/example']) {
-    assert.equal(request.validate({...good,contact}), null);
-  }
+  assert.equal(request.validate({...good, contact:''}), null);
+  assert.equal(request.normalize({...good,contact:'@old_username'}).contact, '');
   for (const product of ['song','clip','time','undecided']) {
     const message=request.format({...good,product},w.VivobitData.form);
     assert.doesNotMatch(message,/Хочу заказать персональную песню/);
@@ -323,4 +319,30 @@ test('clipboard rejection leaves the whole message selected for manual copying',
   assert.equal(message.selectionStart, 0);
   assert.equal(message.selectionEnd, message.value.length);
   assert.match(d.getElementById('copy-status').textContent, /вручную/);
+});
+
+test('Avito hides and disables contact, prepares and copies without leaking previous contact', async t => {
+  const {w,d}=setup(t); const form=fillRequest(w,d);
+  const choose=value=>{const radio=form.querySelector(`[name="channel"][value="${value}"]`);radio.checked=true;radio.dispatchEvent(new w.Event('change',{bubbles:true}));};
+  choose('avito');
+  assert.equal(form.elements.contact.disabled,true);
+  assert.equal(form.elements.contact.required,false);
+  assert.equal(form.elements.contact.parentElement.hidden,true);
+  assert.equal(d.getElementById('avito-contact').hidden,false);
+  assert.equal(d.getElementById('avito-link').href,w.VivobitData.avitoUrl);
+  form.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+  assert.equal(d.getElementById('request-handoff').hidden,false);
+  const text=d.getElementById('request-message').value;
+  assert.match(text,/Способ связи: Авито/); assert.doesNotMatch(text,/@example_user|Контакт:|Страница:/);
+  assert.equal(d.getElementById('handoff-link').href,w.VivobitData.avitoUrl);
+  assert.equal(d.getElementById('handoff-link').target,'_blank');
+  let copied; Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async value=>{copied=value;}}});
+  d.getElementById('copy-request').click(); await new Promise(setImmediate);
+  assert.equal(copied,text); assert.match(d.getElementById('copy-status').textContent,/Авито/);
+  d.getElementById('edit-request').click(); choose('vk');
+  assert.equal(form.elements.contact.disabled,false); assert.equal(form.elements.contact.required,true);
+  assert.equal(form.elements.contact.parentElement.hidden,false); assert.equal(d.getElementById('avito-contact').hidden,true);
+  form.elements.contact.value='https://vk.com/example_user';
+  form.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+  assert.match(d.getElementById('request-message').value,/Страница: https:\/\/vk.com\/example_user/);
 });
